@@ -1,0 +1,146 @@
+$(function() {
+    var markup = '<div id="chat-cta" class="hidden"> <div class="prompt"> <h2 class="heading">Hi, I\'m Clara!</h2> <p class="subheading">Chat with me!</p> </div> <div class="avatar"></div> <p class="label">Chat with me!</p> </div> <div id="chat-intro" style="display: none;"> <div id="close"></div> <div class="header"> <div class="heading"> <div class="avatar"></div> <h2>Hi, I\'m Clara!</h2> </div> <p class="subheading">Ask me your blood donation questions. You can type "Schedule an appointment", "Eligibility requirements", or "Learn about donations".</p> </div> <div class="dialog"> <p class="label">How can I help?</p> <form id="input-form"> <input type="text" id="initial-user-input" placeholder="E.g. Schedule, eligibility requirements..."> <button id="submit" type="submit" class="disabled"></button> </form> </div> </div> <div id="chat-loading" style="display: none;"> <h3>LOADING</h3> <div class="dots"> <div class="dot first"></div> <div class="dot second"></div> <div class="dot third"></div> </div> </div> <div id="chat-container"></div>';
+    
+    $("body").append(markup);
+    
+    setTimeout(function() {
+        $("#chat-cta").removeClass("hidden");
+    }, 0);
+    
+    function isMobileDevice() {
+        return /iPhone|iPad|iPod|Mobi|Android/i.test(navigator.userAgent);
+    }
+    
+    if (isMobileDevice()) {
+        $("#chat-container").hide();
+    }
+    
+    function isInputValid(input) {
+        return !!input.trim();
+    }
+    
+    function clearInput() {
+        $("#initial-user-input").val("");
+    }
+    
+    var hasChatBeenLaunched = false;
+    
+    $("#chat-cta").click(function() {
+        $("#chat-cta").hide();
+        
+        if (isMobileDevice()) {
+            openChat();
+        } else {
+            if (!hasChatBeenLaunched) {
+                $("#chat-loading").show();
+                
+                // The fake loading screen is displayed for a random interval
+                // to maintain consistency with the look and feel of their other
+                // chat solutions.
+                
+                var min = 1000;
+                var max = 1500;
+                var randomLoadTime = Math.floor(Math.random() * (max - min)) + min;
+                
+                setTimeout(function() {
+                    $("#chat-loading").hide();
+                    $("#chat-intro").show();
+                }, randomLoadTime);
+            } else {
+                reopenChat();
+            }
+        }
+    });
+    
+    $("#chat-intro #close").click(function() {
+        $("#chat-intro").hide();
+        $("#chat-cta").show();
+        clearInput();
+    });
+    
+    $("#initial-user-input").on("input", function() {
+        var input = $("#initial-user-input").val();
+        
+        if (isInputValid(input)) {
+            $("#submit").removeClass("disabled");
+        } else {
+            $("#submit").addClass("disabled");
+        }
+    });
+    
+    $("#input-form").submit(function (event) {
+        var initialInput = $("#initial-user-input").val();
+        
+        if (!isInputValid(initialInput)) {
+            return false;
+        }
+        
+        event.preventDefault();
+        $("#chat-intro").hide();
+        clearInput();
+        openChat(initialInput);
+    });
+    
+    function reopenChat() {
+        OrbitaChatBotPlugin.dockAction("open");
+        $("#orbita-chat-iframe").show();
+    }
+    
+    function openChat(initialInput) {
+        var host = "arc-chat.orbita.cloud:8443";
+        var botURL = "https://" + host + "/oeapi/v2/bot/web";
+        
+        var options = {
+            externalTrigger: true,
+            domId: "chat-container",
+            launchWord: "open",
+            name: "Orbita",
+            width: "366",
+            height: "625",
+            mobileBotUrl: botURL,
+            serverUrl: botURL,
+            theme: "dock-float",
+            dockDefaultAction: "open"
+        };
+        
+        if (OrbitaChatBotPlugin) {
+            var initialResponseReceived = false;
+            var chatbotWindow = null;
+            
+            OrbitaChatBotPlugin.registerEvents("afterInit", function(data) {
+                chatbotIframe = document.getElementById("orbita-chat-iframe");
+                
+                if (chatbotIframe) {
+                    chatbotWindow = chatbotIframe.contentWindow;
+                }
+                
+                return data;
+            });
+            
+            if (initialInput) {
+                OrbitaChatBotPlugin.registerEvents("afterResponse", function(data) {
+                    if (!initialResponseReceived) {
+                        initialResponseReceived = true;
+                        
+                        if (chatbotWindow) {
+                            setTimeout(function() {
+                                chatbotWindow.postMessage(JSON.stringify({ initialInput: initialInput }), "https://arc-chat.orbita.cloud:8443/oeapi/v2/bot/web");
+                            }, 500);
+                        }
+                    }
+                    
+                    return data;
+                });
+            }
+            
+            OrbitaChatBotPlugin.registerEvents("onDockCollapse", function(data) {
+                $("#chat-cta").show();
+                return data;
+            });
+
+            OrbitaChatBotPlugin.initPlugin(options);
+            
+            hasChatBeenLaunched = true;
+        }
+    }
+});

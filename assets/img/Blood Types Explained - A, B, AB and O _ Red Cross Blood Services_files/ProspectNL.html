@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://support.redcrossblood.org/webApp/ProspectNL -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- deps in mode min/en -->
+<meta http-equiv="Pragma" content="no-cache">
+<script type="text/javascript">var Timeline_urlPrefix='/nl/lib/timeline/', Timeline_parameters='defaultLocale=en'
+</script>
+<script src="./WA-en-cf461481d56f1e56aa870f98218b501b.js.téléchargement" charset="UTF-8" type="text/javascript"></script>
+<script src="./WA-213e709fcaa85834dad102e6b67ff728.js.téléchargement" charset="ISO-8859-1" type="text/javascript"></script><style type="text/css"></style>
+<!-- END deps in mode min -->
+
+<script type="text/javascript">
+      NL.session.setLocale('en');
+
+      jQuery(document).ready(function($) {
+      
+      htmlPageForm.prototype = new UIController()
+      document.controller = new htmlPageForm()
+
+      var $form = $("form");
+      if( NL.isEmpty($form.attr("id")) )
+        $form.attr("id", "page-form");
+      else
+        document.controller.formId = $form.attr("id");
+
+      
+      $form.append('<input name="ctx" type="hidden"/>');
+      $form.attr("method", "post");
+
+      $form.append('<input name="userAction" type="hidden"/>');
+      $form.append('<input name="transition" type="hidden"/>');
+      
+
+      document.controller.notifyAllObservers();
+
+      $("#fname").bind("blur", function (event) {
+          return document.controller.setValue('/ctx/registeredLead/@firstName', this.value, 'fname');
+        });
+        $("#lname").bind("blur", function (event) {
+          return document.controller.setValue('/ctx/registeredLead/@lastName', this.value, 'lname');
+        });
+        $("#email").bind("blur", function (event) {
+          return document.controller.setValue('/ctx/registeredLead/@email', this.value, 'email');
+        });
+        $("#zipCode").bind("blur", function (event) {
+          return document.controller.setValue('/ctx/registeredLead/@zipCode', this.value, 'zipCode');
+        });
+        $("#input159226035979773").click(function ()
+      {
+        
+        return document.controller.submit('next','')
+          
+      })
+      
+
+      
+      var el =  document.createElement("div");
+      el.innerHTML = "";
+      document.body.appendChild(el);
+
+     });
+     
+        function htmlPageForm()
+        {
+
+          this.ctx = parseXMLString("<ctx lang=\"en\" date=\"2023-01-01T16:38:25Z\" _target=\"web\" webApp-id=\"537178332\" _folderModel=\"\" activityHist=\"@WxryfeVIhPO7yM3Hfc1zBNX6sCbbaH8Ze0unBoLimbbwPMJF7AO+chQWUfMEUpexzn4rPJqGUqjCr1z0WiDRqwYroKjazDnLB5O70kMI7TWxTyMfpMe9hPLKXiuDKZGd\"><userInfo datakitInDatabase=\"true\" homeDir=\"\" instanceLocale=\"en-US\" locale=\"en-US\" login=\"webapp\" loginCS=\"Web applications agent (webapp)\" loginId=\"347361135\" noConsoleCnx=\"true\" orgUnitId=\"0\" theme=\"\" timezone=\"America/New_York\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"urn:xtk:session\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><login-right right=\"sql\"/><login-right right=\"webapp\"/></userInfo><timezone current=\"America/New_York\" changed=\"false\"/><vars><origin>ProspectPopUp</origin><serviceName>newsletter</serviceName><confirmation>0</confirmation><deliveryModelName>beHeroDocument</deliveryModelName><source>External</source></vars><activityHistory><activity name=\"htmlPage\" type=\"htmlPage\"/></activityHistory></ctx>")
+        
+
+          this.onValueChanged =
+          { 
+            "fname": function(xpath, value)
+            { 
+              if ( xpath == "/ctx/registeredLead/@firstName"
+                && document.getElementById("fname") != null )
+                document.getElementById("fname").value = NL.nvl(value, '')
+            },
+            "lname": function(xpath, value)
+            { 
+              if ( xpath == "/ctx/registeredLead/@lastName"
+                && document.getElementById("lname") != null )
+                document.getElementById("lname").value = NL.nvl(value, '')
+            },
+            "email": function(xpath, value)
+            { 
+              if ( xpath == "/ctx/registeredLead/@email"
+                && document.getElementById("email") != null )
+                document.getElementById("email").value = NL.nvl(value, '')
+            },
+            "zipCode": function(xpath, value)
+            { 
+              if ( xpath == "/ctx/registeredLead/@zipCode"
+                && document.getElementById("zipCode") != null )
+                document.getElementById("zipCode").value = NL.nvl(value, '')
+            },
+            "default": null
+          }
+        
+          this.registerObserver("/ctx/registeredLead/@firstName", this, this.onValueChanged["fname"], "fname", this.OBSERVE_XPATH)
+          this.registerObserver("/ctx/registeredLead/@lastName", this, this.onValueChanged["lname"], "lname", this.OBSERVE_XPATH)
+          this.registerObserver("/ctx/registeredLead/@email", this, this.onValueChanged["email"], "email", this.OBSERVE_XPATH)
+          this.registerObserver("/ctx/registeredLead/@zipCode", this, this.onValueChanged["zipCode"], "zipCode", this.OBSERVE_XPATH)
+        }
+
+  </script><meta name="keywords" content="">
+<meta name="description" content="">
+<title>Local Fixed Sites Prospects | Red Cross Blood</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.gstatic.com/" rel="preconnect">
+<link href="./css2" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="https://www.redcrossblood.org/etc/designs/redcross/rcbcontent/favicon.ico" rel="icon" type="https://www.image/vnd.microsoft.icon">
+<link href="https://www.redcrossblood.org/etc/designs/redcross/rcbcontent/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<style>
+html {
+  background-image: none;
+  background-color: #ffffff;
+}
+body {
+  margin: 0px;
+  padding: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: small;
+}
+header h2 {
+  border-bottom: 1px dotted #CCCCCC;
+  font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 160% !important;
+  font-style: normal;
+  font-weight: 500;
+  color: #333333 !important;
+  clear: both;
+  margin: 0 0 5px 0;
+  padding: 0 0 1% 0;
+}
+p {
+  color: #333333;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #333333;
+  line-height: 1.625em;
+  word-break: break-word;
+}
+p strong {
+  font-weight: 600;
+}
+small {
+  font-size: .8em;
+}
+.centerFormProp {
+  text-align: center !important;
+}
+form ul {
+  margin: 0px;
+  padding: 0px;
+}
+form li {
+  width: auto !important;
+  list-style-type: none;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-bottom: 9px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 6px;
+}
+label.desc, legend.desc {
+  font-size: 95%;
+  font-weight: bold;
+  color: #444444;
+  line-height: 150%;
+  margin: 0;
+  padding: 0 0 3px 0;
+  border: none;
+  display: block;
+  white-space: normal;
+  width: 100%;
+}
+form span.req {
+  display: inline;
+  float: none;
+  color: red !important;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.wufoo li.focused label.desc, .wufoo li.focused legend.desc, .wufoo li.focused div, .wufoo li.focused span, .wufoo li.focused div label, .wufoo li.focused span label, .safari .wufoo li.focused input.file {
+  color: #000000;
+}
+form input {
+  font-style: normal;
+  font-weight: normal;
+  color: #333333 !important;
+  font-size: 100% !important;
+}
+form input:focus {
+  background-color: #FFF7C0;
+}
+form input.inputwidth {
+  width: 100%;
+}
+input.button {
+  -webkit-appearance: none;
+  color: #ffffff !important;
+  cursor: pointer;
+  background-color: #E11B22;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 1.5vw;
+  line-height: 1.4;
+  height: auto;
+  min-height: 2rem;
+  padding: .7rem 1.6rem;
+  text-transform: uppercase;
+  border-style: none;
+  border-radius: .3rem;
+  box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.15);
+}
+.button:hover {
+  background-color: #b2141a; /* Red */
+  color: white;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a:visited {
+  color: ##660099;
+}
+</style>
+<style>@font-face {
+              font-family: 'Open Sans Regular';
+              font-style: normal;
+              font-weight: 400;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-regular.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans Bold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-800.woff');
+          }</style></head>
+
+<body style="" class="">
+<div class="main-block"><form id="page-form" method="post"><header class="info" id="header">
+<div></div>
+<h2>Join the team to save lives!</h2>
+<p>Sign up to receive important blood donation alerts.</p>
+</header>
+<ul>
+<li><label class="desc" id="title1" for="fname">First Name <span class="req" id="req_4">*</span></label>
+<div><input name="fname" class="inputwidth" id="fname" type="text" placeholder="First Name" data-nl-bindto="xpath" data-nl-xpath="@firstName" data-nl-label="FirstName" data-nl-ismandatory="true"></div>
+</li>
+<li><label class="desc" id="title1" for="lname">Last Name <span class="req" id="req_4">*</span></label>
+<div><input name="lname" class="inputwidth" id="lname" type="text" placeholder="Last Name" data-nl-bindto="xpath" data-nl-xpath="@lastName" data-nl-label="LastName" data-nl-ismandatory="true"></div>
+</li>
+<li><label class="desc" id="title1" for="email">Email <span class="req" id="req_4">*</span></label>
+<div><input name="email" class="inputwidth" id="email" type="text" placeholder="Email" data-nl-bindto="xpath" data-nl-xpath="@email" data-nl-label="Email" data-nl-ismandatory="true"></div>
+</li>
+<li><label class="desc" id="title1" for="zipCode">Zip Code <span class="req" id="req_4">*</span></label>
+<div><input name="zipCode" class="inputwidth" id="zipCode" type="text" placeholder="Zip Code" data-nl-bindto="xpath" data-nl-xpath="@zipCode" data-nl-label="ZipCode" data-nl-ismandatory="true"></div>
+</li>
+</ul>
+<div class="info">
+<div class="infoalign">&nbsp;</div>
+<input class="button" id="input159226035979773" onclick="" type="button" value="Join In" data-nl-bindto="action" data-nl-action="next" data-nl-transition="">
+<p><em><small>By submitting this form you are agreeing to our <a href="https://www.redcross.org/privacy-policy.html" target="_blank">Privacy Policy</a></small></em></p>
+</div>
+<input name="ctx" type="hidden"><input name="userAction" type="hidden"><input name="transition" type="hidden"></form></div>
+
+<div></div></body></html>
