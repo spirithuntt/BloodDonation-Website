@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Test extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'criteria',
+    ];
+    public function result()
+    {
+        return $this->hasOne(Result::class);
+    } 
 }

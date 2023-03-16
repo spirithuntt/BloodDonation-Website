@@ -20,8 +20,6 @@ return new class extends Migration
             $table->foreignId('blood_type_id')->constrained();
             $table->foreignId('donation_type_id')->constrained();
             $table->boolean('is_donated')->default(false);
-
-
         
         });
     }
