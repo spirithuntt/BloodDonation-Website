@@ -45,6 +45,7 @@
     @stack('modals')
 
     @livewireScripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.js"></script>
 </body>
 
 </html>

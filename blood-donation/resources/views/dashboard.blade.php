@@ -5,17 +5,29 @@
                 <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
               </div>
               <div class="flex flex-wrap items-start justify-end -mb-3">
-                <button class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+                <button data-modal-target="cityModal" data-modal-toggle="defaultModal" class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3" type="button">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
-                  Create new dashboard
+                  Create new City
+                </button>
+                <button class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3">
+                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Create new Center
+                </button>
+                <button class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3">
+                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Create new Test
                 </button>
               </div>
             </div>
             <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
               <div class="flex items-center p-8 bg-white shadow rounded-lg">
-                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -726,6 +738,40 @@
                 </div>
               </div>
             </main>
-            
-          </main>
+            <div id="cityModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+            <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+              <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+              <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                <div class="modal-content py-4 text-left px-6">
+                  <!--Title-->
+                  <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Add City</p>
+                    <div class="modal-close cursor-pointer z-50">
+                      <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-1.151-1.152-1.152 1.152c-0.469 0.469-1.229 0.469-1.697 0s-0.469-1.229 0-1.697l1.152-1.152-1.152-1.151c-0.469-0.469-0.469-1.228 0-1.697 0.469-0.469 1.228-0.469 1.697 0l1.152 1.152 1.151-1.152c0.469-0.469 1.228-0.469 1.697 0 0.469 0.469 0.469 1.228 0 1.697l-1.152 1.151 1.152 1.152c0.469 0.469 0.469 1.229 0 1.698z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <!--Body-->
+                  <form>
+                  {{-- <form action="{{ route('city.store') }}" method="POST"> --}}
+                    @csrf
+                    <div class="flex flex-col mb-4">
+                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="city">City Name</label>
+                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="city_name" id="city" placeholder="City">
+                    </div>
+                    <div class="flex flex-col mb-4">
+                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="state">Region</label>
+                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="state" id="state" placeholder="State">
+                    </div>
+                    </form>
+                  </div>
+                  <!--Footer-->
+                  <div class="flex justify-end pt-2">
+                    <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Add</button>
+                    <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 </x-app-layout>
