@@ -758,11 +758,11 @@
                     @csrf
                     <div class="flex flex-col mb-4">
                       <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="city">City Name</label>
-                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="city_name" id="city" placeholder="City">
+                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="city_name" id="city_name" placeholder="City">
                     </div>
                     <div class="flex flex-col mb-4">
-                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="state">Region</label>
-                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="state" id="state" placeholder="State">
+                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="region">Region</label>
+                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="region" id="region" placeholder="region">
                     </div>
                     </form>
                   </div>
