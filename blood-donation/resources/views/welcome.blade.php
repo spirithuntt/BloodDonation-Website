@@ -12,7 +12,6 @@
         {{-- include fontawesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css" />
-
         {{-- include css --}}
         <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
@@ -188,9 +187,9 @@
                             <label for="message" class="sr-only">Message</label>
                             <input name="message" id="message" cols="30" rows="10" placeholder="Message"
                                 class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <button type="submit"
-                                class="text-white py-2 px-6 rounded-lg shadow-lg font-bold bg-red-900 hover:bg-red-900 hover:text-white transition duration-300 col-span-2">Send
+                            
+                            <button 
+                                class="text-white py-2 px-6 rounded-lg shadow-lg font-bold bg-red-700 hover:bg-red-900 transition duration-300 col-span-2">Send
                                 Message</button>
                         </form>
                     </div>
@@ -276,72 +275,7 @@
                     </div>
                 </section>
                 <!-- zigegzu -->
-                <section class="bg-white py-20">
-                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="text-center">
-                            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Types of Blood Donations</h2>
-                            <div class="h-1 w-20 bg-red-700 mb-4 mx-auto"></div>
-                            <p class="mt-4 text-lg text-gray-500">Learn about the different types of blood donations and how you can
-                                make a difference.</p>
-                        </div>
-                        <div class="mt-20">
-                            <div class="flex flex-wrap justify-center">
-                                <!-- Whole blood donation -->
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="{{asset('assets/img/wholeblood.jpg')}}" alt="plasmadonation">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">Whole Blood Donation</div>
-                                        <p class="text-gray-700 text-base">
-                                            The most common type of donation where you give one pint of blood, which is then
-                                            separated into its components.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- Platelet donation -->
-                                <!-- 400*200 -->
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="{{asset('assets/img/plateletDonation.jpg')}}"
-                                        alt="Platelet donation">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">Platelet Donation</div>
-                                        <p class="text-gray-700 text-base">
-                                            Platelets are tiny cells that help your blood clot. This type of donation takes longer
-                                            and is done through a machine that collects and separates the platelets, returning the
-                                            other blood components to the donor.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- Plasma donation -->
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="{{asset('assets/img/plasma.jpg')}}" alt="Plasma donation">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">Plasma Donation</div>
-                                        <p class="text-gray-700 text-base">
-                                            Plasma is the liquid portion of the blood that contains proteins and other important
-                                            substances. This type of donation is similar to platelet donation, as it involves a
-                                            machine that collects and separates the plasma from the other components.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- Double Red Cells -->
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="{{asset('assets/img/doubleRedDonation.jpg')}}"
-                                        alt="Double Red Cells">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">Double Red Cells</div>
-                                        <p class="text-gray-700 text-base">
-                                            Double red cells are a type of blood donation that involves collecting red blood cells
-                                            and returning the plasma and platelets to the donor. This type of donation is similar to
-                                            platelet donation, as it involves a machine that collects and separates the red blood
-                                            cells from the other components.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </section>
-                        <!-- kvnjw4v -->
-                        <section class="bg-white">
+                          <section class="bg-white py-10">
                             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                               <div class="text-center">
                                 <h2 class="text-base text-red-700 font-semibold tracking-wide uppercase">Donate Blood Today</h2>
@@ -352,42 +286,46 @@
                                   Donating blood is a simple process that can save lives. Here's what you can expect when you donate blood with us:
                                 </p>
                               </div>
-                              <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-center">
-                                  <span class="text-5xl text-red-700 font-bold mr-4">1.</span>
-                                  <div>
-                                    <h3 class="text-xl font-bold text-gray-800">Register and Take an Appointment</h3>
-                                    <p class="text-gray-600 mt-2">Visit our website to register as a donor and schedule an appointment at one of our blood donation centers.</p>
+                              <div class="mt-10 grid grid-cols-2 gap-4">
+                                <div class="col-span-1">
+                                  <div class="flex items-center">
+                                    <span class="text-5xl text-red-700 font-bold mr-4">1.</span>
+                                    <div>
+                                      <h3 class="text-xl font-bold text-gray-800">Register and Take an Appointment</h3>
+                                      <p class="text-gray-600 mt-2">Visit our website to register as a donor and schedule an appointment at one of our blood donation centers.</p>
+                                    </div>
+                                  </div>
+                                  <div class="flex items-center mt-8">
+                                    <span class="text-5xl text-red-700 font-bold mr-4">2.</span>
+                                    <div>
+                                      <h3 class="text-xl font-bold text-gray-800">Come to the Appointment</h3>
+                                      <p class="text-gray-600 mt-2">On the day of your appointment, come to the blood donation center and check in at the front desk.</p>
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="flex items-center">
-                                  <span class="text-5xl text-red-700 font-bold mr-4">2.</span>
-                                  <div>
-                                    <h3 class="text-xl font-bold text-gray-800">Come to the Appointment</h3>
-                                    <p class="text-gray-600 mt-2">On the day of your appointment, come to the blood donation center and check in at the front desk.</p>
+                                <div class="col-span-1 col-start-2">
+                                  <div class="flex items-center">
+                                    <span class="text-5xl text-red-700 font-bold mr-4">3.</span>
+                                    <div>
+                                      <h3 class="text-xl font-bold text-gray-800">Donate Blood</h3>
+                                      <p class="text-gray-600 mt-2">Our trained staff will guide you through the blood donation process, which typically takes less than an hour.</p>
+                                    </div>
+                                  </div>
+                                  <div class="flex items-center mt-8">
+                                    <span class="text-5xl text-red-700 font-bold mr-4">4.</span>
+                                    <div>
+                                      <h3 class="text-xl font-bold text-gray-800">Refreshment and Recovery</h3>
+                                      <p class="text-gray-600 mt-2">After you've finished donating, you'll be given snacks and drinks to help replenish your fluids and energy levels, Take a brief rest before leaving and avoid heavy activity to prevent lightheadedness or dizziness.</p>
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="flex items-center">
-                                  <span class="text-5xl text-red-700 font-bold mr-4">3.</span>
-                                  <div>
-                                    <h3 class="text-xl font-bold text-gray-800">Donate Blood</h3>
-                                    <p class="text-gray-600 mt-2">Our trained staff will guide you through the blood donation process, which typically takes less than an hour.</p>
-                                  </div>
                                 </div>
-                                <div class="flex items-center">
-                                  <span class="text-5xl text-red-700 font-bold mr-4">4.</span>
-                                  <div>
-                                    <h3 class="text-xl font-bold text-gray-800">Refreshment and Recovery</h3>
-                                    <p class="text-gray-600 mt-2">After you've finished donating, you'll be given snacks and drinks to help replenish your fluids and energy levels, Take a brief rest before leaving and avoid heavy activity to prevent lightheadedness or dizziness.</p>
-                                  </div>
                                 </div>
-                              </div>
-                            </div>
-                          </section>
-                          
-                          
+                                </section>
+                                {{--  --}}
+                          {{-- öoirevjn --}}
                 <!-- gueuc -->
-                <section class="bg-gray-100 py-16">
+                <section class="bg-gray-100 py-10">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
                         <div class="lg:text-center">
                             <h2 class="text-base text-red-700 font-semibold tracking-wide uppercase">Blood Type Compatibility</h2>
@@ -407,7 +345,7 @@
             
                 </section>
                 <!-- tzfguhiouzf -->
-                <section class="bg-white py-16">
+                <section class="bg-white py-10">
                     <div class="container mx-auto px-4 m-5 p-5">
                         <div class="max-w-3xl mx-auto text-center">
                             <h2 class="text-3xl font-bold mb-2">Blood Donation Statistics</h2>
@@ -482,6 +420,7 @@
                         </div>
                     </div>
                 </footer>
-
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css"></script>
             </body>
 </html>
