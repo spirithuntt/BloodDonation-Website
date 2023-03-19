@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css" />
 
+        {{-- include css --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
         <!-- Styles -->
         <style>
@@ -185,10 +187,10 @@
             
                             <label for="message" class="sr-only">Message</label>
                             <input name="message" id="message" cols="30" rows="10" placeholder="Message"
-                                class="border border-gray-400 rounded-lg py-2 px-4"></input>
+                                class="border border-gray-400 rounded-lg py-2 px-4">
             
                             <button type="submit"
-                                class="bg-red-700 text-white py-2 px-6 rounded-lg shadow-lg font-bold hover:bg-red-900 hover:text-white transition duration-300 col-span-2">Send
+                                class="text-white py-2 px-6 rounded-lg shadow-lg font-bold bg-red-900 hover:bg-red-900 hover:text-white transition duration-300 col-span-2">Send
                                 Message</button>
                         </form>
                     </div>
@@ -323,7 +325,7 @@
                                 </div>
                                 <!-- Double Red Cells -->
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="{{asset('assets/img/Double+Red+Cell+Donations.jpg')}}"
+                                    <img class="w-full" src="{{asset('assets/img/doubleRedDonation.jpg')}}"
                                         alt="Double Red Cells">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Double Red Cells</div>
@@ -480,7 +482,6 @@
                         </div>
                     </div>
                 </footer>
-                <!-- oitvn -->
-                <script src="https://cdnjs.cloudflare/com/ajax/libs/tailwindcss/2.0.2/tailwind.min.js"></script>
+
             </body>
 </html>
