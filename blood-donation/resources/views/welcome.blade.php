@@ -9,6 +9,10 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        {{-- include fontawesome --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css" />
+
 
         <!-- Styles -->
         <style>
@@ -35,7 +39,7 @@
                 <!-- navbar with a logo in the left and two buttons int right -->
                 <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6 bg-gray-800 text-white">
                     <div class="flex items-center text-white mr-6">
-                        <img src="assets/img/logo.png" alt="logo" class="fill-current h-8 w-8 mr-2">
+                        <img src="{{asset('assets/img/logo.png')}}" alt="logo" class="fill-current h-8 w-8 mr-2">
                         <span class="font-serif text-2xl tracking-tight">Moroccan Red Crescent</span>
                     </div>
                     <div class="block lg:hidden">
@@ -86,7 +90,7 @@
             
                 <!-- black hero section -->
                 <section class="bg-gray-800 text-white">
-                    <img src="assets/img/hero.png" alt="hero" class="w-1/4 float-right m-0">
+                    <img src="{{asset('assets/img/hero.png')}}" alt="hero" class="w-1/4 float-right m-0">
                     <div class="container mx-auto px-6 py-20" style="height: 50%;">
                         <h2 class="text-4xl font-bold mb-2">Drop of your blood is a <span class="text-red-700">New life </span>for
                             someone</h2>
@@ -103,7 +107,7 @@
                     <div class="container mx-auto px-6">
                         <div class="lg:flex items-center">
                             <div class="lg:w-1/2">
-                                <img src="assets/img/donateblood.jpg" alt="donateblood" class="rounded-lg">
+                                <img src="{{asset('assets/img/donateblood.jpg')}}" alt="donateblood" class="rounded-lg">
                             </div>
                             <div class="lg:w-1/2 lg:pl-10">
                                 <h2 class="text-3xl font-bold text-red-700 mb-4">Why donate blood?</h2>
@@ -282,7 +286,7 @@
                             <div class="flex flex-wrap justify-center">
                                 <!-- Whole blood donation -->
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="assets/img/wholeblood.jpg" alt="plasmadonation">
+                                    <img class="w-full" src="{{asset('assets/img/wholeblood.jpg')}}" alt="plasmadonation">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Whole Blood Donation</div>
                                         <p class="text-gray-700 text-base">
@@ -294,7 +298,7 @@
                                 <!-- Platelet donation -->
                                 <!-- 400*200 -->
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="assets/img/plateletDonation.jpg"
+                                    <img class="w-full" src="{{asset('assets/img/plateletDonation.jpg')}}"
                                         alt="Platelet donation">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Platelet Donation</div>
@@ -307,7 +311,7 @@
                                 </div>
                                 <!-- Plasma donation -->
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="assets/img/plasma.jpg" alt="Plasma donation">
+                                    <img class="w-full" src="{{asset('assets/img/plasma.jpg')}}" alt="Plasma donation">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Plasma Donation</div>
                                         <p class="text-gray-700 text-base">
@@ -319,7 +323,7 @@
                                 </div>
                                 <!-- Double Red Cells -->
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 mb-8">
-                                    <img class="w-full" src="assets/img/Double+Red+Cell+Donations.jpg"
+                                    <img class="w-full" src="{{asset('assets/img/Double+Red+Cell+Donations.jpg')}}"
                                         alt="Double Red Cells">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Double Red Cells</div>
@@ -394,7 +398,7 @@
                             </p>
                             <!-- include typeOfDonation.gif -->
                             <div class="flex justify-center mt-5">
-                                <img class="shadow-xl dark:shadow-gray-800 rounded-2xl lg\:h-28" src="/assets/img/typeOfBlood.gif" alt="type of blood" class="">
+                                <img class="shadow-xl dark:shadow-gray-800 rounded-2xl lg\:h-28" src="{{asset('/assets/img/typeOfBlood.gif')}}" alt="type of blood" class="">
                             </div>
                         </div>
                     </div>
