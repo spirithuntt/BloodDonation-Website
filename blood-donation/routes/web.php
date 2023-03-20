@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CenterController;
 
 
 /*
@@ -34,3 +35,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 //city
 Route::resource('cities', CityController::class);
+//center
+Route::resource('centers', CenterController::class);

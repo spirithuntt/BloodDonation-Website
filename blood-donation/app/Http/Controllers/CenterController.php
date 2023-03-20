@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Center;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CenterController extends Controller
@@ -12,7 +13,8 @@ class CenterController extends Controller
      */
     public function index()
     {
-        //
+        $centers = Center::all();
+        return view('centers.index', compact('centers'));
     }
 
     /**
@@ -77,4 +79,11 @@ class CenterController extends Controller
         $center->delete();
         return redirect()->route('centers.index');
     }
+
+    public function getCities()
+    {
+        $cities = City::all();
+        return response()->json($cities);
+    }
+
 }

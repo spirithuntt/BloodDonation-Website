@@ -30,6 +30,7 @@ class CityController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'region' => 'required',
         ]);
         City::create($request->all());
         return redirect()->route('dashboard');
@@ -60,6 +61,7 @@ class CityController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'region' => 'required',
         ]);
         $city->update($request->all());
         return redirect()->route('cities.index');
@@ -74,4 +76,10 @@ class CityController extends Controller
         return redirect()->route('cities.index');
         
     }
+    public function getCities()
+    {
+        $cities = City::all();
+        return response()->json($cities);
+    }
+
 }
