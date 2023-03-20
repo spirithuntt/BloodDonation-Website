@@ -5,19 +5,19 @@
                 <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
               </div>
               <div class="flex flex-wrap items-start justify-end -mb-3">
-                <button data-modal-target="cityModal" data-modal-toggle="defaultModal" class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3" type="button">
+                <button data-modal-toggle data-modal-target="#modal"  class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" type="button">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                   Create new City
                 </button>
-                <button class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3">
+                <button class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                   Create new Center
                 </button>
-                <button class="inline-flex px-5 py-3 text-white bg-red-500 hover:bg-red-500 focus:bg-red-500 rounded-md ml-6 mb-3">
+                <button class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
@@ -738,40 +738,52 @@
                 </div>
               </div>
             </main>
-            <div id="cityModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-            <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-              <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-              <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div class="modal-content py-4 text-left px-6">
-                  <!--Title-->
-                  <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold">Add City</p>
-                    <div class="modal-close cursor-pointer z-50">
-                      <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-1.151-1.152-1.152 1.152c-0.469 0.469-1.229 0.469-1.697 0s-0.469-1.229 0-1.697l1.152-1.152-1.152-1.151c-0.469-0.469-0.469-1.228 0-1.697 0.469-0.469 1.228-0.469 1.697 0l1.152 1.152 1.151-1.152c0.469-0.469 1.228-0.469 1.697 0 0.469 0.469 0.469 1.228 0 1.697l-1.152 1.151 1.152 1.152c0.469 0.469 0.469 1.229 0 1.698z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <!--Body-->
-                  <form>
-                  {{-- <form action="{{ route('city.store') }}" method="POST"> --}}
-                    @csrf
-                    <div class="flex flex-col mb-4">
-                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="city">City Name</label>
-                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="city_name" id="city_name" placeholder="City">
-                    </div>
-                    <div class="flex flex-col mb-4">
-                      <label class="mb-2 uppercase font-bold text-lg text-gray-700" for="region">Region</label>
-                      <input class="border py-2 px-3 text-grey-darkest" type="text" name="region" id="region" placeholder="region">
-                    </div>
-                    </form>
-                  </div>
-                  <!--Footer-->
-                  <div class="flex justify-end pt-2">
-                    <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Add</button>
-                    <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Cancel</button>
-                  </div>
-                </div>
-              </div>
             </div>
+<!-- modal -->
+<div id="modal" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      {{-- form for adding a city  --}}
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="">
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                      <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                          Add City
+                      </h3>
+                      <div class="mt-2">
+                        {{-- form --}}
+                        <form class="w-full max-w-sm" action="{{ route('cities.store') }}" method="POST">
+                          <div class="md:flex md:items-center mb-4">
+                            <div class="md:w-1/3">
+                              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="name">
+                                city Name
+                              </label>
+                            </div>
+                            <div class="md:w-2/3">
+                              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="name" type="text" value="name">
+                            </div>
+                          </div>
+                          <div class="md:flex md:items-center mb-4">
+                            <div class="md:w-1/3">
+                              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="region">
+                                region
+                              </label>
+                            </div>
+                            <div class="md:w-2/3">
+                              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="region" type="text" value="region">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>
+</div>
+
 </x-app-layout>

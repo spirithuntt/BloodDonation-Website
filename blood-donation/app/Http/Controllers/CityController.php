@@ -20,7 +20,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        // return view('cities.create');
     }
 
     /**
@@ -32,7 +32,7 @@ class CityController extends Controller
             'name' => 'required',
         ]);
         City::create($request->all());
-        return redirect()->route('cities.index');
+        return redirect()->route('dashboard');
 
     }
 

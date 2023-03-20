@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="hidden lg:flex items-center justify-center bg-red-100 flex-1 h-screen">
-                <img class="max-w-4xl w-100 h-60" src="{{ asset('assets/img/illustration.png') }}" alt="2707653">
+                <img class="max-w-4xl h-70 w-70" src="{{ asset('assets/img/illustration.png') }}" alt="2707653">
             </div>
         </div>
 </x-guest-layout>

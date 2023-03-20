@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CityController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+//city
+Route::resource('cities', CityController::class);

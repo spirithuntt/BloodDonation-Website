@@ -11,6 +11,7 @@ class City extends Model
     //fillable
     protected $fillable = [
         'name',
+        'region',
     ];
     //relations
     public function centers()
