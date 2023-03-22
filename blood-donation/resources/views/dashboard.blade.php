@@ -83,21 +83,21 @@
             <div class="flex-grow bg-white  overflow-y-auto">
                 <div class="sm:p-7 p-4">
                   <div class="flex w-full items-center mb-7">
-                    <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 0 border border-gray-200 leading-none py-0">
-                      <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700  0 border border-gray-200 leading-none py-0">
+                      <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                       </svg>
                       Last 30 days
-                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
-                    <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 0 border border-gray-200 leading-none py-0">
+                    <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700  0 border border-gray-200 leading-none py-0">
                       Filter by
-                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
@@ -733,7 +733,7 @@
                       </svg>
                     </button>
                     <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">1</button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 bg-gray-100 dark:bg-gray-800 dark:text-white leading-none">2</button>
+                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 bg-gray-100 leading-none">2</button>
                     <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">3</button>
                     <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">4</button>
                     <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 0 leading-none">
@@ -880,32 +880,60 @@
                 <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="6">Actions</th>
               </tr>
             </thead>
+            {{-- dropdown button with "Edit" and "Delete" options --}}
             <tbody>
               @php
                 $centers = App\Models\Center::all();
               @endphp
               @foreach($centers as $center)
-                <tr class="hover:bg-gray-100">
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->id}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->center_name}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->address}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->phone}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->city_id}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900 flex flex-row justify-center space-x-2">
-                    <a href="{{route('centers.edit',$center->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Edit
-                    </a>
-                    <form action="{{route('centers.destroy',$center->id)}}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                        Delete
-                      </button>
-                    </form>
-                  </td>
-                </tr>
+              <tr>
+                <td class="border-dashed border-t border-gray-200">
+                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->id }}</span>
+                </td>
+                <td class="border-dashed border-t border-gray-200">
+                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->center_name }}</span>
+                </td>
+                <td class="border-dashed border-t border-gray-200">
+                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->address }}</span>
+                </td>
+                <td class="border-dashed border-t border-gray-200">
+                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->phone }}</span>
+                </td>
+                <td class="border-dashed border-t border-gray-200">
+                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->city_id }}</span>
+                </td>
+                <td class="border-dashed border-t border-gray-200">
+
+                  <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCenters" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                  </button>
+                  
+                  <!-- Dropdown menu -->
+                  <div id="dropdownDotsCenters" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                      <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
+                        <li>
+                          {{-- edit and delete buttons here and fa icons--}}
+                          <a href="{{ route('centers.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                            <span>Edit</span>
+                          </a>
+                        </li>
+                        <li>
+                          <form action="{{ route('centers.destroy', $center->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                              <span>Delete</span>
+                            </button>
+                          </form>
+                        </li>
+
+                      </ul>
+                  </div>
+                </td>
+              </tr>
               @endforeach
             </tbody>
+
           </table>
         </div>
       </div>
