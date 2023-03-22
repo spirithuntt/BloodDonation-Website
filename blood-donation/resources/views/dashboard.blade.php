@@ -904,21 +904,21 @@
                 </td>
                 <td class="border-dashed border-t border-gray-200">
 
-                  <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCenters" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+                  <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCities" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
                   </button>
                   
                   <!-- Dropdown menu -->
-                  <div id="dropdownDotsCenters" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                  <div id="dropdownDotsCities" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                       <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
                         <li>
                           {{-- edit and delete buttons here and fa icons--}}
-                          <a href="{{ route('centers.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                          <a href="{{ route('cities.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
                             <span>Edit</span>
                           </a>
                         </li>
                         <li>
-                          <form action="{{ route('centers.destroy', $center->id) }}" method="POST">
+                          <form action="{{ route('cities.destroy', $center->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
@@ -966,16 +966,31 @@
                   <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->region}}</td>
                   {{-- drop down icon has edit and delete --}}
                   <td class="px-3 py-3 text-sm font-medium text-gray-900 flex flex-row justify-center space-x-2">
-                    <a href="{{route('cities.edit',$city->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Edit
-                    </a>
-                    <form action="{{route('cities.destroy',$city->id)}}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                        Delete
-                      </button>
-                    </form>
+                    <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCenters" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+                      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                    </button>
+                    
+                    <!-- Dropdown menu -->
+                    <div id="dropdownDotsCenters" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
+                          <li>
+                            {{-- edit and delete buttons here and fa icons--}}
+                            <a href="{{ route('centers.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                              <span>Edit</span>
+                            </a>
+                          </li>
+                          <li>
+                            <form action="{{ route('centers.destroy', $center->id) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                <span>Delete</span>
+                              </button>
+                            </form>
+                          </li>
+  
+                        </ul>
+                    </div>
                   </td>
                 </tr>
               @endforeach
