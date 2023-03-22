@@ -862,66 +862,100 @@
 <!-- end center modal popoup-->
 <!-- dashboard for centers data  -->
 <div class="flex flex-col w-full">
-  <div class="flex flex-row flex-wrap flex-grow mt-2">
-    <div class="w-full p-3">
-      <div class="bg-white border-transparent rounded-lg shadow-lg">
-        <div class="bg-white border-b p-3">
+  <div class="flex flex-row flex-wrap flex-grow mt-4">
+    <div class="w-full mx-4">
+      <div class="bg-white border border-gray-300 rounded-lg shadow-lg">
+        <div class="bg-gray-100 border-b border-gray-300 py-3 px-4">
           <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
         </div>
         <div class="p-5">
-          <div class="flex flex-row flex-wrap flex-grow mt-2">
-            <div class="w-full p-3">
-              <div class="bg-white border-transparent rounded-lg shadow-lg">
-                <div class="bg-white border-b p-3">
-                  <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
-                </div>
-                <div class="p-5">
-                  <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
-                    <thead>
-                      <tr>
-                        <th data-priority="1">Id</th>
-                        <th data-priority="2">Center Name</th>
-                        <th data-priority="3">Address</th>
-                        <th data-priority="4">Phone</th>
-                        <th data-priority="5">City</th>
-                        <th data-priority="6">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @php
-                        $centers = App\Models\Center::all();
-                      @endphp
-                      @foreach($centers as $center)
-                        <tr>
-                          <td>{{$center->id}}</td>
-                          <td>{{$center->center_name}}</td>
-                          <td>{{$center->address}}</td>
-                          <td>{{$center->phone}}</td>
-                          <td>{{$center->city_id}}</td>
-                          <td class="flex flex-row justify-center">
-                            <a href="{{route('centers.edit',$center->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                              Edit
-                            </a>
-                            <form action="{{route('centers.destroy',$center->id)}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                Delete
-                              </button>
-                            </form>
-                          </td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
+            <thead>
+              <tr class="bg-gray-100 border-b border-gray-300">
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="1">Id</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="2">Center Name</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="3">Address</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="4">Phone</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="5">City</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="6">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @php
+                $centers = App\Models\Center::all();
+              @endphp
+              @foreach($centers as $center)
+                <tr class="hover:bg-gray-100">
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->id}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->center_name}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->address}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->phone}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$center->city_id}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900 flex flex-row justify-center space-x-2">
+                    <a href="{{route('centers.edit',$center->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Edit
+                    </a>
+                    <form action="{{route('centers.destroy',$center->id)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<!-- dashboard table for city with filter and pagination -->
+<div class="flex flex-col w-full">
+  <div class="flex flex-row flex-wrap flex-grow mt-4">
+    <div class="w-full mx-4">
+      <div class="bg-white border border-gray-300 rounded-lg shadow-lg">
+        <div class="bg-gray-100 border-b border-gray-300 py-3 px-4">
+          <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
+        </div>
+        <div class="p-5">
+          <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
+            <thead>
+              <tr class="bg-gray-100 border-b border-gray-300">
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="1">Id</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="2">City</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="3">Region</th>
+                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="4"></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($cities as $city)
+                <tr class="hover:bg-gray-100">
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->id}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->city_name}}</td>
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->region}}</td>
+                  {{-- drop down icon has edit and delete --}}
+                  <td class="px-3 py-3 text-sm font-medium text-gray-900 flex flex-row justify-center space-x-2">
+                    <a href="{{route('cities.edit',$city->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Edit
+                    </a>
+                    <form action="{{route('cities.destroy',$city->id)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </x-app-layout>
