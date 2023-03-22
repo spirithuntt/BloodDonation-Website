@@ -22,7 +22,8 @@ class CenterController extends Controller
      */
     public function create()
     {
-        return view('centers.create');
+        $cities = $this->getCities();
+        return view('centers.create', compact('cities'));
     }
 
     /**

@@ -1,8 +1,4 @@
 <x-app-layout>
-  {{-- @php
-  $cities = App\Models\City::all();
-print_r($cities);
-@endphp --}}
           <main class="p-6 sm:p-10 space-y-6">
             <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
               <div class="mr-6">
@@ -790,7 +786,7 @@ print_r($cities);
 </div>
 </div>
 <!-- end city modal popoup-->
-<!-- start center modal popoup-->
+<!-- center modal popoup and a select dropdown that has cities fetched from db with getCities method-->
 <div id="modalCenter" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -817,12 +813,15 @@ print_r($cities);
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                     City
                   </label>
-                  <select name="name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                    {{-- define the method getCities() --}}
-                    @foreach ($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                  @php
+                    $cities = App\Models\City::all();   
+                  @endphp
+                  <select name="city" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                    @foreach($cities as $city)
+                      <option value="{{ $city->id }}">{{ $city->name }}</option>
                     @endforeach
                   </select>
+                  
                 </div>
               {{-- buttons --}}
               <div class="buttons">
@@ -841,6 +840,4 @@ print_r($cities);
 </div>
 </div>
 </div>
-</div>
-<!-- end center modal popoup-->
 </x-app-layout>
