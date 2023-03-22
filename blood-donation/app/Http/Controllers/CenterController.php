@@ -14,7 +14,7 @@ class CenterController extends Controller
     public function index()
     {
         $centers = Center::all();
-        return view('centers.index', compact('centers'));
+        return view('dashboard', compact('centers'));
     }
 
     /**
@@ -32,13 +32,13 @@ class CenterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'center_name' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'city_id' => 'required',
         ]);
         Center::create($request->all());
-        return redirect()->route('centers.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -63,7 +63,7 @@ class CenterController extends Controller
     public function update(Request $request, Center $center)
     {
         $request->validate([
-            'name' => 'required',
+            'center_name' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'city_id' => 'required',

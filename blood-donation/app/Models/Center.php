@@ -10,7 +10,7 @@ class Center extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'center_name',
         'address',
         'phone',
         'city_id',

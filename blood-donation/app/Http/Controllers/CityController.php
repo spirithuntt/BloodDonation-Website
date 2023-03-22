@@ -29,7 +29,7 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'city_name' => 'required',
             'region' => 'required',
         ]);
         City::create($request->all());
@@ -60,7 +60,7 @@ class CityController extends Controller
     public function update(Request $request, City $city)
     {
         $request->validate([
-            'name' => 'required',
+            'city_name' => 'required',
             'region' => 'required',
         ]);
         $city->update($request->all());

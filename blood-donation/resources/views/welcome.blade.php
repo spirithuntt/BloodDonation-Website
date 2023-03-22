@@ -53,11 +53,11 @@
                       <div class="buttons lg:flex lg:items-center">
                         @if (Route::has('login'))
                           @auth
-                            <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:text-teal-500 hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
                           @else
-                            <a href="{{ route('login') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:text-teal-500 hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Login</a>
+                            <a href="{{ route('login') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Login</a>
                             @if (Route::has('register'))
-                              <a href="{{ route('register') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:text-teal-500 hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Register</a>
+                              <a href="{{ route('register') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Register</a>
                             @endif
                           @endauth
                         @endif

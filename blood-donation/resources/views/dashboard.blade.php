@@ -4,6 +4,13 @@
               <div class="mr-6">
                 <h1 class="text-4xl font-semibold mb-2 text-gray-800">Dashboard</h1>
               </div>
+              @php
+              //if isset post city_name
+              if(isset($_POST['submit'])){
+                $city_name = $_POST['city_name'];
+                echo $city_name;
+              }
+              @endphp
               <div class="flex flex-wrap items-start justify-end -mb-3">
                 <button data-modal-toggle data-modal-target="#modalCity"  class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" type="button">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
@@ -760,7 +767,7 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                     City
                   </label>
-                  <input type="text" name="name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="City">
+                  <input type="text" name="city_name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="City">
                 </div>
                 <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="region">
@@ -807,16 +814,28 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="center">
                     Center
                   </label>
-                  <input type="text" name="name" id="center" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Center">
+                  <input type="text" name="center_name" id="center" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Center">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
+                    Address
+                  </label>
+                  <input type="text" name="address" id="address" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="adress">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                    Phone
+                  </label>
+                  <input type="text" name="phone" id="phone" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="phone">
                 </div>
                 <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                     City
                   </label>
                   @php
-                    $cities = App\Models\City::all();   
+                    $cities = App\Models\City::all();
                   @endphp
-                  <select name="city" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                  <select name="city_id" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
                     @foreach($cities as $city)
                       <option value="{{ $city->id }}">{{ $city->name }}</option>
                     @endforeach
@@ -840,4 +859,69 @@
 </div>
 </div>
 </div>
+<!-- end center modal popoup-->
+<!-- dashboard for centers data  -->
+<div class="flex flex-col w-full">
+  <div class="flex flex-row flex-wrap flex-grow mt-2">
+    <div class="w-full p-3">
+      <div class="bg-white border-transparent rounded-lg shadow-lg">
+        <div class="bg-white border-b p-3">
+          <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
+        </div>
+        <div class="p-5">
+          <div class="flex flex-row flex-wrap flex-grow mt-2">
+            <div class="w-full p-3">
+              <div class="bg-white border-transparent rounded-lg shadow-lg">
+                <div class="bg-white border-b p-3">
+                  <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
+                </div>
+                <div class="p-5">
+                  <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
+                    <thead>
+                      <tr>
+                        <th data-priority="1">Id</th>
+                        <th data-priority="2">Center Name</th>
+                        <th data-priority="3">Address</th>
+                        <th data-priority="4">Phone</th>
+                        <th data-priority="5">City</th>
+                        <th data-priority="6">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @php
+                        $centers = App\Models\Center::all();
+                      @endphp
+                      @foreach($centers as $center)
+                        <tr>
+                          <td>{{$center->id}}</td>
+                          <td>{{$center->center_name}}</td>
+                          <td>{{$center->address}}</td>
+                          <td>{{$center->phone}}</td>
+                          <td>{{$center->city_id}}</td>
+                          <td class="flex flex-row justify-center">
+                            <a href="{{route('centers.edit',$center->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                              Edit
+                            </a>
+                            <form action="{{route('centers.destroy',$center->id)}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Delete
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </x-app-layout>
