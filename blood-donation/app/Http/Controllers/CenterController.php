@@ -69,7 +69,7 @@ class CenterController extends Controller
             'city_id' => 'required',
         ]);
         $center->update($request->all());
-        return redirect()->route('centers.index');
+        return redirect()->route('dashboard');
     }
 
     /**

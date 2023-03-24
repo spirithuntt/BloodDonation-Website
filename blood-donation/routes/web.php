@@ -25,7 +25,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function (){
         return view('dashboard');
     })->name('dashboard');
 });
@@ -33,7 +33,12 @@ Route::middleware([
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+
 //city
 Route::resource('cities', CityController::class);
 //center
 Route::resource('centers', CenterController::class);
+//home
+Route::get('/home', function () {
+    return view('home');
+})->name('home');

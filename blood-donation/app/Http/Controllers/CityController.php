@@ -64,7 +64,7 @@ class CityController extends Controller
             'region' => 'required',
         ]);
         $city->update($request->all());
-        return redirect()->route('cities.index');
+        return redirect()->route('dashboard');
     }
 
     /**
