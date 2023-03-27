@@ -46,3 +46,6 @@ Route::get('/home', function () {
 Route::get('/scheduleAppointment', function () {
     return view('scheduleAppointment');
 })->name('scheduleAppointment');
+
+//scheduleAppointment resource
+// Route::resource('scheduleAppointment', ScheduleAppoincenttmentController::class);
