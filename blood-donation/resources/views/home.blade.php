@@ -1,90 +1,65 @@
 <x-app-layout>
-<main>
-<div class="max-w-6xl mx-auto mt-10">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div class="mb-4">
-        <h1 class="text-xl font-bold">Schedule Blood Donation Appointment</h1>
-        <p class="text-gray-600">Please fill out the form below to schedule your appointment.</p>
-      </div>
-      <form>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="name">
-            Name
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="John Doe">
+    <main class="p-6 sm:p-10 space-y-6">
+        <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+          <div class="mr-6">
+          </div>
+          <div class="flex flex-wrap items-start justify-end -mb-3">
+            <button data-modal-toggle data-modal-target="#modalCity"  class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" type="button">
+              <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Schedule an Appointment
+            </button>
+          </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="email">
-            Email
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="johndoe@example.com">
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="date">
-            Date
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="date" type="date">
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="time">
-            Time
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="time" type="time">
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-bold mb-2" for="blood-type">
-            Blood Type
-          </label>
-          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="blood-type">
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-            <option>O+</option>
-            <option>O-</option>
-          </select>
-        </div>
-        <div class="flex items-center justify-between">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-            Schedule Appointment
-          </button>
-        </div>
-      </form>
-    </div>
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div class="mb-4">
-        <h1 class="text-xl font-bold">Past Donations</h1>
-        <p class="text-gray-600">Here are your past blood donations along with the date and time.</p>
-        </div>
-        <table class="table-auto w-full">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Date</th>
-              <th class="px-4 py-2">Time</th>
-              <th class="px-4 py-2">Blood Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border px-4 py-2">2020-01-01</td>
-              <td class="border px-4 py-2">12:00 PM</td>
-              <td class="border px-4 py-2">A+</td>
-            </tr>
-            <tr class="bg-gray-100">
-              <td class="border px-4 py-2">2020-01-01</td>
-              <td class="border px-4 py-2">12:00 PM</td>
-              <td class="border px-4 py-2">A+</td>
-            </tr>
-            <tr>
-              <td class="border px-4 py-2">2020-01-01</td>
-              <td class="border px-4 py-2">12:00 PM</td>
-              <td class="border px-4 py-2">A+</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    </div>
+            <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+                <div class="flex flex-wrap items-start justify-end -mb-3">
+                <h1 class="text-2xl font-bold text-gray-900">Last Donations</h1>
+                </div>
+            </div>
+            {{-- table of last donations  --}}
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="flex justify-between items-center px-4 py-3 bg-red-700">
+                  <h2 class="text-white font-semibold text-lg">My Donations History</h2>
+                  <div class="flex items-center">
+                    <div class="relative mr-4">
+                      <input type="text" class="w-48 px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-gray-500" placeholder="Search...">
+                      <button class="absolute top-0 right-0 mt-3 mr-3">
+                        <svg class="h-4 w-4 text-gray-500 hover:text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                      </button>
+                    </div>
+                    <div>
+                      <select class="px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-gray-500">
+                        <option selected>Filter by Donation type</option>
+                        <option value="O+">plasma</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <table class="w-full">
+                  <thead>
+                    <tr class="bg-gray-100 text-gray-500 uppercase tracking-wide text-xs">
+                      <th class="text-left py-3 px-4 font-semibold">Donation Id</th>
+                      <th class="text-left py-3 px-4 font-semibold">Type of Donation</th>
+                      <th class="text-left py-3 px-4 font-semibold">Center Name</th>
+                      <th class="text-left py-3 px-4 font-semibold">City Name</th>
+                      <th class="text-left py-3 px-4 font-semibold">Date</th>
+                      <th class="text-left py-3 px-4 font-semibold">Test Results</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-gray-700">
+                      <td class="text-left py-3 px-4">1</td>
+                      <td class="text-left py-3 px-4">plasma</td>
+                      <td class="text-left py-3 px-4">Croissant Rouge Derb Didi Moumen</td>
+                      <td class="text-left py-3 px-4">Casablanca</td>
+                      <td class="text-left py-3 px-4">2021-07-05</td>
+                      <td class="text-left py-3 px-4">Positive</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
     </main>
 </x-app-layout>

@@ -42,3 +42,7 @@ Route::resource('centers', CenterController::class);
 Route::get('/home', function () {
     return view('home');
 })->name('home');
+
+Route::get('/scheduleAppointment', function () {
+    return view('scheduleAppointment');
+})->name('scheduleAppointment');
