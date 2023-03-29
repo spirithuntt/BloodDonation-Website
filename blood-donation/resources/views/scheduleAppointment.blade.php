@@ -7,11 +7,7 @@
                     <h1 class="text-4xl font-semibold mb-2 text-red-700 ">Schedule Appointment</h1>
                 </div>
             </div>
-        {{-- chose donation center and city location --}}  
-            
-
-    
-    
+        </div>
      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
