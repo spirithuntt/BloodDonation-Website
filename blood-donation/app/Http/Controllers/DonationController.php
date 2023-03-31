@@ -91,6 +91,4 @@ public function getBloodTypes()
 {
     return DB::table('blood_types')->get();
 }
-
-
 }

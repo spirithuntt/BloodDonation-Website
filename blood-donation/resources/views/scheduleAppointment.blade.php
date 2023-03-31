@@ -36,35 +36,32 @@
                         <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">Phone</label>
                         <input id="phone" name="phone" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->phone}}>
                     </div>
+                    {{-- blood type --}}
                     <div class="mt-6">
                         <label for="blood_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Type</label>
                         <select id="blood_type" name="blood_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a blood type</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+                            @foreach ($donationTypes as $donationType)
+                                <option value="{{ $donationType->id }}">{{ $donationType->type}}</option>
+                            @endforeach
                         </select>
                     </div>
+                    {{-- donation type --}}
                 <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Select a Donation Center and City Location</h1>
                 <div class="grid grid-cols-2 gap-6">
                     <div>
                         <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
-                        <select id="donation_center" name="donation_center" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
+                        <select id="donation_center" name="center_name" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
                             <option value="">Select a donation center</option>
                             @foreach ($centers as $center)
-                                <option value="{{ $center->center_id }}">{{ $center->center_name }}</option>
+                                <option value="{{ $center->id }}">{{ $center->center_name }}</option>
                             @endforeach
                         </select>
                     </div>
     
                     <div>
                         <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
-                        <select id="city_location" name="city_location" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <select id="city_location" name="city_name" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a city location</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->city_name }}</option>
@@ -72,7 +69,7 @@
                         </select>
                     </div>
                 </div>
-                        <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Choose a Slot Date/Time</h1>
+                        {{-- <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Choose a Slot Date/Time</h1>
                             <div class="grid grid-cols-2 gap-6">
                                 <div>
                                     <label for="slot_date" class="block text-sm font-medium text-gray-600 mb-2">Date</label>
@@ -85,7 +82,7 @@
         
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
             
 
                         </form>
