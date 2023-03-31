@@ -47,6 +47,7 @@ class DonationController extends Controller
             // 'last_donation_date' => 'required',
             'city_id' => 'required',
             // 'center_id' => 'required',
+            // 'donation_type_id' => 'required',
             // 'blood_type_id' => 'required',
         ]);
         //update and create the user's data and the donation data
