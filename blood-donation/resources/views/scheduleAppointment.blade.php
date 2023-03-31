@@ -1,6 +1,5 @@
 <x-app-layout>
-    <main>
-        {{-- schedule appointment title --}}
+<main>
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div class= "overflow-hidden">
                 <div class="mr-6 p-4">
@@ -13,20 +12,30 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <h1 class="text-3xl font-bold mb-8 text-gray-800 ">Enter Your Personal Information</h1>
     
-                {{-- <form action="{{ route('save-donor-info') }}" method="POST"> --}}
+                <form
+                    action="{{ route('donation.store') }}">
                     @csrf
     
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label for="first_name" class="block text-sm font-medium text-gray-600 mb-2">First Name</label>
-                            <input id="first_name" name="first_name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                            <input id="first_name" name="name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->name}}>
                         </div>
                         <div>
                             <label for="last_name" class="block text-sm font-medium text-gray-600 mb-2">Last Name</label>
-                            <input id="last_name" name="last_name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                            <input id="last_name" name="last_name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->last_name}}>
                         </div>
                     </div>
-    
+                    {{-- ID_number --}}
+                    <div class="mt-6">
+                        <label for="id_number" class="block text-sm font-medium text-gray-600 mb-2">ID Card's Number</label>
+                        <input id="id_number" name="ID_number" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->ID_number}}>
+                    </div>
+                    {{-- phone --}}
+                    <div class="mt-6">
+                        <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">Phone</label>
+                        <input id="phone" name="phone" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->phone}}>
+                    </div>
                     <div class="mt-6">
                         <label for="blood_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Type</label>
                         <select id="blood_type" name="blood_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
@@ -41,27 +50,12 @@
                             <option value="O-">O-</option>
                         </select>
                     </div>
-    
-                    <div class="mt-6">
-                        <label for="id_card" class="block text-sm font-medium text-gray-600 mb-2">ID Card</label>
-                        <input id="id_card" name="id_card" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
-                    </div>
-    
-                    <div class="mt-6">
-                        <label for="phone_number" class="block text-sm font-medium text-gray-600 mb-2">Phone Number</label>
-                        <input id="phone_number" name="phone_number" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
-                    </div>
-                </form>
-                     
                 <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Select a Donation Center and City Location</h1>
                 <div class="grid grid-cols-2 gap-6">
                     <div>
                         <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
                         <select id="donation_center" name="donation_center" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
                             <option value="">Select a donation center</option>
-                            @php
-                                $centers = App\Models\Center::all();
-                            @endphp
                             @foreach ($centers as $center)
                                 <option value="{{ $center->center_id }}">{{ $center->center_name }}</option>
                             @endforeach
@@ -72,21 +66,13 @@
                         <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
                         <select id="city_location" name="city_location" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a city location</option>
-                            @php
-                                $cityLocations = App\Models\City::all();
-                            @endphp
-                            @foreach ($cityLocations as $city)
+                            @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->city_name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-
                         <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Choose a Slot Date/Time</h1>
-            
-                       
-                            @csrf
-            
                             <div class="grid grid-cols-2 gap-6">
                                 <div>
                                     <label for="slot_date" class="block text-sm font-medium text-gray-600 mb-2">Date</label>
@@ -112,7 +98,5 @@
             </div>    
      </div>
      </div>
-    </div>
-    </main>
-
+</main>
 </x-app-layout>

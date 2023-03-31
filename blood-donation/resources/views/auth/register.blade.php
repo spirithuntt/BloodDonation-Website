@@ -22,6 +22,18 @@
                             <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md focus:outline-none focus:border-red-700" type="text" name="name" :value="old('name')" required autofocus placeholder="Enter your name">
                         </div>
                         <div class="mt-8">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">Last Name</div>
+                            <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md focus:outline-none focus:border-red-700" type="text" name="last_name" :value="old('last_name')" required autofocus placeholder="Enter your last name">
+                        </div>
+                        <div class="mt-8">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">ID Number</div>
+                            <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md focus:outline-none focus:border-red-700" type="text" name="ID_number" :value="old('id_number')" required autofocus placeholder="Enter your ID number">
+                        </div>
+                        <div class="mt-8">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">Phone Number</div>
+                            <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md focus:outline-none focus:border-red-700" type="text" name="phone" :value="old('phone')" required placeholder="Enter your phone number">
+                        </div>
+                        <div class="mt-8">
                             <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
                             <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md focus:outline-none focus:border-red-700" type="email" name="email" :value="old('email')" required placeholder="mike@gmail.com">
                         </div>

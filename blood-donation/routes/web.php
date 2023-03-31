@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\DonationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CenterController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +47,6 @@ Route::get('/scheduleAppointment', function () {
     return view('scheduleAppointment');
 })->name('scheduleAppointment');
 
-//scheduleAppointment resource
-// Route::resource('scheduleAppointment', ScheduleAppoincenttmentController::class);
+
+// scheduleAppointment resource
+Route::resource('donation', DonationController::class);

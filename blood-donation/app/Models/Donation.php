@@ -9,8 +9,7 @@ class Donation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'appointment_date',
-        'is_donated',
+        
     ];
     public function user()
     {
