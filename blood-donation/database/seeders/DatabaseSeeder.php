@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        //run city seeder and donation type seeder and blood type seeder center seeder
+        $this->call([
+            CitySeeder::class,
+            DonationTypeSeeder::class,
+            BloodTypeSeeder::class,
+            CenterSeeder::class,
+        ]);
     }
 }
