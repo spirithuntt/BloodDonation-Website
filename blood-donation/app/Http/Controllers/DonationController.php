@@ -39,7 +39,17 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-        //store the scheduleAppointment form data in the database and redirect to home
+        //store the scheduleAppointment form data in the database and update the user's data
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            // 'last_donation_date' => 'required',
+            'city_id' => 'required',
+            'center_id' => 'required',
+            'donation_type_id' => 'required',
+            'blood_type_id' => 'required',
+        ]);
 
     }
 

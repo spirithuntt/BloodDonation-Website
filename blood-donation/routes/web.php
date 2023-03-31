@@ -50,3 +50,11 @@ Route::get('/scheduleAppointment', function () {
 
 // scheduleAppointment resource
 Route::resource('donation', DonationController::class);
+
+
+
+// <!-- The server-side code -->
+Route::get('/cities/{id}/centers', function ($id) {
+    $centers = Center::where('city_id', $id)->get();
+    return response()->json($centers);
+});

@@ -41,13 +41,26 @@
                         <label for="blood_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Type</label>
                         <select id="blood_type" name="blood_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a blood type</option>
+                            @foreach ($bloodTypes as $bloodType)
+                                <option value="{{ $bloodType->id }}">{{ $bloodType->type}}</option>
+                            @endforeach
+                        </select>
+                        
+                    </div>
+
+                    {{-- donation type --}}
+                    <div class="mt-6">
+                        <label for="donation_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Donation Type (not required)</label>
+                        <select id="donation_type" name="donation_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                            <option value="">Select a donation type</option>
                             @foreach ($donationTypes as $donationType)
                                 <option value="{{ $donationType->id }}">{{ $donationType->type}}</option>
                             @endforeach
                         </select>
                     </div>
-                    {{-- donation type --}}
+                    {{-- donation center --}}
                 <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Select a Donation Center and City Location</h1>
+                
                 <div class="grid grid-cols-2 gap-6">
                     <div>
                         <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
