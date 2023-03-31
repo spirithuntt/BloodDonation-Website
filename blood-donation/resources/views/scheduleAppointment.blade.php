@@ -12,8 +12,7 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <h1 class="text-3xl font-bold mb-8 text-gray-800 ">Enter Your Personal Information</h1>
     
-                <form
-                    action="{{ route('donation.store') }}">
+                <form action="{{ route('donation.store') }}" method="POST">
                     @csrf
     
                     <div class="grid grid-cols-2 gap-6">
@@ -45,7 +44,7 @@
                                 <option value="{{ $bloodType->id }}">{{ $bloodType->type}}</option>
                             @endforeach
                         </select>
-                        
+
                     </div>
 
                     {{-- donation type --}}
@@ -96,15 +95,12 @@
                                     </select>
                                 </div>
                             </div> --}}
-            
-
+                            <div class="mt-8">
+                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-white bg-red-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    Save Donor Info
+                                </button>
+                            </div>
                         </form>
-
-                <div class="mt-8">
-                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-white bg-red-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        Save Donor Info
-                    </button>
-                </div>
             </div>    
      </div>
      </div>
