@@ -9,7 +9,7 @@ class Donation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'center_id', 'donation_type_id', 'blood_type_id',
+        'user_id', 'center_id', 'donation_type_id', 'blood_type_id', 'is_donated',
     ];
     public function user()
     {

@@ -14,7 +14,8 @@
     
                 <form action="{{ route('donation.store') }}" method="POST">
                     @csrf
-    
+                        {{-- is_donated hidden has a default value of 0 --}}
+                        <input type="" name="is_donated" value="0">
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label for="first_name" class="block text-sm font-medium text-gray-600 mb-2">First Name</label>
@@ -30,6 +31,7 @@
                         <label for="id_number" class="block text-sm font-medium text-gray-600 mb-2">ID Card's Number</label>
                         <input id="id_number" name="ID_number" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->ID_number}}>
                     </div>
+                    
                     {{-- phone --}}
                     <div class="mt-6">
                         <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">Phone</label>
@@ -38,7 +40,7 @@
                     {{-- blood type --}}
                     <div class="mt-6">
                         <label for="blood_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Type</label>
-                        <select id="blood_type" name="blood_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <select id="blood_type" name="blood_type_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a blood type</option>
                             @foreach ($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}">{{ $bloodType->type}}</option>
@@ -50,7 +52,7 @@
                     {{-- donation type --}}
                     <div class="mt-6">
                         <label for="donation_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Donation Type (not required)</label>
-                        <select id="donation_type" name="donation_type" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <select id="donation_type" name="donation_type_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a donation type</option>
                             @foreach ($donationTypes as $donationType)
                                 <option value="{{ $donationType->id }}">{{ $donationType->type}}</option>
@@ -63,17 +65,18 @@
                 <div class="grid grid-cols-2 gap-6">
                     <div>
                         <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
-                        <select id="donation_center" name="center_name" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
+                        <select id="donation_center" name="center_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
                             <option value="">Select a donation center</option>
                             @foreach ($centers as $center)
                                 <option value="{{ $center->id }}">{{ $center->center_name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    {{-- city location --}}
     
                     <div>
                         <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
-                        <select id="city_location" name="city_name" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
                             <option value="">Select a city location</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->city_name }}</option>

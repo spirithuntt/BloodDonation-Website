@@ -41,20 +41,24 @@ class DonationController extends Controller
     {
         //store the scheduleAppointment form data in the database and update the user's data
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            // 'last_donation_date' => 'required',
-            'city_id' => 'required',
+            // 'name' => 'required',
+            // 'email' => 'required',
+            // 'phone' => 'required',
+            // // 'last_donation_date' => 'required',
+            // 'city_id' => 'required',
             // 'center_id' => 'required',
             // 'donation_type_id' => 'required',
             // 'blood_type_id' => 'required',
         ]);
-        //update and create the user's data and the donation data
+        // dd('ircu3n');
+        //update and create the user's data and the donation data in the database
         $user = auth()->user();
         $user->update($request->all());
+        //create the donation data in the database and create it from the model related to the user
         $user->donations()->create($request->all());
-        return redirect()->route('dashboard');
+        // Donation::create($request->all());
+        //redirect to the dashboard with a success message that the appointment has been scheduled
+        return redirect()->route('dashboard')->with('success', 'Your appointment has been scheduled successfully');
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DonationController;
+use App\Models\Center;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CenterController;
@@ -54,7 +55,8 @@ Route::resource('donation', DonationController::class);
 
 
 // <!-- The server-side code -->
-Route::get('/cities/{id}/centers', function ($id) {
-    $centers = Center::where('city_id', $id)->get();
-    return response()->json($centers);
-});
+// Route::get('/cities/{id}/centers', function ($id) {
+//     $centers = Center::where('city_id', $id)->get();
+//     return response()->json($centers);
+// });
+Route::get('/appointments/create', \App\Http\Livewire\AppointmentForm::class);
