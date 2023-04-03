@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DonationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
@@ -62,3 +63,6 @@ Route::get('/appointment', AppointmentForm::class)->name('appointment');
 Route::get('business-hours', [BusinessHourController::class, 'index']);
 //update
 Route::post('business-hours', [BusinessHourController::class, 'update'])->name('business_hours.update');
+
+//reserve
+Route::get('reserve', [AppointmentController::class, 'index']);
