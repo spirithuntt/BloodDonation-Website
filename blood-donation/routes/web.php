@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\DonationController;
-use App\Models\Center;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CenterController;
+use App\Http\Livewire\AppointmentForm;
+use App\Http\Controllers\BusinessHourController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,10 +54,11 @@ Route::get('/scheduleAppointment', function () {
 Route::resource('donation', DonationController::class);
 
 
+// scheduleAppointment livewire
+Route::get('/appointment', AppointmentForm::class)->name('appointment');
 
-// <!-- The server-side code -->
-// Route::get('/cities/{id}/centers', function ($id) {
-//     $centers = Center::where('city_id', $id)->get();
-//     return response()->json($centers);
-// });
-Route::get('/appointments/create', \App\Http\Livewire\AppointmentForm::class);
+
+
+Route::get('business-hours', [BusinessHourController::class, 'index']);
+//update
+Route::post('business-hours', [BusinessHourController::class, 'update'])->name('business_hours.update');

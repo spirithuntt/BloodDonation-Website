@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CenterSeeder::class,
             DonationTypeSeeder::class,
             BloodTypeSeeder::class,
+            BusinessHourSeeder::class,
         ]);
     }
 }

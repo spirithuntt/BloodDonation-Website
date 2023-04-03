@@ -7,17 +7,31 @@ use Livewire\Component;
 
 class AppointmentForm extends Component
 {
-    public $date;
-    public $time;
+    public $selectedDate;
+    public $selectedSlot;
 
     public function mount()
     {
-        $this->date = Carbon::now()->format('Y-m-d');
-        $this->time = Carbon::now()->addHour()->format('H:i');
+        $this->selectedDate = Carbon::now()->format('Y-m-d');
+    }
+    public function fetchSlots($startDate, $endDate)
+{
+    $start = Carbon::parse($startDate);
+    $end = Carbon::parse($endDate);
+    $slots = [];
+
+    while ($start <= $end) {
+        $slot = $start->format('H:i');
+        $slots[$slot] = $slot;
+        $start->addMinutes(30);
     }
 
-    public function render()
-    {
-        return view('livewire.appointment-form');
-    }
+    return $slots;
+}
+
+public function selectSlot($slot)
+{
+    $this->selectedSlot = $slot;
+}
+
 }
