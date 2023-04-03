@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessHour;
-use Illuminate\Http\Request;
+use App\Http\Requests\BusinessHoursRequest;
 
 class BusinessHourController extends Controller
 {
@@ -15,10 +15,9 @@ class BusinessHourController extends Controller
     }
 
     //update
-    public function update(BusinessHour $request)
+    public function update(BusinessHoursRequest $request)
     {
-        $data = array_values($request->all()['data']);
-        BusinessHour::query()->upsert($data, ['day']);
+        BusinessHour::query()->upsert($request->validated()['data'],['day']);
         return back();
     }
 }

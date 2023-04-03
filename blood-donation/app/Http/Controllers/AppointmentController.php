@@ -20,7 +20,7 @@ class AppointmentController extends Controller
             $businessHours = BusinessHour::where('day', $dayName)->first();
             
             $hours = $businessHours->TimesPeriod;
-
+            dd($hours);
             $currentAppointments = Appointment::where('date', $date->toDateString())->pluck('time')->map(function ($time) {
                 return $time->format('H:i');
             })->toArray();

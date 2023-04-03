@@ -19,6 +19,15 @@ class BusinessHour extends Model
         // return CarbonInterval::minute($this->step)->toPeriod($this->from, $this->to);
 
         $times = CarbonInterval::minutes($this->step)->toPeriod($this->from, $this->to)->toArray();
-        return array_map(fn($time) => $time->format('H:i'), $times);
+        return array_map(function ($time) {
+            if ($this->day == today()->format('l') &&  !$time->isPast()) {
+                return $time->format('H:i');
+            }
+
+            if ($this->day != today()->format('l')) {
+                return $time->format('H:i');
+            }
+
+        }, $times);
     }
 }
