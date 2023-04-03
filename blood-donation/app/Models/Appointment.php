@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'time' => 'datetime:H:i',
+    ];
+    protected $guarded = [];
 }

@@ -15,7 +15,7 @@ class BusinessHourController extends Controller
     }
 
     //update
-    public function update(Request $request)
+    public function update(BusinessHour $request)
     {
         $data = array_values($request->all()['data']);
         BusinessHour::query()->upsert($data, ['day']);

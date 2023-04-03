@@ -24,15 +24,18 @@ class AppointmentController extends Controller
             $currentAppointments = Appointment::where('date', $date->toDateString())->pluck('time')->map(function ($time) {
                 return $time->format('H:i');
             })->toArray();
-
-            $availbleHours = array_diff($hours, $currentAppointments);
-
+            
+            $reservedHours = array_intersect($hours, $currentAppointments);
+            $availableHours = array_diff($hours, $currentAppointments);
+            
             $appointments[] = [
                 'day_name' => $dayName,
                 'date' => $date->format('d-M'),
                 'full_date' => $date->format('Y-m-d'),
-                'available_hours' => $availbleHours,
-                'off'=> $businessHours->off
+                'available_hours' => $availableHours,
+                'reserved_hours' => $reservedHours, // add this line
+                'off' => $businessHours->off,
+                'business_hours' => $hours,
             ];
         }
         return view('appointments.reserve', compact('appointments'));
@@ -42,7 +45,7 @@ class AppointmentController extends Controller
 
 
 
-    public function reserve(AppointmentRequest $request)
+    public function reserve(Request $request)
     {
 
         $data = $request->merge(['user_id' => auth()->id()])->toArray();
