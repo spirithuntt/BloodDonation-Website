@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             DonationTypeSeeder::class,
             BloodTypeSeeder::class,
             BusinessHourSeeder::class,
+            AppointmentSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
