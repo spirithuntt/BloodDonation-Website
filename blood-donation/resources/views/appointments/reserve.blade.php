@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex flex-col items-center justify-center">
-        <h1 class="text-center text-3xl font-bold mb-6">
-          Available Appointments
+        <h1 class="text-center text-3xl font-bold mb-6 text-red-700 p-8">
+          Available Donation Appointments
         </h1>
         <div class="flex flex-wrap w-full justify-center">
             @foreach($appointments as $appointment)
@@ -16,14 +16,14 @@
                         @csrf
                         <input type="hidden" name="date" value="{{ $appointment['full_date'] }}">
                         <input type="hidden" name="time" value="{{ $time }}">
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full" type="submit">
+                        <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded w-full" type="submit">
                             {{ $time }}
                         </button>
                         <br>
                         <br>
                     </form>
                     @else
-                    <button class="bg-gray-500 text-white font-bold py-2 px-4 rounded w-full" disabled>
+                    <button class="bg-gray-300 text-white font-bold py-2 px-4 rounded w-full mb-4" disabled>
                         {{ $time }}
                     </button>
                     @endif
