@@ -34,15 +34,17 @@ class BusinessHoursRequest extends FormRequest
         'data'=>$data
        ]);
     }
+
     public function rules()
     {
         return [
-            'data' => ['array', 'size:7'],
+            'data'  => ['array', 'size:7'],
             'data.*.day' => ['required'],
-            'data.*.from' => ['required', 'date_format:H:i:s'],
-            'data.*.to' => ['required', 'date_format:H:i:s'],
-            'data.*.step' => ['required','integer','min:1'],
-            'data.*.off' => ['required','boolean'],
+            'data.*.from' => ['required'],
+            'data.*.to' => ['required' ],
+            'data.*.step' => ['required', 'integer'],
+            'data.*.off' => ['required', 'boolean'],
+            
         ];
     }
 
