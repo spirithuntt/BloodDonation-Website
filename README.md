@@ -37,5 +37,7 @@ To use our blood donation website, simply follow these steps:
 
     `npm start`
 
-4. Open your web browser and go to http://127.0.0.1:8000/.
+4. Open your web browser and go to 
+
+    `http://127.0.0.1:8000`.
 
