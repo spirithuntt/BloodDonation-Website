@@ -1,8 +1,14 @@
 <x-app-layout>
-    <div class="flex flex-col items-center justify-center">
-        <h1 class="text-center text-3xl font-bold mb-6 text-red-700 p-8">
-          Available Donation Appointments
-        </h1>
+    <div class="min-w-screen flex items-center justify-center px-4 py-12">
+        <div class="w-full bg-white rounded-lg p-8 shadow-lg">
+            <div class="bg-gray-800 text-white py-4 mb-9">
+                <div class="container mx-auto">
+                    <h1 class="text-center text-2xl font-bold">
+                        Available Donation Appointments
+                    </h1>
+                </div>
+            </div>
+        
         <div class="flex flex-wrap w-full justify-center">
             @foreach($appointments as $appointment)
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
@@ -34,12 +40,5 @@
             @endforeach
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.timepicker');
-            var instances = M.Timepicker.init(elems, {
-                twelveHour:false
-            });
-        });
-    </script>
+    </div>
 </x-app-layout>
