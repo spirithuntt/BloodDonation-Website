@@ -31,6 +31,6 @@ To use our blood donation website, simply follow these steps:
 
 1. Clone the repository.
 
-git clone https://github.com/spirithuntt/BloodDonation-Website.git
+`git clone https://github.com/spirithuntt/BloodDonation-Website.git`
 
 2. Install the necessary dependencies.
