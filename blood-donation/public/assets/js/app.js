@@ -19,3 +19,21 @@ $(document).ready(function() {
         }
     });
 });
+
+
+//donation hours logic timepicker
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {
+        twelveHour:false
+    });
+});
+
+//reservation hours logic timepicker
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {
+        twelveHour:false
+    });
+});
+
