@@ -6,6 +6,10 @@
               </div>
               <div class="flex flex-wrap items-start justify-end -mb-3">
                 <button data-modal-toggle data-modal-target="#modalCity"  class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" type="button">
+                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  
                   Create new City
                 </button>
                 <button data-modal-toggle data-modal-target="#modalCenter" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
@@ -20,14 +24,12 @@
                   </svg>
                   Create new Test
                 </button>
-                {{-- link button to Donation-Hours blade--}}
-                <a href="{{ route('Donation-Hours') }}" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                <a href="{{ route('business_hours.index') }}" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
-                  Create new Donation Hours
+                  modify working Hours
               </a>
-              {{-- <a href="{{ route('Donation-Hours') }}">rhrdfrh</a> --}}
               </div>
             </div>
             <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">

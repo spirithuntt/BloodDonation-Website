@@ -60,10 +60,10 @@ Route::get('/appointment', AppointmentForm::class)->name('appointment');
 
 
 
-Route::get('Donation-Hours', [BusinessHourController::class, 'index']);
+Route::get('Working-Hours', [BusinessHourController::class, 'index'])->name('business_hours.index');
 //update
-Route::post('Donation-Hours', [BusinessHourController::class, 'update'])->name('business_hours.update');
+Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('business_hours.update');
 
 //reserve
-Route::get('reserve', [AppointmentController::class, 'index']);
+Route::get('reserve', [AppointmentController::class, 'index'])->name('reserve');
 Route::post('reserve', [AppointmentController::class, 'reserve'])->name('reserve');
