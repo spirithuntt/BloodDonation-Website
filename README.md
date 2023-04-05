@@ -34,3 +34,12 @@ To use our blood donation website, simply follow these steps:
 `git clone https://github.com/spirithuntt/BloodDonation-Website.git`
 
 2. Install the necessary dependencies.
+
+`npm install`
+
+3. Start the development server.
+
+`npm start`
+
+4. Open your web browser and go to http://127.0.0.1:8000/.
+
