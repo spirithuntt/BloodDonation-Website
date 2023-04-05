@@ -32,6 +32,4 @@ class AppointmentSeeder extends Seeder
                 ]);
         });
     }
-
-
 }

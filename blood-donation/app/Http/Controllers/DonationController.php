@@ -58,7 +58,7 @@ class DonationController extends Controller
         $user->donations()->create($request->all());
         // Donation::create($request->all());
         //redirect to the dashboard with a success message that the appointment has been scheduled
-        return redirect()->route('dashboard')->with('success', 'Your appointment has been scheduled successfully');
+        return redirect()->route('Donation-Hours')->with('success', 'Your appointment has been scheduled successfully');
     }
 
     /**
