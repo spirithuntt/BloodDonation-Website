@@ -13,4 +13,13 @@ class Appointment extends Model
         'time' => 'datetime:H:i',
     ];
     protected $guarded = [];
+
+    public function donation()
+    {
+        return $this->belongsTo(Donation::class);
+    }
 }
+
+
+
+

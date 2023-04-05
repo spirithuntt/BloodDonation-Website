@@ -22,7 +22,7 @@ class AppointmentController extends Controller
             $currentDate->addDay();
         }
 
-        $appointments = $datePeriod->map(function($date) {
+        $appointments = $datePeriod->map(function ($date) {
             return (new AppointmentService)->generateTimeData($date);
         });
 
@@ -32,50 +32,55 @@ class AppointmentController extends Controller
     public function reserve(AppointmentRequest $request)
     {
         $user_id = auth()->id();
+        $donation_id = auth()->user()->donations->last()->id;
         $date = $request->input('date');
         $time = $request->input('time');
     
-        // check if the user has already reserved an appointment for the selected date
+        // check if the user has already reserved an appointment for the selected donation
         $existingAppointment = Appointment::where('user_id', $user_id)
-                                            ->where('date', $date)
-                                            ->exists();
+            ->where('donation_id', $donation_id)
+            ->first();
         if ($existingAppointment) {
-            return response()->json([
-                'message' => 'You have already reserved an appointment for this date.'
-            ], 422);
+            $existingAppointmentId = $existingAppointment->id;
+            $existingAppointmentTime = $existingAppointment->time;
+    
+            return view('appointments.confirm', compact('existingAppointmentId', 'existingAppointmentTime', 'date', 'time'));
+        }
+    
+        // get all appointments for the selected date
+        $appointments = Appointment::where('date', $date)->get();
+    
+        // check if the selected time is available
+        foreach ($appointments as $appointment) {
+            $startTime = Carbon::parse($appointment->time);
+            $endTime = $startTime->copy()->addMinutes(30);
+            $selectedTime = Carbon::createFromFormat('Y-m-d H:i', "$date $time");
+    
+            if ($selectedTime->between($startTime, $endTime)) {
+                return redirect()->back()->with('error', 'This time is already taken');
+            }
         }
     
         // create the appointment
-        $data = $request->merge(['user_id' => $user_id])->toArray();
+        $data = $request->merge([
+            'donation_id' => $donation_id,
+            'user_id' => $user_id
+        ])->toArray();
         Appointment::create($data);
     
         return 'created';
     }
+    
 
-    //to clean up the code in the controller and make it more readable and reusable 
-    //we can create a service class to handle the logic of the controller
-    public function generateTimeData(Carbon $date)
+    //appointments.update with existingAppointmentId
+    public function update(Request $request, $id)
     {
-        $dayName = $date->format('l');
-
-        $businessHours = BusinessHour::where('day',$dayName)->first();
-
-        $hours = array_filter($businessHours->TimesPeriod);
-
-        $currentAppointments = Appointment::where('date', $date->toDateString())->pluck('time')->map(function($time){
-            return $time->format('H:i');
-        })->toArray();
-
-        $availbleHours = array_diff($hours,$currentAppointments);
-
-        return [
-            'day_name' => $dayName,
-            'date' => $date->format('d M'),
-            'full_date' => $date->format('Y-m-d'),
-            'available_hours' => $availbleHours,
-            'reserved_hours' => $currentAppointments,
-            'business_hours' => $hours,
-            'off' => $businessHours->off
-        ];
+        $appointment = Appointment::find($id);
+        $appointment->update($request->all());
+        return redirect()->route('reserve');
     }
+
+
+
 }
+

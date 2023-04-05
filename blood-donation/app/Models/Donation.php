@@ -27,5 +27,9 @@ class Donation extends Model
     {
         return $this->belongsTo(BloodType::class);
     }
-
+    public function appointment()
+    {
+        return $this->hasOne(Appointment::class);
+    }
+    
 }
