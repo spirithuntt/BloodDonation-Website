@@ -67,3 +67,9 @@ Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('b
 //reserve
 Route::get('reserve', [AppointmentController::class, 'index'])->name('reserve');
 Route::post('reserve', [AppointmentController::class, 'reserve'])->name('reserve');
+
+
+Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
+Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])->name('appointments.reserve');
+
+
