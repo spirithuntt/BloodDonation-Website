@@ -2,7 +2,8 @@
 
 Welcome to the Moroccan Red Crescent Blood Donation Website! Our platform aims to make blood donation easy . By joining our website, you can help save lives and make a difference in your community.
 
-<img src="blood-donation/public/assets/img/logo.png" alt="J" width="200"/>
+![logo](https://user-images.githubusercontent.com/112879456/230036030-e6742057-1ae0-4e06-a066-48ae60927745.png)
+
 ## Table of Contents
 
 - [About the Project](#about-the-project)
