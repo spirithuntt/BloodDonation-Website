@@ -7,7 +7,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CenterController;
 use App\Http\Livewire\AppointmentForm;
 use App\Http\Controllers\BusinessHourController;
-
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,9 +42,7 @@ Route::resource('cities', CityController::class);
 //center
 Route::resource('centers', CenterController::class);
 //home
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('/home', [DonationController::class, 'index'])->name('home');
 
 Route::get('/scheduleAppointment', function () {
     return view('scheduleAppointment');
@@ -73,3 +71,5 @@ Route::put('/appointments/{appointment}', [AppointmentController::class, 'update
 Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])->name('appointments.reserve');
 
 
+// resource route for the tests
+Route::resource('tests', TestController::class);
