@@ -1,5 +1,5 @@
 <x-app-layout>
-    <main class="p-6 sm:p-10 space-y-6">
+    <div class="p-6 sm:p-10 space-y-6">
         <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
           <div class="mr-6">
           </div>
@@ -42,26 +42,36 @@
                 </div>
                 <table class="w-full">
                   <thead>
-                    <tr class="bg-gray-100 text-gray-500 uppercase tracking-wide text-xs">
-                      <th class="text-left py-3 px-4 font-semibold">Donation Id</th>
-                      <th class="text-left py-3 px-4 font-semibold">Type of Donation</th>
-                      <th class="text-left py-3 px-4 font-semibold">Center Name</th>
-                      <th class="text-left py-3 px-4 font-semibold">City Name</th>
-                      <th class="text-left py-3 px-4 font-semibold">Date</th>
-                      <th class="text-left py-3 px-4 font-semibold">Test Results</th>
-                    </tr>
+                      <tr class="bg-gray-100 text-gray-500 uppercase tracking-wide text-xs">
+                          <th class="text-left py-3 px-4 font-semibold">Donation Id</th>
+                          <th class="text-left py-3 px-4 font-semibold">Blood Type</th>
+                          <th class="text-left py-3 px-4 font-semibold">Type of Donation</th>
+                          <th class="text-left py-3 px-4 font-semibold">Center Name</th>
+                          <th class="text-left py-3 px-4 font-semibold">City Name</th>
+                          <th class="text-left py-3 px-4 font-semibold">Date</th>
+                          <th class="text-left py-3 px-4 font-semibold">Test Results</th>
+                      </tr>
                   </thead>
                   <tbody>
-                    <tr class="text-gray-700">
-                      <td class="text-left py-3 px-4">1</td>
-                      <td class="text-left py-3 px-4">plasma</td>
-                      <td class="text-left py-3 px-4">Croissant Rouge Derb Didi Moumen</td>
-                      <td class="text-left py-3 px-4">Casablanca</td>
-                      <td class="text-left py-3 px-4">2021-07-05</td>
-                      <td class="text-left py-3 px-4">Positive</td>
-                    </tr>
+                      @if (!empty($donations) && !empty($appointments))
+                          @foreach ($donations as $donation)
+                              @if (!empty($donation->blood_type) && !empty($donation->donation_type) && !empty($donation->center) && !empty($donation->center->city))
+                                      {{-- @if ($appointment->id == $donation->appointment_id) --}}
+                                          <tr class="text-gray-700">
+                                              <td class="text-left py-3 px-4">{{ $donation->id }}</td>
+                                              <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
+                                              <td class="text-left py-3 px-4">{{ $donation->donation_type->type }}</td>
+                                              <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
+                                              <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
+                                              <td class="text-left py-3 px-4">{{ $donation->appointment->date }}</td>
+                                              {{-- <td class="text-left py-3 px-4">{{ $donation->test_result }}</td> --}}
+                                          </tr>
+                                      {{-- @endif --}}
+                              @endif
+                          @endforeach
+                      @endif
                   </tbody>
-                </table>
+              </table>
                 </div>
-    </main>
+            </div>
 </x-app-layout>

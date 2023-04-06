@@ -18,7 +18,7 @@
                   </svg>
                   Create new Center
                 </button>
-                <button class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                <button data-modal-toggle data-modal-target="#modalTest" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
                   <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
@@ -837,7 +837,7 @@
                   @endphp
                   <select name="city_id" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
                     @foreach($cities as $city)
-                      <option value="{{ $city->id }}">{{ $city->name }}</option>
+                      <option value="{{ $city->id }}">{{ $city->city_name }}</option>
                     @endforeach
                   </select>
                   
@@ -860,6 +860,80 @@
 </div>
 </div>
 <!-- end center modal popoup-->
+<!-- Test modal popoup-->
+<div id="modalTest" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="">
+          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
+              Add Test
+            </h3>
+            <div class="mt-2">
+              <form action="{{route('tests.store')}}" method="POST">
+                @csrf
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="test">
+                    Test
+                  </label>
+                  <input type="text" name="test_name" id="test" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Test">
+                </div>
+                {{-- criteria --}}
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="criteria">
+                    Criteria
+                  </label>
+                  <input type="text" name="criteria" id="criteria" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="criteria">
+                </div>
+                {{-- donation_type_id --}}
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="donation_type_id">
+                    Donation Type
+                  </label>
+                  @php
+                    $donation_types = App\Models\DonationType::all();
+                  @endphp
+                  <select name="donation_type_id" id="donation_type_id" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                    @foreach($donation_types as $donation_type)
+                      <option value="{{ $donation_type->id }}">{{ $donation_type->type }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                {{-- result_type_id --}}
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="result_type_id">
+                      Result Type
+                  </label>
+                  <select name="result_type" id="result_type_id" class="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                      <option value="number">Number</option>
+                      <option value="boolean">Negative or Positive</option>
+                  </select>
+              </div>
+              
+              {{-- buttons --}}
+              <div class="buttons">
+                <button type="submit" class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                  Save
+                </button>
+                <button type="button" class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" data-modal-close>
+                  Cancel
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+              
 <!-- dashboard for centers data  -->
 <div class="flex flex-col w-full">
   <div class="flex flex-row flex-wrap flex-grow mt-4">
@@ -946,7 +1020,7 @@
     <div class="w-full mx-4">
       <div class="bg-white border border-gray-300 rounded-lg shadow-lg">
         <div class="bg-gray-100 border-b border-gray-300 py-3 px-4">
-          <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
+          <h5 class="font-bold uppercase text-gray-600">City Data</h5>
         </div>
         <div class="p-5">
           <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
