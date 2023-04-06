@@ -9,11 +9,18 @@ class Test extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'test_name',
         'criteria',
+        'donation_type_id',
+        'result_type',
+
     ];
     public function result()
     {
         return $this->hasOne(Result::class);
     } 
+    public function donation_type()
+    {
+        return $this->belongsTo(DonationType::class);
+    }
 }

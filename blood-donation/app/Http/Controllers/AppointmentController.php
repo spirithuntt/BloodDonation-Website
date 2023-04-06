@@ -68,7 +68,7 @@ class AppointmentController extends Controller
         ])->toArray();
         Appointment::create($data);
     
-        return 'created';
+        return redirect()->route('home')->with('success', 'Appointment reserved successfully');
     }
     
 

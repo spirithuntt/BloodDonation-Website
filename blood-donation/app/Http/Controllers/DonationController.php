@@ -6,6 +6,7 @@ use App\Models\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class DonationController extends Controller
 {
     /**
@@ -13,7 +14,10 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //
+        //get the donations from the database and appoinments from the database
+        $donations = Donation::all();
+        $appointments = DB::table('appointments')->get();
+        return view('home', compact('donations', 'appointments'));
     }
 
     /**
