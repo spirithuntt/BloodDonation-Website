@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('donation_types', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['Whole Blood', 'Platelets', 'Plasma', 'Double Red Cells']);
+            $table->timestamps(false);
         });
     }
 

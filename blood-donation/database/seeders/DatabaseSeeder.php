@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             BusinessHourSeeder::class,
             AppointmentSeeder::class,
             UserSeeder::class,
+            TestSeeder::class,
         ]);
     }
 }

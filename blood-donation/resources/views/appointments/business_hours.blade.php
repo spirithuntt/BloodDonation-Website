@@ -1,4 +1,7 @@
 <x-app-layout>
+        {{-- donation hours --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        {{-- donation hours --}}
     <div class="min-w-screen flex items-center justify-center px-4 py-12">
         <div class="w-full bg-white rounded-lg p-8 shadow-lg">
             <div class="bg-red-700 text-white py-4 mb-10">
