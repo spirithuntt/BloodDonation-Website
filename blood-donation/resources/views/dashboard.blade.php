@@ -1,1078 +1,662 @@
 <x-app-layout>
-          <main class="p-6 sm:p-10 space-y-6">
-            <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
-              <div class="mr-6">
-                <h1 class="text-4xl font-semibold mb-2 text-gray-800">Dashboard</h1>
-              </div>
-              <div class="flex flex-wrap items-start justify-end -mb-3">
-                <button data-modal-toggle data-modal-target="#modalCity"  class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" type="button">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  
-                  Create new City
-                </button>
-                <button data-modal-toggle data-modal-target="#modalCenter" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Create new Center
-                </button>
-                <button data-modal-toggle data-modal-target="#modalTest" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Create new Test
-                </button>
-                <a href="{{ route('business_hours.index') }}" class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  modify working Hours
-              </a>
-              </div>
+    <div class="p-6 sm:p-10 space-y-6">
+        <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+            <div class="mr-6">
+                <h1 class="text-4xl font-semibold mb-2 text-red-700">Dashboard</h1>
             </div>
-            <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-              <div class="flex items-center p-8 bg-white shadow rounded-lg">
-                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="block text-2xl font-bold">62</span>
-                  <span class="block text-gray-500">Students</span>
-                </div>
-              </div>
-              <div class="flex items-center p-8 bg-white shadow rounded-lg">
-                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="block text-2xl font-bold">6.8</span>
-                  <span class="block text-gray-500">Average mark</span>
-                </div>
-              </div>
-              <div class="flex items-center p-8 bg-white shadow rounded-lg">
-                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="inline-block text-2xl font-bold">9</span>
-                  <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
-                  <span class="block text-gray-500">Underperforming students</span>
-                </div>
-              </div>
-              <div class="flex items-center p-8 bg-white shadow rounded-lg">
-                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
-                  <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="block text-2xl font-bold">83%</span>
-                  <span class="block text-gray-500">Finished homeworks</span>
-                </div>
-              </div>
-            </section>
+            <div class="flex flex-wrap items-start justify-end -mb-3">
+                <button data-modal-toggle data-modal-target="#modalCity"
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3"
+                    type="button">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
 
-            <div class="flex-grow bg-white  overflow-y-auto">
-                <div class="sm:p-7 p-4">
-                  <div class="flex w-full items-center mb-7">
-                    <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700  0 border border-gray-200 leading-none py-0">
-                      <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
-                      Last 30 days
-                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </button>
-                    <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700  0 border border-gray-200 leading-none py-0">
-                      Filter by
-                      <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </button>
-                    <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
-                      <span class="mr-3">Page 2 of 4</span>
-                      <button class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 0 leading-none py-0">
-                        <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                      </button>
-                      <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 0 leading-none py-0">
-                        <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                      </button>
+                    Create new City
+                </button>
+                <button data-modal-toggle data-modal-target="#modalCenter"
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Create new Center
+                </button>
+                <button data-modal-toggle data-modal-target="#modalTest"
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Create new Test
+                </button>
+                <a href="{{ route('business_hours.index') }}"
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    modify working Hours
+                </a>
+            </div>
+        </div>
+        <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div
+                    class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">62</span>
+                    <span class="block text-gray-500">Students</span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div
+                    class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">6.8</span>
+                    <span class="block text-gray-500">Average mark</span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div
+                    class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="inline-block text-2xl font-bold">9</span>
+                    <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
+                    <span class="block text-gray-500">Underperforming students</span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div
+                    class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">83%</span>
+                    <span class="block text-gray-500">Finished homeworks</span>
+                </div>
+            </div>
+        </section>
+
+    <!-- city modal popoup-->
+    <div id="modalCity" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
+                                Add City
+                            </h3>
+                            <div class="mt-2">
+                                <form action="{{ route('cities.store') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
+                                            City
+                                        </label>
+                                        <input type="text" name="city_name" id="city"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="City">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="region">
+                                            Region
+                                        </label>
+                                        <input type="text" name="region" id="region"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="region">
+                                    </div>
+                                    {{-- buttons --}}
+                                    <div class="buttons">
+                                        <button type="submit"
+                                            class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                                            Save
+                                        </button>
+                                        <button type="button"
+                                            class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                            data-modal-close>
+                                            Cancel
+                                        </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <table class="w-full text-left">
-                    <thead>
-                      <tr class="text-gray-400">
-                        <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 0">Type</th>
-                        <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 0">Where</th>
-                        <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 0 hidden md:table-cell">Description</th>
-                        <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 0">Amount</th>
-                        <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 0 sm:text-gray-400 text-white">Date</th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-gray-600 ">
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-yellow-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="12" y1="8" x2="12" y2="12"></line>
-                              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#03a9f4" d="M425.457 117.739c-3.121-1.838-6.961-1.966-10.197-.341-3.231 1.629-5.416 4.786-5.803 8.384-.384 3.499-.981 6.997-1.728 10.667-20.885 94.784-62.827 140.885-128.256 140.885h-96c-5.062.009-9.42 3.574-10.432 8.533l-32 149.995-5.717 38.187c-3.287 17.365 8.125 34.107 25.489 37.394 1.915.362 3.858.549 5.807.558h64.213c14.718.045 27.55-10 31.04-24.299l25.941-103.701h55.659c65.685 0 111.083-52.373 127.829-147.477 11.054-45.286-7.234-92.668-45.845-118.785z" />
-                              <path fill="#283593" d="M405.339 38.017C384.261 14.108 354.012.286 322.139.001h-176.64C119.064-.141 96.558 19.2 92.721 45.355L37.873 411.243c-2.627 17.477 9.41 33.774 26.887 36.402 1.586.239 3.189.357 4.793.356h81.92c5.062-.009 9.42-3.574 10.432-8.533l30.187-140.8h87.467c75.904 0 126.059-53.056 149.099-157.867.926-4.178 1.638-8.4 2.133-12.651 5.348-32.335-3.981-65.372-25.452-90.133z" />
-                            </svg>
-                            PayPal
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $120.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">11:16 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#f44336" d="M201.302 49.754l-192 24.939C3.949 75.384-.044 79.963 0 85.36v149.333c0 5.891 4.776 10.667 10.667 10.667h192c5.891 0 10.667-4.776 10.667-10.667V60.314c-.004-3.064-1.325-5.978-3.627-8-2.319-1.994-5.368-2.923-8.405-2.56z" />
-                              <path fill="#4caf50" d="M508.374 13.36c-2.286-2.06-5.35-3.032-8.405-2.667l-256 33.387c-5.352.691-9.346 5.27-9.301 10.667v179.947c0 5.891 4.776 10.667 10.667 10.667h256c5.891 0 10.667-4.776 10.667-10.667V21.36c-.005-3.064-1.327-5.978-3.628-8z" />
-                              <path fill="#2196f3" d="M202.667 266.693h-192C4.776 266.693 0 271.469 0 277.36v149.333c-.044 5.397 3.949 9.976 9.301 10.667l192 25.045c.455.031.911.031 1.365 0 5.891 0 10.667-4.776 10.667-10.667V277.36c.001-5.891-4.775-10.667-10.666-10.667z" />
-                              <path fill="#ffc107" d="M501.334 266.693h-256c-5.891 0-10.667 4.776-10.667 10.667v179.947c-.044 5.397 3.949 9.976 9.301 10.667l256 33.387c.455.031.911.031 1.365 0 5.891 0 10.667-4.776 10.667-10.667V277.36c0-5.891-4.775-10.667-10.666-10.667z" />
-                            </svg>
-                            Microsoft
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $9.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">07:16 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="#37474f">
-                                <path d="M461.852 355.712c-1.692-2.616-4.443-4.362-7.531-4.779-40.621-5.306-69.25-42.537-63.944-83.158 3.748-28.694 23.84-52.588 51.465-61.205 5.61-1.798 8.701-7.803 6.903-13.413-.28-.873-.671-1.707-1.164-2.481-18.641-33.642-51.786-56.779-89.792-62.677-19.152.914-38.026 4.957-55.872 11.968-12.817 5.158-26.351 8.317-40.128 9.365-13.777-1.048-27.311-4.207-40.128-9.365-17.846-7.011-36.72-11.054-55.872-11.968-39.829 0-117.333 56.469-117.333 160 0 98.389 71.765 224 128 224 21.457.192 42.656-4.691 61.867-14.251 7.235-3.99 15.232-6.404 23.467-7.083 8.234.679 16.232 3.093 23.467 7.083 19.211 9.56 40.41 14.443 61.867 14.251 44.587 0 94.912-76.544 115.989-147.477.882-2.979.422-6.197-1.261-8.81z" />
-                                <path d="M251.121 128c64.772-.071 117.263-52.561 117.333-117.333C368.454 4.776 363.679 0 357.788 0c-64.772.071-117.263 52.561-117.333 117.333-.001 5.891 4.775 10.667 10.666 10.667z" />
-                              </g>
-                            </svg>
-                            Apple
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Macbook Pro 13"</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $1.499.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">11:03 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-green-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <line x1="12" y1="5" x2="12" y2="19"></line>
-                              <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
-                            Income
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <img class="w-7 h-7 mr-2.5 border border-gray-200 0 rounded-full" src="https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="profile" />
-                            James Smith
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Invoice No: 37401</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-green-500">+ $60.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              13.11.2020
-                              <div class="text-gray-400 text-xs">09:45 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="#f44336">
-                                <path d="M211.563 26.133c-1.971-2.993-5.313-4.796-8.896-4.8h-192C4.776 21.333 0 26.109 0 32v448c-.001 5.07 3.566 9.439 8.533 10.453.702.141 1.417.213 2.133.213 4.255.015 8.111-2.5 9.813-6.4l192-448c1.43-3.315 1.085-7.128-.916-10.133zM265.877 187.989c-1.632-4.021-5.537-6.653-9.877-6.656-4.293-.001-8.169 2.571-9.835 6.528l-85.333 202.667c-2.286 5.43.263 11.684 5.692 13.97 1.311.552 2.72.836 4.142.836h77.931l29.419 78.421c1.564 4.158 5.541 6.912 9.984 6.912h85.333c5.891-.004 10.664-4.782 10.66-10.673-.001-1.373-.267-2.732-.783-4.004L265.877 187.989zM501.333 21.333h-192c-5.891-.021-10.683 4.738-10.704 10.629-.005 1.481.298 2.947.89 4.304l192 448c1.702 3.9 5.559 6.415 9.813 6.4.716-.001 1.431-.072 2.133-.213 4.967-1.014 8.534-5.384 8.533-10.453V32c.002-5.891-4.774-10.667-10.665-10.667z" />
-                              </g>
-                            </svg>
-                            Adobe
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Product purchased</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $49.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              10.03.2020
-                              <div class="text-gray-400 text-xs">10:29 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427.652 427.652" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#00d95f" d="M213.826 0C95.733 0 0 95.733 0 213.826s95.733 213.826 213.826 213.826 213.826-95.733 213.826-213.826S331.919 0 213.826 0zm93.06 310.32c-2.719 4.652-7.612 7.246-12.638 7.247-2.506 0-5.044-.645-7.364-2-38.425-22.456-82.815-26.065-113.295-25.138-33.763 1.027-58.523 7.692-58.769 7.76-7.783 2.126-15.826-2.454-17.961-10.236-2.134-7.781 2.43-15.819 10.209-17.962 1.116-.307 27.76-7.544 64.811-8.766 21.824-.72 42.834.801 62.438 4.52 24.83 4.71 47.48 12.978 67.322 24.574 6.973 4.074 9.321 13.03 5.247 20.001zm27.184-56.459c-3.22 5.511-9.016 8.583-14.97 8.584-2.968 0-5.975-.763-8.723-2.369-45.514-26.6-98.097-30.873-134.2-29.776-39.994 1.217-69.323 9.112-69.614 9.192-9.217 2.515-18.746-2.906-21.275-12.124-2.528-9.218 2.879-18.738 12.093-21.277 1.322-.364 32.882-8.937 76.77-10.384 25.853-.852 50.739.949 73.96 5.354 29.412 5.58 56.241 15.373 79.744 29.108 8.26 4.826 11.042 15.434 6.215 23.692zm16.711-51.335c-3.641 0-7.329-.936-10.7-2.906-108.207-63.238-248.572-25.643-249.977-25.255-11.313 3.117-23.008-3.527-26.124-14.839-3.117-11.312 3.527-23.008 14.839-26.124 1.621-.447 40.333-10.962 94.166-12.737 31.713-1.044 62.237 1.164 90.72 6.567 36.077 6.844 68.987 18.856 97.815 35.704 10.13 5.92 13.543 18.931 7.623 29.061-3.95 6.76-11.059 10.529-18.362 10.529z" />
-                            </svg>
-                            Spotify
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $5.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              02.04.2020
-                              <div class="text-gray-400 text-xs">10:29 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="2.17 0.44 251.04 259.97" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="none" fill-rule="evenodd">
-                                <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
-                                <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
-                                <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
-                                <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
-                              </g>
-                            </svg>
-                            Amazon
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">PlayStation 5</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $399.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              08.09.2020
-                              <div class="text-gray-400 text-xs">11:00 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-green-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <line x1="12" y1="5" x2="12" y2="19"></line>
-                              <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
-                            Income
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <img class="w-7 h-7 mr-2.5 border border-gray-200 0 rounded-full" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="profile" />
-                            Jane Cooper
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Invoice No: 12993</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-green-500">+ $24.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              01.04.2020
-                              <div class="text-gray-400 text-xs">09:45 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-yellow-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="12" y1="8" x2="12" y2="12"></line>
-                              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#03a9f4" d="M425.457 117.739c-3.121-1.838-6.961-1.966-10.197-.341-3.231 1.629-5.416 4.786-5.803 8.384-.384 3.499-.981 6.997-1.728 10.667-20.885 94.784-62.827 140.885-128.256 140.885h-96c-5.062.009-9.42 3.574-10.432 8.533l-32 149.995-5.717 38.187c-3.287 17.365 8.125 34.107 25.489 37.394 1.915.362 3.858.549 5.807.558h64.213c14.718.045 27.55-10 31.04-24.299l25.941-103.701h55.659c65.685 0 111.083-52.373 127.829-147.477 11.054-45.286-7.234-92.668-45.845-118.785z" />
-                              <path fill="#283593" d="M405.339 38.017C384.261 14.108 354.012.286 322.139.001h-176.64C119.064-.141 96.558 19.2 92.721 45.355L37.873 411.243c-2.627 17.477 9.41 33.774 26.887 36.402 1.586.239 3.189.357 4.793.356h81.92c5.062-.009 9.42-3.574 10.432-8.533l30.187-140.8h87.467c75.904 0 126.059-53.056 149.099-157.867.926-4.178 1.638-8.4 2.133-12.651 5.348-32.335-3.981-65.372-25.452-90.133z" />
-                            </svg>
-                            PayPal
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $120.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">11:16 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#f44336" d="M201.302 49.754l-192 24.939C3.949 75.384-.044 79.963 0 85.36v149.333c0 5.891 4.776 10.667 10.667 10.667h192c5.891 0 10.667-4.776 10.667-10.667V60.314c-.004-3.064-1.325-5.978-3.627-8-2.319-1.994-5.368-2.923-8.405-2.56z" />
-                              <path fill="#4caf50" d="M508.374 13.36c-2.286-2.06-5.35-3.032-8.405-2.667l-256 33.387c-5.352.691-9.346 5.27-9.301 10.667v179.947c0 5.891 4.776 10.667 10.667 10.667h256c5.891 0 10.667-4.776 10.667-10.667V21.36c-.005-3.064-1.327-5.978-3.628-8z" />
-                              <path fill="#2196f3" d="M202.667 266.693h-192C4.776 266.693 0 271.469 0 277.36v149.333c-.044 5.397 3.949 9.976 9.301 10.667l192 25.045c.455.031.911.031 1.365 0 5.891 0 10.667-4.776 10.667-10.667V277.36c.001-5.891-4.775-10.667-10.666-10.667z" />
-                              <path fill="#ffc107" d="M501.334 266.693h-256c-5.891 0-10.667 4.776-10.667 10.667v179.947c-.044 5.397 3.949 9.976 9.301 10.667l256 33.387c.455.031.911.031 1.365 0 5.891 0 10.667-4.776 10.667-10.667V277.36c0-5.891-4.775-10.667-10.666-10.667z" />
-                            </svg>
-                            Microsoft
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $9.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">07:16 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="#37474f">
-                                <path d="M461.852 355.712c-1.692-2.616-4.443-4.362-7.531-4.779-40.621-5.306-69.25-42.537-63.944-83.158 3.748-28.694 23.84-52.588 51.465-61.205 5.61-1.798 8.701-7.803 6.903-13.413-.28-.873-.671-1.707-1.164-2.481-18.641-33.642-51.786-56.779-89.792-62.677-19.152.914-38.026 4.957-55.872 11.968-12.817 5.158-26.351 8.317-40.128 9.365-13.777-1.048-27.311-4.207-40.128-9.365-17.846-7.011-36.72-11.054-55.872-11.968-39.829 0-117.333 56.469-117.333 160 0 98.389 71.765 224 128 224 21.457.192 42.656-4.691 61.867-14.251 7.235-3.99 15.232-6.404 23.467-7.083 8.234.679 16.232 3.093 23.467 7.083 19.211 9.56 40.41 14.443 61.867 14.251 44.587 0 94.912-76.544 115.989-147.477.882-2.979.422-6.197-1.261-8.81z" />
-                                <path d="M251.121 128c64.772-.071 117.263-52.561 117.333-117.333C368.454 4.776 363.679 0 357.788 0c-64.772.071-117.263 52.561-117.333 117.333-.001 5.891 4.775 10.667 10.666 10.667z" />
-                              </g>
-                            </svg>
-                            Apple
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Macbook Pro 13"</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $1.499.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              24.12.2020
-                              <div class="text-gray-400 text-xs">11:03 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-green-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <line x1="12" y1="5" x2="12" y2="19"></line>
-                              <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
-                            Income
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <img class="w-7 h-7 mr-2.5 border border-gray-200 0 rounded-full" src="https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="profile" />
-                            James Smith
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Invoice No: 37401</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-green-500">+ $60.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              13.11.2020
-                              <div class="text-gray-400 text-xs">09:45 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="#f44336">
-                                <path d="M211.563 26.133c-1.971-2.993-5.313-4.796-8.896-4.8h-192C4.776 21.333 0 26.109 0 32v448c-.001 5.07 3.566 9.439 8.533 10.453.702.141 1.417.213 2.133.213 4.255.015 8.111-2.5 9.813-6.4l192-448c1.43-3.315 1.085-7.128-.916-10.133zM265.877 187.989c-1.632-4.021-5.537-6.653-9.877-6.656-4.293-.001-8.169 2.571-9.835 6.528l-85.333 202.667c-2.286 5.43.263 11.684 5.692 13.97 1.311.552 2.72.836 4.142.836h77.931l29.419 78.421c1.564 4.158 5.541 6.912 9.984 6.912h85.333c5.891-.004 10.664-4.782 10.66-10.673-.001-1.373-.267-2.732-.783-4.004L265.877 187.989zM501.333 21.333h-192c-5.891-.021-10.683 4.738-10.704 10.629-.005 1.481.298 2.947.89 4.304l192 448c1.702 3.9 5.559 6.415 9.813 6.4.716-.001 1.431-.072 2.133-.213 4.967-1.014 8.534-5.384 8.533-10.453V32c.002-5.891-4.774-10.667-10.665-10.667z" />
-                              </g>
-                            </svg>
-                            Adobe
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Product purchased</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $49.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              10.03.2020
-                              <div class="text-gray-400 text-xs">10:29 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427.652 427.652" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <path fill="#00d95f" d="M213.826 0C95.733 0 0 95.733 0 213.826s95.733 213.826 213.826 213.826 213.826-95.733 213.826-213.826S331.919 0 213.826 0zm93.06 310.32c-2.719 4.652-7.612 7.246-12.638 7.247-2.506 0-5.044-.645-7.364-2-38.425-22.456-82.815-26.065-113.295-25.138-33.763 1.027-58.523 7.692-58.769 7.76-7.783 2.126-15.826-2.454-17.961-10.236-2.134-7.781 2.43-15.819 10.209-17.962 1.116-.307 27.76-7.544 64.811-8.766 21.824-.72 42.834.801 62.438 4.52 24.83 4.71 47.48 12.978 67.322 24.574 6.973 4.074 9.321 13.03 5.247 20.001zm27.184-56.459c-3.22 5.511-9.016 8.583-14.97 8.584-2.968 0-5.975-.763-8.723-2.369-45.514-26.6-98.097-30.873-134.2-29.776-39.994 1.217-69.323 9.112-69.614 9.192-9.217 2.515-18.746-2.906-21.275-12.124-2.528-9.218 2.879-18.738 12.093-21.277 1.322-.364 32.882-8.937 76.77-10.384 25.853-.852 50.739.949 73.96 5.354 29.412 5.58 56.241 15.373 79.744 29.108 8.26 4.826 11.042 15.434 6.215 23.692zm16.711-51.335c-3.641 0-7.329-.936-10.7-2.906-108.207-63.238-248.572-25.643-249.977-25.255-11.313 3.117-23.008-3.527-26.124-14.839-3.117-11.312 3.527-23.008 14.839-26.124 1.621-.447 40.333-10.962 94.166-12.737 31.713-1.044 62.237 1.164 90.72 6.567 36.077 6.844 68.987 18.856 97.815 35.704 10.13 5.92 13.543 18.931 7.623 29.061-3.95 6.76-11.059 10.529-18.362 10.529z" />
-                            </svg>
-                            Spotify
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Subscription renewal</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $5.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              02.04.2020
-                              <div class="text-gray-400 text-xs">10:29 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                              <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Card
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="2.17 0.44 251.04 259.97" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 0">
-                              <g fill="none" fill-rule="evenodd">
-                                <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
-                                <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
-                                <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
-                                <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
-                              </g>
-                            </svg>
-                            Amazon
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">PlayStation 5</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-red-500">- $399.99</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              08.09.2020
-                              <div class="text-gray-400 text-xs">11:00 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <svg viewBox="0 0 24 24" class="w-4 mr-5 text-green-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <line x1="12" y1="5" x2="12" y2="19"></line>
-                              <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
-                            Income
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <img class="w-7 h-7 mr-2.5 border border-gray-200 0 rounded-full" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="profile" />
-                            Jane Cooper
-                          </div>
-                        </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 md:table-cell hidden">Invoice No: 12993</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0 text-green-500">+ $24.00</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 0">
-                          <div class="flex items-center">
-                            <div class="sm:flex hidden flex-col">
-                              01.04.2020
-                              <div class="text-gray-400 text-xs">09:45 AM</div>
-                            </div>
-                            <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
-                              <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <circle cx="19" cy="12" r="1"></circle>
-                                <circle cx="5" cy="12" r="1"></circle>
-                              </svg>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="flex w-full mt-5 space-x-2 justify-end">
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 0 leading-none">
-                      <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                      </svg>
-                    </button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">1</button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 bg-gray-100 leading-none">2</button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">3</button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 0 leading-none">4</button>
-                    <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 0 leading-none">
-                      <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </button>
-                  </div>
                 </div>
-              </div>
-            </main>
             </div>
-<!-- city modal popoup-->
-<div id="modalCity" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
     </div>
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="">
-          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
-              Add City
-            </h3>
-            <div class="mt-2">
-              <form action="{{route('cities.store')}}" method="POST">
-                @csrf
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
-                    City
-                  </label>
-                  <input type="text" name="city_name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="City">
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="region">
-                    Region
-                  </label>
-                  <input type="text" name="region" id="region" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="region">
-                </div>
-              {{-- buttons --}}
-              <div class="buttons">
-                <button type="submit" class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                  Save
-                </button>
-                <button type="button" class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" data-modal-close>
-                  Cancel
-                </button>
-              </form>
+    </div>
+    <!-- end city modal popoup-->
+    <!-- center modal popoup and a select dropdown that has cities fetched from db with getCities method-->
+    <div id="modalCenter" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
             </div>
-          </div>
-        </div>
-      </div>
-</div>
-</div>
-</div>
-</div>
-<!-- end city modal popoup-->
-<!-- center modal popoup and a select dropdown that has cities fetched from db with getCities method-->
-<div id="modalCenter" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-    </div>
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="">
-          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
-              Add Center
-            </h3>
-            <div class="mt-2">
-              <form action="{{route('centers.store')}}" method="POST">
-                @csrf
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="center">
-                    Center
-                  </label>
-                  <input type="text" name="center_name" id="center" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Center">
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
+                                Add Center
+                            </h3>
+                            <div class="mt-2">
+                                <form action="{{ route('centers.store') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="center">
+                                            Center
+                                        </label>
+                                        <input type="text" name="center_name" id="center"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="Center">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
+                                            Address
+                                        </label>
+                                        <input type="text" name="address" id="address"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="adress">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                                            Phone
+                                        </label>
+                                        <input type="text" name="phone" id="phone"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="phone">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
+                                            City
+                                        </label>
+                                        @php
+                                            $cities = App\Models\City::all();
+                                        @endphp
+                                        <select name="city_id" id="city"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                                            @foreach ($cities as $city)
+                                                <option value="{{ $city->id }}">{{ $city->city_name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                    {{-- buttons --}}
+                                    <div class="buttons">
+                                        <button type="submit"
+                                            class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                                            Save
+                                        </button>
+                                        <button type="button"
+                                            class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                            data-modal-close>
+                                            Cancel
+                                        </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
-                    Address
-                  </label>
-                  <input type="text" name="address" id="address" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="adress">
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                    Phone
-                  </label>
-                  <input type="text" name="phone" id="phone" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="phone">
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
-                    City
-                  </label>
-                  @php
-                    $cities = App\Models\City::all();
-                  @endphp
-                  <select name="city_id" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                    @foreach($cities as $city)
-                      <option value="{{ $city->id }}">{{ $city->city_name }}</option>
-                    @endforeach
-                  </select>
-                  
-                </div>
-              {{-- buttons --}}
-              <div class="buttons">
-                <button type="submit" class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                  Save
-                </button>
-                <button type="button" class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" data-modal-close>
-                  Cancel
-                </button>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
-</div>
-</div>
-</div>
-</div>
-<!-- end center modal popoup-->
-<!-- Test modal popoup-->
-<div id="modalTest" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="">
-          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
-              Add Test
-            </h3>
-            <div class="mt-2">
-              <form action="{{route('tests.store')}}" method="POST">
-                @csrf
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="test">
-                    Test
-                  </label>
-                  <input type="text" name="test_name" id="test" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Test">
-                </div>
-                {{-- criteria --}}
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="criteria">
-                    Criteria
-                  </label>
-                  <input type="text" name="criteria" id="criteria" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="criteria">
-                </div>
-                {{-- donation_type_id --}}
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="donation_type_id">
-                    Donation Type
-                  </label>
-                  @php
-                    $donation_types = App\Models\DonationType::all();
-                  @endphp
-                  <select name="donation_type_id" id="donation_type_id" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                    @foreach($donation_types as $donation_type)
-                      <option value="{{ $donation_type->id }}">{{ $donation_type->type }}</option>
-                    @endforeach
-                  </select>
-                </div>
-
-                {{-- result_type_id --}}
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="result_type_id">
-                      Result Type
-                  </label>
-                  <select name="result_type" id="result_type_id" class="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                      <option value="number">Number</option>
-                      <option value="boolean">Negative or Positive</option>
-                  </select>
-              </div>
-              
-              {{-- buttons --}}
-              <div class="buttons">
-                <button type="submit" class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                  Save
-                </button>
-                <button type="button" class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" data-modal-close>
-                  Cancel
-                </button>
-              </form>
+    </div>
+    <!-- end center modal popoup-->
+    <!-- Test modal popoup-->
+    <div id="modalTest" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
             </div>
-          </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
+                                Add Test
+                            </h3>
+                            <div class="mt-2">
+                                <form action="{{ route('tests.store') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="test">
+                                            Test
+                                        </label>
+                                        <input type="text" name="test_name" id="test"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="Test">
+                                    </div>
+                                    {{-- criteria --}}
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="criteria">
+                                            Criteria
+                                        </label>
+                                        <input type="text" name="criteria" id="criteria"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
+                                            placeholder="criteria">
+                                    </div>
+                                    {{-- donation_type_id --}}
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2"
+                                            for="donation_type_id">
+                                            Donation Type
+                                        </label>
+                                        @php
+                                            $donation_types = App\Models\DonationType::all();
+                                        @endphp
+                                        <select name="donation_type_id" id="donation_type_id"
+                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                                            @foreach ($donation_types as $donation_type)
+                                                <option value="{{ $donation_type->id }}">{{ $donation_type->type }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    {{-- result_type_id --}}
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2"
+                                            for="result_type_id">
+                                            Result Type
+                                        </label>
+                                        <select name="result_type" id="result_type_id"
+                                            class="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                                            <option value="number">Number</option>
+                                            <option value="boolean">Negative or Positive</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- buttons --}}
+                                    <div class="buttons">
+                                        <button type="submit"
+                                            class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                                            Save
+                                        </button>
+                                        <button type="button"
+                                            class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                            data-modal-close>
+                                            Cancel
+                                        </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-</div>
-</div>
-</div>
-              
-<!-- dashboard for centers data  -->
-<div class="flex flex-col w-full">
-  <div class="flex flex-row flex-wrap flex-grow mt-4">
-    <div class="w-full mx-4">
-      <div class="bg-white border border-gray-300 rounded-lg shadow-lg">
-        <div class="bg-gray-100 border-b border-gray-300 py-3 px-4">
-          <h5 class="font-bold uppercase text-gray-600">Centers Data</h5>
-        </div>
-        <div class="p-5">
-          <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
-            <thead>
-              <tr class="bg-gray-100 border-b border-gray-300">
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="1">Id</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="2">Center Name</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="3">Address</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="4">Phone</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="5">City</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="6">Actions</th>
-              </tr>
-            </thead>
-            {{-- dropdown button with "Edit" and "Delete" options --}}
-            <tbody>
-              @php
-                $centers = App\Models\Center::all();
-              @endphp
-              @foreach($centers as $center)
-              <tr>
-                <td class="border-dashed border-t border-gray-200">
-                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->id }}</span>
-                </td>
-                <td class="border-dashed border-t border-gray-200">
-                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->center_name }}</span>
-                </td>
-                <td class="border-dashed border-t border-gray-200">
-                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->address }}</span>
-                </td>
-                <td class="border-dashed border-t border-gray-200">
-                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->phone }}</span>
-                </td>
-                <td class="border-dashed border-t border-gray-200">
-                  <span class="text-gray-700 px-3 py-3 flex items-center">{{ $center->city_id }}</span>
-                </td>
-                <td class="border-dashed border-t border-gray-200">
+    </div>
 
-                  <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCities" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
-                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                  </button>
-                  
-                  <!-- Dropdown menu -->
-                  <div id="dropdownDotsCities" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                      <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
-                        <li>
-                          {{-- edit and delete buttons here and fa icons--}}
-                          <a href="{{ route('cities.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
-                            <span>Edit</span>
-                          </a>
-                        </li>
-                        <li>
-                          <form action="{{ route('cities.destroy', $center->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
-                              <span>Delete</span>
-                            </button>
-                          </form>
-                        </li>
-
-                      </ul>
-                  </div>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-
-          </table>
-        </div>
+    <!-- dashboard for centers data  -->
+    <div class="flex-grow">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-4">
+          <h2 class="text-lg font-medium leading-6 text-red-700">Center Data</h2>
       </div>
+      <div class="flex flex-col mt-2">
+          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                  <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                      <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-800">
+                                <tr>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="1">Id</th>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="2">Center Name</th>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="3">Address</th>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="4">Phone</th>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="5">City</th>
+                                    <th class="px-6 py-5 text-left text-xs font-medium text-white uppercase tracking-wider"
+                                        data-priority="6"></th>
+                                </tr>
+                            </thead>
+                            {{-- dropdown button with "Edit" and "Delete" options --}}
+                            <tbody>
+                                @php
+                                    $centers = App\Models\Center::all();
+                                @endphp
+                                @foreach ($centers as $center)
+                                    <tr>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+                                            <span
+                                                class="text-gray-700 px-3 py-3 flex items-center">{{ $center->id }}</span>
+                                        </td>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+                                            <span
+                                                class="text-gray-700 px-3 py-3 flex items-center">{{ $center->center_name }}</span>
+                                        </td>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+                                            <span
+                                                class="text-gray-700 px-3 py-3 flex items-center">{{ $center->address }}</span>
+                                        </td>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+                                            <span
+                                                class="text-gray-700 px-3 py-3 flex items-center">{{ $center->phone }}</span>
+                                        </td>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+                                            <span
+                                                class="text-gray-700 px-3 py-3 flex items-center">{{ $center->city->city_name }}</span>
+                                        </td>
+                                        <td class="border-dashed border-t border-gray-200 bg-white">
+
+                                            <button id="dropdownMenuIconHorizontalButton"
+                                                data-dropdown-toggle="dropdownDotsCities"
+                                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                                                type="button">
+                                                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+
+                                            <!-- Dropdown menu -->
+                                            <div id="dropdownDotsCities"
+                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                                <ul class="py-2 text-sm text-gray-700 "
+                                                    aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                    <li>
+                                                        {{-- edit and delete buttons here and fa icons --}}
+                                                        <a href="{{ route('cities.edit', $center->id) }}"
+                                                            class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                            <span>Edit</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <form action="{{ route('cities.destroy', $center->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                        </form>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
-</div>
-<!-- dashboard table for city with filter and pagination -->
-<div class="flex flex-col w-full">
-  <div class="flex flex-row flex-wrap flex-grow mt-4">
-    <div class="w-full mx-4">
-      <div class="bg-white border border-gray-300 rounded-lg shadow-lg">
-        <div class="bg-gray-100 border-b border-gray-300 py-3 px-4">
-          <h5 class="font-bold uppercase text-gray-600">City Data</h5>
+   {{-- city data --}}
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="pt-6 mt-4">
+            <h2 class="text-lg font-medium leading-6 text-red-700">City Data</h2>
         </div>
-        <div class="p-5">
-          <table id="datatable" class="stripe hover" style="width:100%; padding-top:1em; padding-bottom:1em;">
-            <thead>
-              <tr class="bg-gray-100 border-b border-gray-300">
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="1">Id</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="2">City</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="3">Region</th>
-                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-priority="4"></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($cities as $city)
-                <tr class="hover:bg-gray-100">
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->id}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->city_name}}</td>
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900">{{$city->region}}</td>
-                  {{-- drop down icon has edit and delete --}}
-                  <td class="px-3 py-3 text-sm font-medium text-gray-900 flex flex-row justify-center space-x-2">
-                    <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsCenters" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
-                      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                    </button>
-                    
-                    <!-- Dropdown menu -->
-                    <div id="dropdownDotsCenters" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                        <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
-                          <li>
-                            {{-- edit and delete buttons here and fa icons--}}
-                            <a href="{{ route('centers.edit', $center->id) }}" class="flex items-center px-4 py-2 hover:bg-gray-100">
-                              <span>Edit</span>
-                            </a>
-                          </li>
-                          <li>
-                            <form action="{{ route('centers.destroy', $center->id) }}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
-                                <span>Delete</span>
-                              </button>
-                            </form>
-                          </li>
-  
-                        </ul>
+        <div class="flex flex-col mt-2">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-4 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-800">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                        ID</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                        City</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                        Region</th>
+                                    <th scope="col" class="relative px-6 py-3">
+                                        <span class="sr-only">Edit/Delete</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($cities as $city)
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                            {{ $city->id }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                            {{ $city->city_name }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                            {{ $city->region }}</td>
+                                        {{-- drop down icon has edit and delete --}}
+                                        <td
+                                            class="px-3 py-3 text-sm font-medium text-gray-900 bg-white flex flex-row justify-center space-x-2">
+                                            <button id="dropdownMenuIconHorizontalButton"
+                                                data-dropdown-toggle="dropdownDotsCenters"
+                                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                                                type="button">
+                                                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+
+                                            <!-- Dropdown menu -->
+                                            <div id="dropdownDotsCenters"
+                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                                <ul class="py-2 text-sm text-gray-700 "
+                                                    aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                    <li>
+                                                        {{-- edit and delete buttons here and fa icons --}}
+                                                        <a href="{{ route('centers.edit', $center->id) }}"
+                                                            class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                            <span>Edit</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <form action="{{ route('centers.destroy', $center->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                        </form>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                  </td>
-                </tr>
-              @endforeach
-            </tbody>
-          </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+{{-- Donation data table --}}
+<div class="flex-grow">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-4">
+        <h2 class="text-lg font-medium leading-6 text-red-700">Center Data</h2>
+    </div>
+    <div class="flex flex-col mt-2">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                          <thead class="bg-gray-800">
+                            <tr>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                first Name
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Last Name
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Center
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                City
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Blood type
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Donation type
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Donation date
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Donation status
+                              </th>
+                              {{-- test result --}}
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Test result
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Action
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody class="bg-white divide-y divide-gray-200">
+                            @php
+                            $donations = App\Models\Donation::all();
+                            @endphp
+                            @foreach ($donations as $donation)
+                            <tr>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->user->name}}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->user->last_name }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->center->center_name }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $center->city->city_name }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->blood_type->type }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->donation_type->type }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->appointment->date }}
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                @if ($donation->status == 0)
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                  Pending
+                                </span>
+                                @else
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  Done
+                                </span>
+                                @endif
+                              </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{-- {{ route('donation.test', $donation->id) }} --}}
+                                <a href=""
+                                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-blue-100 text-blue-800">
+                                  Add test result
+                                </a>
+                              </td>
+                                        {{-- drop down icon has edit and delete --}}
+                                        <td
+                                            class="px-3 py-3 text-sm font-medium text-gray-900 bg-white flex flex-row justify-center space-x-2">
+                                            <button id="dropdownMenuIconHorizontalButton"
+                                                data-dropdown-toggle="dropdownDotsCenters"
+                                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                                                type="button">
+                                                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+
+                                            <!-- Dropdown menu -->
+                                            <div id="dropdownDotsCenters"
+                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                                <ul class="py-2 text-sm text-gray-700 "
+                                                    aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                    <li>
+                                                        {{-- edit and delete buttons here and fa icons --}}
+                                                        <a href="{{ route('centers.edit', $center->id) }}"
+                                                            class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                            <span>Edit</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <form action="{{ route('centers.destroy', $center->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                        </form>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+
+                          
 </x-app-layout>

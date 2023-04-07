@@ -32,4 +32,5 @@ class Donation extends Model
         return $this->hasOne(Appointment::class);
     }
     
+    
 }

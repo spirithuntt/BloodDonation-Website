@@ -16,7 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('center_id')->constrained();
-            // $table->dateTime('appointment_date');
+            //appointments foreign key
+            // $table->foreignId('appointment_id')->constrained();
             $table->foreignId('blood_type_id')->constrained();
             $table->foreignId('donation_type_id')->constrained();
             $table->boolean('is_donated')->default(false);
