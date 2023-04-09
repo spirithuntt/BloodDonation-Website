@@ -61,7 +61,11 @@
                     </div>
                     {{-- donation center --}}
                 <h1 class="text-3xl font-bold mb-8 mt-8 text-gray-800">Select a Donation Center and City Location</h1>
+                
+                <div class="grid grid-cols-2 gap-6">
 
+                    {{-- city location --}}
+    
                     <div>
                         <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
                         <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
@@ -71,7 +75,14 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="">
+                        <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
+                        <select id="donation_center" name="center_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
+                            <option value="">Select a donation center</option>
+                        </select>
+                    </div>
                 </div>
+
                             <div class="mt-8">
                                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-white bg-red-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                     Save Donor Info

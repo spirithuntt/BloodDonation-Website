@@ -71,3 +71,6 @@ Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])-
 
 // resource route for the tests
 Route::resource('tests', TestController::class);
+
+//post route to fetch the donation centers
+Route::post('/api/fetch-donation-centers', [CenterController::class, 'fetchDonationCenters']);

@@ -15,11 +15,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.12/tailwind-experimental.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css">
-    {{-- link css from public folder --}}
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link src="{{ asset('assets/css/app.css') }}">
     {{-- donation hours --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {{-- donation hours --}}
+
     
 
     <!-- Scripts -->
@@ -58,7 +58,11 @@
         {{-- donation hours --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         {{-- donation hours --}}
-    <script src="assets/js/app.js"></script>
+            {{-- link js file in public--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- link js file in public--}}
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+
 </body>
 
 </html>
