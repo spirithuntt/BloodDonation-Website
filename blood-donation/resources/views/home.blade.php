@@ -4,7 +4,6 @@
           <div class="mr-6">
           </div>
           <div class="flex flex-wrap items-start justify-end -mb-3">
-            {{-- href to scheduleAnappointment --}}
             <button class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3" 
             onclick="window.location='{{ route('donation.create') }}'">
               <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
@@ -19,7 +18,6 @@
                 <h1 class="text-2xl font-bold text-gray-900">Last Donations</h1>
                 </div>
             </div>
-            {{-- table of last donations  --}}
             <div class="bg-white rounded-lg overflow-hidden shadow-md">
                 <div class="flex justify-between items-center px-4 py-3 bg-red-700">
                   <h2 class="text-white font-semibold text-lg">My Donations History</h2>
@@ -49,26 +47,29 @@
                           <th class="text-left py-3 px-4 font-semibold">Center Name</th>
                           <th class="text-left py-3 px-4 font-semibold">City Name</th>
                           <th class="text-left py-3 px-4 font-semibold">Date</th>
-                          <th class="text-left py-3 px-4 font-semibold">Test Results</th>
+                          {{-- <th class="text-left py-3 px-4 font-semibold">Test Results</th> --}}
                       </tr>
                   </thead>
                   <tbody>
-                      @if (!empty($donations) && !empty($appointments))
-                          @foreach ($donations as $donation)
-                              @if (!empty($donation->blood_type) && !empty($donation->donation_type) && !empty($donation->center) && !empty($donation->center->city))
-                                      {{-- @if ($appointment->id == $donation->appointment_id) --}}
-                                          <tr class="text-gray-700">
-                                              <td class="text-left py-3 px-4">{{ $donation->id }}</td>
-                                              <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
-                                              <td class="text-left py-3 px-4">{{ $donation->donation_type->type }}</td>
-                                              <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
-                                              <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
-                                              <td class="text-left py-3 px-4">{{ $donation->appointment->date }}</td>
-                                          </tr>
-                                      {{-- @endif --}}
-                              @endif
-                          @endforeach
-                      @endif
+                    {{-- if donation is not empty print the table else print no donations found --}}
+                    @if (count($donations) > 0)
+                      @foreach ($donations as $donation)
+                      <tr class="text-gray-700">
+                          <td class="text-left py-3 px-4">{{ $donation->id }}</td>
+                          <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
+                          <td class="text-left py-3 px-4">{{ $donation->donation_type->type }}</td>
+                          <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
+                          <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
+                          <td class="text-left py-3 px-4">{{ $donation->date }}</td>
+                          {{-- <td class="text-left py-3 px-4">{{ $donation->test_results }}</td> --}}
+                          
+                      </tr>
+                      @endforeach
+                    @else
+                      <tr class="text-gray-700">
+                        <td class="text-left py-3 px-4" colspan="7">No Donations Found</td>
+                      </tr>
+                    @endif
                   </tbody>
               </table>
                 </div>

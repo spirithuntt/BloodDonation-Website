@@ -14,6 +14,7 @@ class BloodTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('blood_types')->insert([
+            ['type' => 'Unknown'],
             ['type' => 'A+'],
             ['type' => 'A-'],
             ['type' => 'B+'],

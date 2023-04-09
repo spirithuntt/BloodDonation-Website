@@ -36,7 +36,7 @@ class DonationController extends Controller
         $donationTypes = $this->getDonationTypes();
         //get the blood types from the database
         $bloodTypes = $this->getBloodTypes();
-        return view('scheduleAppointment', compact('user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
+        return view('appointments.schedule-appointment', compact('user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
     }
 
     /**
@@ -138,40 +138,33 @@ public function reserve(Request $request)
     $date = $request->input('date');
     $time = $request->input('time');
 
-    // check if date and time are not empty
-    if (!empty($date) && !empty($time)) {
-        // check if the user has already reserved an appointment for the selected donation
-        $reserved = Donation::where('user_id', $user_id)
-            ->where('id', $id)
-            ->where('date', $date)
-            ->where('time', $time)
-            ->exists();
-        //get all appointments for the selected date
-        $appointments = Donation::where('date', $date)->get();
+    // check if the user has already reserved an appointment for the selected donation
+    $reserved = Donation::where('user_id', $user_id)
+        ->where('id', $id)
+        ->where('date', $date)
+        ->where('time', $time)
+        ->exists();
+    //get all appointments for the selected date
+    $appointments = Donation::where('date', $date)->get();
 
-        //check if the selected time is already reserved
-        $reserved = $appointments->contains(function ($appointment) use ($time) {
-            return $appointment->time->format('H:i') == $time;
-        });
-        //update the donation with the appointment data if the time is not reserved else return confirm view
-        if (!$reserved) {
-            $donation = Donation::find($id);
-            $donation->date = $date;
-            $donation->time = $time;
-            $donation->save();
-            return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
-        } else {
-            return view('appointments.confirm', compact('date', 'time'));
-        }
-    } else {
-        //update the donation with the appointment data without showing the confirm view
+    //check if the selected time is already reserved
+    $reserved = $appointments->contains(function ($appointment) use ($time) {
+        return $appointment->time->format('H:i') == $time;
+    });
+    //update the donation with the appointment data if the time is not reserved else return confirm view
+    // if ($reserved) {
         $donation = Donation::find($id);
         $donation->date = $date;
         $donation->time = $time;
         $donation->save();
-        return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
-    }
+        return redirect()->route('home')->with('success', 'Your appointment has been scheduled successfully');
+    // }
+    // else {
+    //     return view('appointments.confirm', compact('date', 'time'));
+    // }
 }
+
+
 
 
 

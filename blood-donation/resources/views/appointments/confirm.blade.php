@@ -21,7 +21,7 @@
                                 Update</h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500">
-                                    You already have an appointment at {{ $existingAppointmentTime }} for this donation.
+                                    You already have an appointment for this donation.
                                     Do you want to update it to {{ $date }} at {{ $time }}?
                                 </p>
                             </div>

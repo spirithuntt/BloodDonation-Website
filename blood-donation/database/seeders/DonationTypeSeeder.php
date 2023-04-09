@@ -15,6 +15,7 @@ class DonationTypeSeeder extends Seeder
     {
         //'Whole Blood', 'Platelets', 'Plasma', 'Double Red Cells'
         DB::table('donation_types')->insert([
+            ['type' => 'Unknown'],
             ['type' => 'Whole Blood'],
             ['type' => 'Platelets'],
             ['type' => 'Plasma'],

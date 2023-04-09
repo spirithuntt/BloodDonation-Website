@@ -44,9 +44,6 @@ Route::resource('centers', CenterController::class);
 //home
 Route::get('/home', [DonationController::class, 'index'])->name('home');
 
-Route::get('/scheduleAppointment', function () {
-    return view('scheduleAppointment');
-})->name('scheduleAppointment');
 
 
 // scheduleAppointment resource
@@ -65,9 +62,10 @@ Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('b
 //reserve
 Route::get('reserve', [DonationController::class, 'showReserve'])->name('reserve');
 Route::post('reserve', [DonationController::class, 'reserve'])->name('reserve');
+//confirm update reservation put
+Route::put('confirm', [DonationController::class, 'confirm'])->name('confirm');
 
 
-Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
 Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])->name('appointments.reserve');
 
 
