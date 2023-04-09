@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Donation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\BusinessHour;
 
 class DonationController extends Controller
 {
@@ -14,10 +15,10 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //get the donations from the database and appoinments from the database
+        //get the donations from the database
         $donations = Donation::all();
-        $appointments = DB::table('appointments')->get();
-        return view('home', compact('donations', 'appointments'));
+        return view('home', compact('donations'));
+
     }
 
     /**
@@ -43,25 +44,18 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-        //store the scheduleAppointment form data in the database and update the user's data
-        $request->validate([
-            // 'name' => 'required',
-            // 'email' => 'required',
-            // 'phone' => 'required',
-            // // 'last_donation_date' => 'required',
-            // 'city_id' => 'required',
-            // 'center_id' => 'required',
-            // 'donation_type_id' => 'required',
-            // 'blood_type_id' => 'required',
-        ]);
-        // dd('ircu3n');
-        //update and create the user's data and the donation data in the database
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'phone' => 'required',
+        //     'city_id' => 'required',
+        //     'center_id' => 'required',
+        //     'donation_type_id' => 'required',
+        //     'blood_type_id' => 'required',
+        // ]);
         $user = auth()->user();
         $user->update($request->all());
-        //create the donation data in the database and create it from the model related to the user
         $user->donations()->create($request->all());
-        // Donation::create($request->all());
-        //redirect to the dashboard with a success message that the appointment has been scheduled
         return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
     }
 
@@ -96,6 +90,98 @@ class DonationController extends Controller
     {
         //
     }
+    public function showReserve()
+    {
+        $datePeriod = collect();
+        $currentDate = Carbon::now();
+        $endDate = Carbon::now()->addDays(6);
+    
+        while ($currentDate->lte($endDate)) {
+            $datePeriod->push($currentDate->copy());
+            $currentDate->addDay();
+        }
+    
+        $appointments = $datePeriod->map(function ($date) {
+            return $this->generateTimeData($date);
+        });
+    
+        return view('appointments.reserve', compact('appointments'));
+    }
+    private function generateTimeData(Carbon $date)
+{
+    $dayName = $date->format('l');
+
+    $businessHours = BusinessHour::where('day', $dayName)->first();
+
+    $hours = array_filter($businessHours->TimesPeriod);
+
+    $currentAppointments = Donation::where('date', $date->toDateString())->pluck('time')->map(function ($time) {
+        return $time->format('H:i');
+    })->toArray();
+
+    $availbleHours = array_diff($hours, $currentAppointments);
+
+    return [
+        'day_name' => $dayName,
+        'date' => $date->format('d M'),
+        'full_date' => $date->format('Y-m-d'),
+        'available_hours' => $availbleHours,
+        'reserved_hours' => $currentAppointments,
+        'business_hours' => $hours,
+        'off' => $businessHours->off
+    ];
+}
+public function reserve(Request $request)
+{
+    $user_id = auth()->id();
+    $id = auth()->user()->donations->last()->id;
+    $date = $request->input('date');
+    $time = $request->input('time');
+
+    // check if date and time are not empty
+    if (!empty($date) && !empty($time)) {
+        // check if the user has already reserved an appointment for the selected donation
+        $reserved = Donation::where('user_id', $user_id)
+            ->where('id', $id)
+            ->where('date', $date)
+            ->where('time', $time)
+            ->exists();
+        //get all appointments for the selected date
+        $appointments = Donation::where('date', $date)->get();
+
+        //check if the selected time is already reserved
+        $reserved = $appointments->contains(function ($appointment) use ($time) {
+            return $appointment->time->format('H:i') == $time;
+        });
+        //update the donation with the appointment data if the time is not reserved else return confirm view
+        if (!$reserved) {
+            $donation = Donation::find($id);
+            $donation->date = $date;
+            $donation->time = $time;
+            $donation->save();
+            return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
+        } else {
+            return view('appointments.confirm', compact('date', 'time'));
+        }
+    } else {
+        //update the donation with the appointment data without showing the confirm view
+        $donation = Donation::find($id);
+        $donation->date = $date;
+        $donation->time = $time;
+        $donation->save();
+        return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
     public function getCities()
 {
@@ -113,4 +199,6 @@ public function getBloodTypes()
 {
     return DB::table('blood_types')->get();
 }
+
+
 }

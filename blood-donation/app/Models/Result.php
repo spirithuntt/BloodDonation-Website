@@ -19,4 +19,8 @@ class Result extends Model
     {
         return $this->belongsTo(Test::class);
     }
+    public function donation()
+    {
+        return $this->belongsTo(Donation::class);
+    }
 }

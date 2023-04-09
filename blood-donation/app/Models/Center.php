@@ -20,4 +20,9 @@ class Center extends Model
     {
         return $this->belongsTo(City::class);
     }
+    //relation between center and donation
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
 }
