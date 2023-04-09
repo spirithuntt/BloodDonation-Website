@@ -53,10 +53,10 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @if (!empty($donations) && !empty($appointments))
+                      {{-- @if (!empty($donations) && !empty($appointments))
                           @foreach ($donations as $donation)
                               @if (!empty($donation->blood_type) && !empty($donation->donation_type) && !empty($donation->center) && !empty($donation->center->city))
-                                      {{-- @if ($appointment->id == $donation->appointment_id) --}}
+                                      @if ($appointment->id == $donation->appointment_id)
                                           <tr class="text-gray-700">
                                               <td class="text-left py-3 px-4">{{ $donation->id }}</td>
                                               <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
@@ -64,12 +64,12 @@
                                               <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
                                               <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
                                               <td class="text-left py-3 px-4">{{ $donation->appointment->date }}</td>
-                                              {{-- <td class="text-left py-3 px-4">{{ $donation->test_result }}</td> --}}
+                                              <td class="text-left py-3 px-4">{{ $donation->test_result }}</td>
                                           </tr>
-                                      {{-- @endif --}}
+                                      @endif
                               @endif
                           @endforeach
-                      @endif
+                      @endif --}}
                   </tbody>
               </table>
                 </div>

@@ -14,19 +14,16 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('center_id')->constrained();
-            //appointments foreign key
-            // $table->foreignId('appointment_id')->constrained();
             $table->foreignId('blood_type_id')->constrained();
             $table->foreignId('donation_type_id')->constrained();
+            $table->foreignId('appointment_id')->constrained();
             $table->boolean('is_donated')->default(false);
-        
+
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      */
     public function down(): void
     {

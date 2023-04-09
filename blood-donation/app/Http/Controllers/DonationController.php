@@ -97,20 +97,20 @@ class DonationController extends Controller
         //
     }
 
-    public function getCities()
-{
-    return DB::table('cities')->get();
-}
-public function getCenters()
-{
-    return DB::table('centers')->get();
-}
-public function getDonationTypes()
-{
-    return DB::table('donation_types')->get();
-}
-public function getBloodTypes()
-{
-    return DB::table('blood_types')->get();
-}
+//     public function getCities()
+// {
+//     return DB::table('cities')->get();
+// }
+// public function getCenters()
+// {
+//     return DB::table('centers')->get();
+// }
+// public function getDonationTypes()
+// {
+//     return DB::table('donation_types')->get();
+// }
+// public function getBloodTypes()
+// {
+//     return DB::table('blood_types')->get();
+// }
 }

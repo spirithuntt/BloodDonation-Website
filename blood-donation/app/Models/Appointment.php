@@ -16,7 +16,12 @@ class Appointment extends Model
 
     public function donation()
     {
-        return $this->belongsTo(Donation::class);
+        return $this->hasOne(Donation::class);
+    }
+    
+    public function center()
+    {
+        return $this->belongsTo(Center::class);
     }
 }
 

@@ -15,6 +15,12 @@ class Result extends Model
         'test_id',
         'passed',
     ];
+
+    public function donation()
+    {
+        return $this->belongsTo(Donation::class);
+    }
+
     public function test()
     {
         return $this->belongsTo(Test::class);

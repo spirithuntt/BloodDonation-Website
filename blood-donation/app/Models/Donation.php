@@ -9,16 +9,8 @@ class Donation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'center_id', 'donation_type_id', 'blood_type_id', 'is_donated',
+        'center_id', 'donation_type_id', 'blood_type_id', 'is_donated',
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    public function center()
-    {
-        return $this->belongsTo(Center::class);
-    }
     public function donation_type()
     {
         return $this->belongsTo(DonationType::class);
@@ -29,8 +21,10 @@ class Donation extends Model
     }
     public function appointment()
     {
-        return $this->hasOne(Appointment::class);
+        return $this->belongsTo(Appointment::class);
     }
-    
-    
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
 }

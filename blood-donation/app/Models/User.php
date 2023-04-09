@@ -58,9 +58,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function donations()
+    //relationship between user and appointment
+    public function appointment()
     {
-        return $this->hasMany(Donation::class);
+        return $this->hasMany(Appointment::class);
     }
-
+    
 }

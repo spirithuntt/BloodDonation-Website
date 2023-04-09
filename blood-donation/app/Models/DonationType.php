@@ -16,8 +16,9 @@ class DonationType extends Model
     {
         return $this->hasMany(Donation::class);
     }
-    public function test()
+
+    public function tests()
     {
-        return $this->hasOne(Test::class);
-    }   
+        return $this->hasMany(Test::class);
+    }
 }

@@ -15,12 +15,14 @@ class Test extends Model
         'result_type',
 
     ];
-    public function result()
-    {
-        return $this->hasOne(Result::class);
-    } 
+
     public function donation_type()
     {
         return $this->belongsTo(DonationType::class);
+    }
+
+    public function result()
+    {
+        return $this->hasOne(Result::class);
     }
 }

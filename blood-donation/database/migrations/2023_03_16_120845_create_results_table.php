@@ -18,10 +18,7 @@ return new class extends Migration
             $table->foreignId('test_id')->constrained();
             $table->foreignId('donation_id')->constrained();
             $table->boolean('passed');
-            //result number is the number of the result for the test if the test is a number test float
             $table->float('result_number')->nullable();
-            //result_status enum is the status of the result if a number normal, high or low
-            $table->enum('result_status', ['normal', 'high', 'low'])->nullable();
         });
     }
 
