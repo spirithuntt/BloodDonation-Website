@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointment;
 use App\Models\BusinessHour;
-use App\Services\AppointmentService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -23,7 +22,7 @@ class AppointmentController extends Controller
         }
 
         $appointments = $datePeriod->map(function ($date) {
-            return (new AppointmentService)->generateTimeData($date);
+            return $this->generateTimeData($date);
         });
 
         return view('appointments.reserve', compact('appointments'));
@@ -70,9 +69,7 @@ class AppointmentController extends Controller
     
         return redirect()->route('home')->with('success', 'Appointment reserved successfully');
     }
-    
 
-    //appointments.update with existingAppointmentId
     public function update(Request $request, $id)
     {
         $appointment = Appointment::find($id);
@@ -80,7 +77,29 @@ class AppointmentController extends Controller
         return redirect()->route('reserve');
     }
 
+    private function generateTimeData(Carbon $date)
+    {
+        $dayName = $date->format('l');
 
+        $businessHours = BusinessHour::where('day', $dayName)->first();
 
+        $hours = array_filter($businessHours->TimesPeriod);
+
+        $currentAppointments = Appointment::where('date', $date->toDateString())->pluck('time')->map(function ($time) {
+            return $time->format('H:i');
+        })->toArray();
+
+        $availbleHours = array_diff($hours, $currentAppointments);
+
+        return [
+            'day_name' => $dayName,
+            'date' => $date->format('d M'),
+            'full_date' => $date->format('Y-m-d'),
+            'available_hours' => $availbleHours,
+            'reserved_hours' => $currentAppointments,
+            'business_hours' => $hours,
+            'off' => $businessHours->off
+        ];
+    }
 }
 

@@ -64,7 +64,6 @@
                                               <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
                                               <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
                                               <td class="text-left py-3 px-4">{{ $donation->appointment->date }}</td>
-                                              {{-- <td class="text-left py-3 px-4">{{ $donation->test_result }}</td> --}}
                                           </tr>
                                       {{-- @endif --}}
                               @endif
