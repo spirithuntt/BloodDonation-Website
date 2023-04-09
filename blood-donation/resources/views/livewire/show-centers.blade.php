@@ -63,7 +63,6 @@
                                                     </path>
                                                 </svg>
                                             </button>
-
                                             <!-- Dropdown menu -->
                                             <div id="dropdownDotsCities"
                                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
@@ -71,13 +70,13 @@
                                                     aria-labelledby="dropdownMenuIconHorizontalButton">
                                                     <li>
                                                         {{-- edit and delete buttons here and fa icons --}}
-                                                        <a href="{{ route('cities.edit', $center->id) }}"
+                                                        <a href="{{ route('centers.edit', $center->id) }}"
                                                             class="flex items-center px-4 py-2 hover:bg-gray-100">
                                                             <span>Edit</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <form action="{{ route('cities.destroy', $center->id) }}"
+                                                        <form action="{{ route('centers.destroy', $center->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
@@ -96,6 +95,9 @@
                             </tbody>
 
                         </table>
+                        <div class="flex justify-center">
+                            {{ $centers->links() }}
+                          </div>
                     </div>
                 </div>
             </div>

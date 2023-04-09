@@ -52,8 +52,8 @@
                       </div>
                       <div class="buttons lg:flex lg:items-center">
                         @if (Route::has('login'))
-                          @auth
-                            <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
+                        @auth
+                        <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
                           @else
                             <a href="{{ route('login') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Login</a>
                             @if (Route::has('register'))
@@ -71,10 +71,17 @@
                         <h2 class="text-4xl font-bold mb-2">Drop of your blood is a <span class="text-red-700">New life </span>for
                             someone</h2>
                         <h3 class="text-2xl mb-8 p-4">Be the reason for someone's heartbeat, You can become a superhero too.</h3>
-                        <!-- bg-red-900 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg uppercase tracking-wider but with hover but big button-->
-                        <a href="#"
+                            @if (Route::has('login'))
+                            @auth
+                        <a href="{{ url('/home') }}"
                             class="bg-gray-200 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg uppercase tracking-wider hover:bg-red-700 donatenow">Donate
                             Now</a>
+                            @else
+                            <a href="{{ route('login') }}" class="bg-gray-200 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg uppercase tracking-wider hover:bg-red-700 donatenow">Donate
+                                Now</a>
+                            @endauth
+                            @endif
+                            
                     </div>
                 </section>
             
@@ -170,34 +177,6 @@
                     </div>
                 </section>
                 <!-- iuohfu   -->
-                <!-- <section class="py-16 px-6" id="appointment">
-                    <div class="max-w-4xl mx-auto">
-                        <h2 class="text-3xl font-bold mb-6">Schedule Your Appointment</h2>
-                        <form class="grid grid-cols-2 gap-6">
-                            <label for="name" class="sr-only">Full Name</label>
-                            <input type="text" name="name" id="name" placeholder="Full Name"
-                                class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <label for="email" class="sr-only">Email Address</label>
-                            <input type="email" name="email" id="email" placeholder="Email Address"
-                                class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <label for="phone" class="sr-only">Phone Number</label>
-                            <input type="tel" name="phone" id="phone" placeholder="Phone Number"
-                                class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <label for="date" class="sr-only">Appointment Date</label>
-                            <input type="date" name="date" id="date" class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <label for="time" class="sr-only">Appointment Time</label>
-                            <input type="time" name="time" id="time" class="border border-gray-400 rounded-lg py-2 px-4">
-            
-                            <button type="submit"
-                                class="bg-red-700 text-white py-2 px-6 rounded-lg shadow-lg font-bold hover:bg-red-700 hover:text-white transition duration-300 col-span-2">Schedule
-                                Appointment</button>
-                        </form>
-                    </div>
-                </section> -->
                 <!-- iejcoiejc   -->
                 <section class="py-20 bg-gray-100">
                     <div class="container mx-auto">
@@ -352,7 +331,7 @@
                     </div>
                 </section>
                 <!-- footer -->
-                <footer class="container bg-gray-800 py-8">
+                <footer class="bg-gray-800 py-8">
                     <div class="mx-auto px-6">
                         <div class="lg:flex">
                             <div class="lg:w-1/3">

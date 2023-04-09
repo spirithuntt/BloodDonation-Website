@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('center_name');
             $table->string('address');
             $table->string('phone');
-            $table->foreignId('city_id')->constrained();
+            //>onDelete('cascade') means that if the city is deleted, all centers in that city will be deleted
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -13,7 +13,6 @@ class CenterController extends Controller
      */
     public function index()
     {
-        //return view with pagination
         $centers = Center::paginate(5);
         return view('centers.index', compact('centers'));
     }
@@ -23,8 +22,8 @@ class CenterController extends Controller
      */
     public function create()
     {
-        $cities = $this->getCities();
-        return view('centers.create', compact('cities'));
+        // $cities = $this->getCities();
+        // return view('centers.create', compact('cities'));
     }
 
     /**
@@ -39,7 +38,7 @@ class CenterController extends Controller
             'city_id' => 'required',
         ]);
         Center::create($request->all());
-        return redirect()->route('dashboard');
+        return redirect()->route('centers.index');
     }
 
     /**
@@ -55,7 +54,10 @@ class CenterController extends Controller
      */
     public function edit(Center $center)
     {
-        return view('centers.edit', compact('center'));
+        //return view with center data and cities data
+        $cities = $this->getCities();
+        return view('centers.edit', compact('center', 'cities'));
+
     }
 
     /**
@@ -70,7 +72,7 @@ class CenterController extends Controller
             'city_id' => 'required',
         ]);
         $center->update($request->all());
-        return redirect()->route('dashboard');
+        return redirect()->route('centers.index');
     }
 
     /**

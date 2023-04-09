@@ -39,13 +39,8 @@
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                                 City
                               </label>
-                              @php
-                                $cities = App\Models\City::all();
-                              @endphp
                               <select name="city_id" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                                @foreach($cities as $city)
-                                  <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endforeach
+                                  <option value="{{ $center->city->id }}">{{ $center->city->city_name}}</option>
                               </select>
                               
                             </div>

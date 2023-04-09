@@ -12,7 +12,6 @@ class CityController extends Controller
      */
     public function index()
     {
-        //return view with pagination
         $cities = City::paginate(5);
         return view('cities.index', compact('cities'));
     }
@@ -35,7 +34,7 @@ class CityController extends Controller
             'region' => 'required',
         ]);
         City::create($request->all());
-        return redirect()->route('dashboard');
+        return redirect()->route('cities.index');
 
     }
 
@@ -66,7 +65,7 @@ class CityController extends Controller
             'region' => 'required',
         ]);
         $city->update($request->all());
-        return redirect()->route('dashboard');
+        return redirect()->route('cities.index');
     }
 
     /**
