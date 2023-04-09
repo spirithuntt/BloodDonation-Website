@@ -12,7 +12,9 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        //return view with pagination
+        $cities = City::paginate(5);
+        return view('cities.index', compact('cities'));
     }
 
     /**

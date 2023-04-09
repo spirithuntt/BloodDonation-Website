@@ -4,6 +4,20 @@
         <div class="pt-6 mt-4">
             <h2 class="text-lg font-medium leading-6 text-red-700">City Data</h2>
         </div>
+        {{-- Search Bar --}}
+    <div class="flex justify-end mb-4">
+        <div class="relative">
+            <input type="search"
+                   wire:model.debounce.500ms="search"
+                   class="border-gray-300 shadow-sm focus:ring-red-700 focus:border-red-700 block w-full pr-10 sm:text-sm rounded-md"
+                   placeholder="Search cities...">
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <svg class="h-4 w-4 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M22 22l-6-6M13 10a7 7 0 1 1 0-4 7 7 0 0 1 0 4z" />
+                </svg>
+            </div>
+        </div>
+    </div>
         <div class="flex flex-col mt-2">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-4 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -26,10 +40,6 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                {{-- loop through cities --}}
-                                @php
-                                    $cities = App\Models\City::paginate(5);
-                                @endphp
                                 @foreach ($cities as $city)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
@@ -38,7 +48,6 @@
                                             {{ $city->city_name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                             {{ $city->region }}</td>
-                                        {{-- drop down icon has edit and delete --}}
                                         <td
                                             class="px-3 py-3 text-sm font-medium text-gray-900 bg-white flex flex-row justify-center space-x-2">
                                             <button id="dropdownMenuIconHorizontalButton"
@@ -59,7 +68,6 @@
                                                 <ul class="py-2 text-sm text-gray-700 "
                                                     aria-labelledby="dropdownMenuIconHorizontalButton">
                                                     <li>
-                                                        {{-- edit and delete buttons here and fa icons --}}
                                                         <a href="{{ route('cities.edit', $city->id) }}"
                                                             class="flex items-center px-4 py-2 hover:bg-gray-100">
                                                             <span>Edit</span>
@@ -84,9 +92,10 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div>
+                        <div class="flex justify-center">
                             {{ $cities->links() }}
-                        </div>
+                          </div>
+                          
                     </div>
                 </div>
             </div>

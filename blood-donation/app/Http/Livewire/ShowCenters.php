@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\City;
+use App\Models\Center;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ShowCities extends Component
+class ShowCenters extends Component
 {
     use WithPagination;
 
@@ -14,14 +14,13 @@ class ShowCities extends Component
 
     public function render()
     {
-        $cities = City::paginate(10);
+        $centers = Center::paginate(10);
         if ($this->search != '') {
             //return instance
-            $cities = City::where('city_name', 'like', '%' . $this->search . '%')->paginate(10);
+            $centers = Center::where('center_name', 'like', '%' . $this->search . '%')->paginate(10);
         }
-        return view('livewire.show-cities', compact('cities'));
+        return view('livewire.show-centers', compact('centers'));
     }
-    
     
     
 }

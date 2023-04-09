@@ -68,7 +68,7 @@
     
                     <div>
                         <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
-                        <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" data-url="{{ url('api/fetch-donation-centers') }}" data-token="{{ csrf_token() }}">
                             <option value="">Select a city location</option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->city_name }}</option>

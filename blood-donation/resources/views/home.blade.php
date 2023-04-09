@@ -51,7 +51,6 @@
                       </tr>
                   </thead>
                   <tbody>
-                    {{-- if donation is not empty print the table else print no donations found --}}
                     @if (count($donations) > 0)
                       @foreach ($donations as $donation)
                       <tr class="text-gray-700">
@@ -66,8 +65,8 @@
                       </tr>
                       @endforeach
                     @else
-                      <tr class="text-gray-700">
-                        <td class="text-left py-3 px-4" colspan="7">No Donations Found</td>
+                      <tr class="text-gray-500">
+                        <td class="text-left py-3 px-4" colspan="7">You didnt Donate or Schedule a Donation appointment Before</td>
                       </tr>
                     @endif
                   </tbody>

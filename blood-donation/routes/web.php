@@ -51,7 +51,7 @@ Route::resource('donation', DonationController::class);
 
 
 // scheduleAppointment livewire
-Route::get('/appointment', AppointmentForm::class)->name('appointment');
+// Route::get('/appointment', AppointmentForm::class)->name('appointment');
 
 
 

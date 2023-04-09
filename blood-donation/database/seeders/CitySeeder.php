@@ -36,7 +36,6 @@ class CitySeeder extends Seeder
             ['city_name' => 'Ksar El Kebir', 'region' => 'Ksar El Kebir'],
             ['city_name' => 'Settat', 'region' => 'Settat'],
             ['city_name' => 'Salé', 'region' => 'Salé'],
-            ['city_name' => 'Kenitra', 'region' => 'Kenitra'],
             ['city_name' => 'Taza', 'region' => 'Taza'],
             ['city_name' => 'Sidi Kacem', 'region' => 'Sidi Kacem'],
             ['city_name' => 'Fkih Ben Salah', 'region' => 'Fkih Ben Salah'],
