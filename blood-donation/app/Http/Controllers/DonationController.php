@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Center;
 use App\Models\Donation;
+use App\Models\Result;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +21,17 @@ class DonationController extends Controller
         //get the donations from the database
         $donations = Donation::all();
         return view('home', compact('donations'));
+    }
 
+//just for admin
+    public function showDonationDetails()
+    {
+        //get the donations from the database
+        $donations = Donation::all();
+        //compact test and result
+        $tests = Test::all();
+        $results = Result::all();
+        return view('dashboard', compact('donations', 'tests', 'results'));
     }
 
     /**
@@ -167,6 +179,12 @@ public function reserve(Request $request)
 
 
 
+
+    public function addResultForm(Request $request, Donation $donation)
+    {
+        $tests = Test::all();
+        return view('results.add_result_form', compact('donation', 'tests'));
+    }
 
 
 
