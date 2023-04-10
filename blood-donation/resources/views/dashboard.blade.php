@@ -222,7 +222,6 @@
                           <tbody class="bg-white divide-y divide-gray-200">
                             {{-- @dd($donations) --}}
                             @foreach ($donations as $donation)
-                            @foreach ($tests as $test)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                     {{ $donation->id }}
@@ -260,9 +259,7 @@
                                 @endif
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                {{-- link to create test result page --}}
-                                {{-- edit test result --}}
-                                <a href="{{ route('donations.add_result_form', ['donation' => $donation->id]) }}">Add Result to this Donation</a>
+                                <a href="{{ route('donations.add_result_form', ['donation' => $donation->id]) }}"
                                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-blue-100 text-blue-800">
                                   Add test result
                                 </a>
@@ -310,7 +307,6 @@
                                             </div>
                                         </td>
                             </tr>
-                            @endforeach
                             @endforeach
                           </tbody>
                         </table>
