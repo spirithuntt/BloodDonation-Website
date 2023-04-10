@@ -26,7 +26,8 @@
                 </a>
             </div>
         </div>
-        <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="flex-grow">
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             <div class="flex items-center p-8 bg-white shadow rounded-lg">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
@@ -80,7 +81,8 @@
                     <span class="block text-gray-500">Finished homeworks</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
     <!-- Test modal popoup-->
     <div id="modalTest" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -182,6 +184,9 @@
                           <thead class="bg-gray-800">
                             <tr>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    ID
+                              </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 first Name
                               </th>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
@@ -215,11 +220,13 @@
                             </tr>
                           </thead>
                           <tbody class="bg-white divide-y divide-gray-200">
-                            @php
-                            $donations = App\Models\Donation::all();
-                            @endphp
+                            {{-- @dd($donations) --}}
                             @foreach ($donations as $donation)
+                            @foreach ($tests as $test)
                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                    {{ $donation->id }}
+                                </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 {{ $donation->user->name}}
                               </td>
@@ -230,16 +237,16 @@
                                 {{ $donation->center->center_name }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                {{ $center->city->city_name }}
+                                {{ $donation->center->city->city_name }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                {{ $donation->blood_type->type }}
+                                {{ $donation->blood_type->type}}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 {{ $donation->donation_type->type }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                {{ $donation->appointment->date }}
+                                {{ $donation->date }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 @if ($donation->status == 0)
@@ -253,8 +260,9 @@
                                 @endif
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                {{-- {{ route('donation.test', $donation->id) }} --}}
-                                <a href=""
+                                {{-- link to create test result page --}}
+                                {{-- edit test result --}}
+                                <a href="{{ route('donations.add_result_form', ['donation' => $donation->id]) }}">Add Result to this Donation</a>
                                   class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-blue-100 text-blue-800">
                                   Add test result
                                 </a>
@@ -281,13 +289,13 @@
                                                     aria-labelledby="dropdownMenuIconHorizontalButton">
                                                     <li>
                                                         {{-- edit and delete buttons here and fa icons --}}
-                                                        <a href="{{ route('centers.edit', $center->id) }}"
+                                                        <a href=""
                                                             class="flex items-center px-4 py-2 hover:bg-gray-100">
                                                             <span>Edit</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <form action="{{ route('centers.destroy', $center->id) }}"
+                                                        <form action=""
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
@@ -302,6 +310,7 @@
                                             </div>
                                         </td>
                             </tr>
+                            @endforeach
                             @endforeach
                           </tbody>
                         </table>

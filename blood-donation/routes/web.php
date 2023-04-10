@@ -8,6 +8,7 @@ use App\Http\Controllers\CenterController;
 use App\Http\Livewire\AppointmentForm;
 use App\Http\Controllers\BusinessHourController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ResultController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +29,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function (){
-        return view('dashboard');
-    })->name('dashboard');
 });
 
 Route::get('/dashboard', function () {
@@ -62,7 +60,7 @@ Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('b
 //reserve
 Route::get('reserve', [DonationController::class, 'showReserve'])->name('reserve');
 Route::post('reserve', [DonationController::class, 'reserve'])->name('reserve');
-//confirm update reservation put
+//confirm update reservation putN
 Route::put('confirm', [DonationController::class, 'confirm'])->name('confirm');
 
 
@@ -72,5 +70,20 @@ Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])-
 // resource route for the tests
 Route::resource('tests', TestController::class);
 
+// create route for createresult(only way that worked)
+Route::get('/donations/{donation}/add-result', [
+    'uses' => 'App\Http\Controllers\DonationController@addResultForm',
+    'as' => 'donations.add_result_form'
+]);
+
+
+// resource route for the results
+Route::resource('results', ResultController::class);
+
+
+
 //post route to fetch the donation centers
 Route::post('/api/fetch-donation-centers', [CenterController::class, 'fetchDonationCenters']);
+
+//for admin show all donations showDonationDetails function
+Route::get('/dashboard', [DonationController::class, 'showDonationDetails'])->name('dashboard'); 
