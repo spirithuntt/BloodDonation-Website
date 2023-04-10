@@ -9,11 +9,10 @@ class Result extends Model
 {
     use HasFactory;
     protected $fillable = [
-        // 'donation_id',
-        // 'test_id',
-        // 'result',
         'test_id',
+        'donation_id',
         'passed',
+        'result_number',
     ];
     public function test()
     {

@@ -29,17 +29,31 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        $results = $request->input('results');
-
-        foreach ($results as $test_id => $result_value) {
-            $result = new Result;
+        //get the donation id from the request
+        $donation_id = $request->donation_id;
+    
+        //loop through the tests and store the result for each test
+        foreach ($request->result_type as $test_id => $result_type) {
+            $result = new Result();
+    
             $result->test_id = $test_id;
-            $result->value = $result_value;
+            $result->donation_id = $donation_id;
+    
+            if ($result_type == 'number') {
+                $result->result_number = $request->result_number[$test_id];
+            } else {
+                $result->passed = $request->passed[$test_id];
+            }
+    
             $result->save();
         }
-
-        return redirect()->back()->with('success', 'Results saved successfully.');
+    
+        return redirect()->route('dashboard');
     }
+    
+    
+    
+    
 
     /**
      * Display the specified resource.
