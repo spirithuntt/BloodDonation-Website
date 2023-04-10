@@ -15,9 +15,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.12/tailwind-experimental.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
     <link src="{{ asset('assets/css/app.css') }}">
     {{-- donation hours --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     {{-- donation hours --}}
 
     
@@ -62,7 +70,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {{-- link js file in public--}}
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
+    <script>
+  @if(Session::has('success'))
+    toastr.options =
+    {
+     "closeButton" : true,
+     "progressBar" : true
+    }
+        toastr.success("{{ session('success') }}");
+    @endif
+@if(Session::has('error'))
+  toastr.options =
+  {
+   "closeButton" : true,
+   "progressBar" : true
+  }
+    toastr.error("{{ session('error') }}");
+  @endif
+@if(Session::has('info'))
+  toastr.options =
+  {
+   "closeButton" : true,
+   "progressBar" : true
+  }
+    toastr.info("{{ session('info') }}");
+  @endif
+@if(Session::has('warning'))
+  toastr.options =
+  {
+   "closeButton" : true,
+   "progressBar" : true
+  }
+    toastr.warning("{{ session('warning') }}");
+  @endif
+</script>
 </body>
 
 </html>

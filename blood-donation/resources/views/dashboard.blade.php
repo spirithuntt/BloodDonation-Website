@@ -7,7 +7,7 @@
             
             <div class="flex flex-wrap items-start justify-end -mb-3">
                 <button data-modal-toggle data-modal-target="#modalTest"
-                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-500 focus:bg-red-700 rounded-md ml-6 mb-3">
                     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,7 +16,7 @@
                     Create new Test
                 </button>
                 <a href="{{ route('business_hours.index') }}"
-                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-700 focus:bg-red-700 rounded-md ml-6 mb-3">
+                    class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-500 focus:bg-red-700 rounded-md ml-6 mb-3">
                     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -192,6 +192,9 @@
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Last Name
                               </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    ID Card
+                                </th>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Center
                               </th>
@@ -232,6 +235,9 @@
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 {{ $donation->user->last_name }}
                               </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                    {{ $donation->user->ID_number }}
+                                </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 {{ $donation->center->center_name }}
                               </td>
@@ -248,13 +254,13 @@
                                 {{ $donation->date }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
-                                @if ($donation->status == 0)
+                                @if ($donation->is_donated == 0)
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                   Pending
                                 </span>
                                 @else
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                  Done
+                                    Donated
                                 </span>
                                 @endif
                               </td>
@@ -264,50 +270,38 @@
                                   Add test result
                                 </a>
                               </td>
-                                        {{-- drop down icon has edit and delete --}}
-                                        <td
-                                            class="px-3 py-3 text-sm font-medium text-gray-900 bg-white flex flex-row justify-center space-x-2">
-                                            <button id="dropdownMenuIconHorizontalButton"
-                                                data-dropdown-toggle="dropdownDotsCenters"
-                                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                                                type="button">
-                                                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
-                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                                    </path>
-                                                </svg>
-                                            </button>
-
-                                            <!-- Dropdown menu -->
-                                            <div id="dropdownDotsCenters"
-                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                                                <ul class="py-2 text-sm text-gray-700 "
-                                                    aria-labelledby="dropdownMenuIconHorizontalButton">
-                                                    <li>
-                                                        {{-- edit and delete buttons here and fa icons --}}
-                                                        <a href=""
-                                                            class="flex items-center px-4 py-2 hover:bg-gray-100">
-                                                            <span>Edit</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <form action=""
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="flex items-center px-4 py-2 hover:bg-gray-100">
-                                                                <span>Delete</span>
-                                                            </button>
-                                                        </form>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
+                              <td class="px-3 py-3 text-sm font-medium text-gray-900 bg-white">
+                                <button id="dropdownMenuIconHorizontalButton"
+                                data-dropdown-toggle="dropdownDots_{{ $donation->id }}"
+                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                                type="button">
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            </svg>
+                        </button>
+                        
+                                <div id="dropdownDots_{{ $donation->id }}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                    <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownMenuIconHorizontalButton">
+                                        <li>
+                                            <a href="{{ route('donation.edit', $donation->id) }}"
+                                                class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                <span>Edit</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('donation.destroy', $donation->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                                                    <span>Delete</span>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                                @endforeach
                             </tr>
-                            @endforeach
                           </tbody>
                         </table>
                 </div>
@@ -316,6 +310,5 @@
     </div>
 </div>
 </div>
-
                           
 </x-app-layout>

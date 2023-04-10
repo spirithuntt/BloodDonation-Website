@@ -50,8 +50,8 @@
                                             {{ $city->region }}</td>
                                         <td
                                             class="px-3 py-3 text-sm font-medium text-gray-900 bg-white flex flex-row justify-center space-x-2">
-                                            <button id="dropdownMenuIconHorizontalButton"
-                                                data-dropdown-toggle="dropdownDotsCenters"
+                                            <button id="dropdownMenuIconHorizontalButton{{ $city->id }}"
+                                                data-dropdown-toggle="dropdownDotsCities{{ $city->id }}"
                                                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
                                                 type="button">
                                                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
@@ -61,12 +61,12 @@
                                                     </path>
                                                 </svg>
                                             </button>
-
+                                    
                                             <!-- Dropdown menu -->
-                                            <div id="dropdownDotsCenters"
+                                            <div id="dropdownDotsCities{{ $city->id }}"
                                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                                                 <ul class="py-2 text-sm text-gray-700 "
-                                                    aria-labelledby="dropdownMenuIconHorizontalButton">
+                                                    aria-labelledby="dropdownMenuIconHorizontalButton{{ $city->id }}">
                                                     <li>
                                                         <a href="{{ route('cities.edit', $city->id) }}"
                                                             class="flex items-center px-4 py-2 hover:bg-gray-100">
@@ -84,7 +84,6 @@
                                                             </button>
                                                         </form>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                         </td>

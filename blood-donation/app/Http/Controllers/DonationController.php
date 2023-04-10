@@ -18,7 +18,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //get the donations from the database
+        //get the donations from the database 
         $donations = Donation::all();
         return view('home', compact('donations'));
     }
@@ -26,7 +26,7 @@ class DonationController extends Controller
 //just for admin
     public function showDonationDetails()
     {
-        //get the donations from the database
+        //get the donations from the database for admin
         $donations = Donation::all();
         //compact test and result
         $tests = Test::all();
@@ -85,7 +85,17 @@ class DonationController extends Controller
      */
     public function edit(Donation $donation)
     {
-        //
+        // get donation's user data so the admin can update it
+        $user = $donation->user;
+        //get the cities from the database
+        $cities = $this->getCities();
+        //get the centers from the database
+        $centers = $this->getCenters();
+        //get the donation types from the database
+        $donationTypes = $this->getDonationTypes();
+        //get the blood types from the database
+        $bloodTypes = $this->getBloodTypes();
+        return view('donations.edit', compact('donation', 'user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
     }
 
     /**
@@ -93,7 +103,9 @@ class DonationController extends Controller
      */
     public function update(Request $request, Donation $donation)
     {
-        //
+        $donation->update($request->all());
+        $donation->user->update($request->all());
+        return redirect()->route('dashboard')->with('success', 'The Donation has been updated successfully');
     }
 
     /**
@@ -101,7 +113,8 @@ class DonationController extends Controller
      */
     public function destroy(Donation $donation)
     {
-        //
+        $donation->delete();
+        return redirect()->route('dashboard')->with('success', 'The Donation has been deleted successfully');
     }
     public function showReserve()
     {

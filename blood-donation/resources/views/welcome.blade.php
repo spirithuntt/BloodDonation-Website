@@ -132,7 +132,7 @@
                                 <div class="bg-gray-100 rounded-lg shadow overflow-hidden">
                                     <div class="p-4">
                                         <p class="text-gray-700 mb-2 font-sans">"I was hesitant to donate blood at first, but the Moroccan Red Crescent Blood Donation team made the experience comfortable and easy. Their professionalism and care for donors made me feel at ease.."</p>
-                                        <p class="text-gray-600 font-bold">- lchi wa7ed, First Time Donor</p>
+                                        <p class="text-gray-600 font-bold">- ibtissam hari, First Time Donor</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                 <div class="bg-gray-100 rounded-lg shadow overflow-hidden">
                                     <div class="p-4">
                                         <p class="text-gray-700 mb-2 font-sans">"As a healthcare worker, I see the critical need for blood every day. Donating blood is a way for me to directly contribute to my patients' well-being and recovery. It's a fulfilling experience that I highly recommend."</p>
-                                        <p class="text-gray-600 font-bold">- Dr. zakaria l3zi, Regular Donor</p>
+                                        <p class="text-gray-600 font-bold">- Dr. zakaria alaoui, Regular Donor</p>
                                     </div>
                                 </div>
                             </div>

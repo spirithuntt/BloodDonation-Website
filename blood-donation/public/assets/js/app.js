@@ -1,5 +1,4 @@
-
-console.log('Hello World!');
+//!code for the donation center dropdown
 $(document).ready(function() {
     $('#city_location').on('change', function() {
       var idCity = this.value;
@@ -31,10 +30,50 @@ $(document).ready(function() {
       });
     });
   });
+
+//!dropdown for donation in dashboard
+const dropdownToggleButtons = document.querySelectorAll('[data-dropdown-toggle]');
+dropdownToggleButtons.forEach(button => {
+  const donationId = button.dataset.dropdownToggle.split('_')[1];
+  const dropdownId = `dropdownDots_${donationId}`;
+let dropdown = document.getElementById("dropdownId");
+dropdown.classList.toggle("hidden");
+});
+//!dropdown for centers  table
+const dropdownToggleButtonsCenters = document.querySelectorAll('[data-dropdown-toggle]');
+        
+dropdownToggleButtonsCenters.forEach(button => {
+  const centerId = button.dataset.dropdownToggle.split('_')[1];
+  const dropdownId = `dropdownDots_${centerId}`;
+  
+  // get the dropdown element by its id
+  const dropdown = document.getElementById(dropdownId);
+
+  button.addEventListener('click', () => {
+    // toggle the 'hidden' class to show/hide the dropdown
+    dropdown.classList.toggle('hidden');
+  });
+});
+
+//!dropdown for cities table
+const dropdownDotsCities = document.getElementById("dropdownDotsCities");
+const dropdownMenuIconHorizontalButtonCities = document.getElementById("dropdownMenuIconHorizontalButtonCities");
+
+document.addEventListener("click", function(event) {
+  if (!dropdownDotsCities.contains(event.target)) {
+    dropdownDotsCities.classList.add("hidden");
+  }
+});
+
+dropdownMenuIconHorizontalButtonCities.addEventListener("click", function() {
+  dropdownDotsCities.classList.toggle("hidden");
+});
+
   
 
 
 
+//!modal
 $(document).ready(function() {
     // Modal toggle
     $('[data-modal-toggle]').on('click', function() {
@@ -58,20 +97,22 @@ $(document).ready(function() {
 });
 
 
-//donation hours logic timepicker
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.timepicker');
-    var instances = M.Timepicker.init(elems, {
-        twelveHour:false
-    });
-});
 
-//reservation hours logic timepicker
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.timepicker');
-    var instances = M.Timepicker.init(elems, {
-        twelveHour:false
-    });
-});
+
+// //donation hours logic timepicker
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.timepicker');
+//     var instances = M.Timepicker.init(elems, {
+//         twelveHour:false
+//     });
+// });
+
+// //reservation hours logic timepicker
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.timepicker');
+//     var instances = M.Timepicker.init(elems, {
+//         twelveHour:false
+//     });
+// });
 
 
