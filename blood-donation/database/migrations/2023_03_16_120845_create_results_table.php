@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('test_id')->constrained();
             $table->foreignId('donation_id')->constrained();
             $table->boolean('passed')->nullable();
-            $table->string('result_number')->nullable();
+            $table->float('result_number')->nullable();
         });
     }
 

@@ -87,3 +87,6 @@ Route::post('/api/fetch-donation-centers', [CenterController::class, 'fetchDonat
 
 //for admin show all donations showDonationDetails function
 Route::get('/dashboard', [DonationController::class, 'showDonationDetails'])->name('dashboard'); 
+
+//get results pdf
+Route::get('/donations/{donation_id}/results/pdf', [ResultController::class, 'generatePDF'])->name('results.pdf');

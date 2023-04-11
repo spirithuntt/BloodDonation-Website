@@ -1,11 +1,6 @@
 <x-guest-layout>
     <div class="lg:flex">
         <div class="lg:w-1/2 xl:max-w-screen-sm">
-            {{-- <div class="py-12 bg-grey-200 lg:bg-white flex justify-center lg:justify-start lg:px-12">
-                <div class="cursor-pointer flex items-center">
-                    <img class="max-w-4xl w-20" src="{{ asset('assets/img/logo.png') }}" alt="logo">
-                </div>
-            </div> --}}
             <x-validation-errors class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" />
             @if (session('status'))
                 <div class="mb-4 font-medium text-sm text-green-600">

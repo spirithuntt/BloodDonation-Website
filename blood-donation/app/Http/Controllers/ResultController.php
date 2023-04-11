@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Center;
+use App\Models\City;
+use App\Models\Donation;
 use App\Models\Result;
 use App\Models\Test;
+use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -40,7 +45,7 @@ class ResultController extends Controller
             $result->donation_id = $donation_id;
     
             if ($result_type == 'number') {
-                $result->result_number = $request->result_number[$test_id];
+                $result->result_number = floatval($request->result_number[$test_id]);
             } else {
                 $result->passed = $request->passed[$test_id];
             }
@@ -50,6 +55,27 @@ class ResultController extends Controller
     
         return redirect()->route('dashboard');
     }
+
+    public function generatePDF($donation_id)
+    {
+        $donation_idd = $donation_id;
+        $results = Result::where('donation_id', $donation_idd)->get();
+        $donation = Donation::where('id', $donation_idd)->first();
+        $user = User::where('id', $donation->user_id)->first();
+        $center = Center::where('id', $donation->center_id)->first();
+        $city = City::where('id', $center->city_id)->first();
+        $tests = Test::all();
+        $donation_date = $donation->date;
+        $donation_time = $donation->time;
+
+        $data = compact('results', 'user', 'center', 'city', 'tests', 'donation_date', 'donation_time');
+        $pdf = PDF::loadView('results.result_pdf', $data);
+        return $pdf->download($user->name . '-results ' . '.pdf');
+        // return view('results.result_pdf', compact('results', 'user', 'center', 'city', 'tests', 'donation_date', 'donation_time'));
+        
+    }
+
+
     
     
     

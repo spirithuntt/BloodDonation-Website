@@ -178,6 +178,9 @@
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Last Name
                               </th>
+                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                Phone Number
+                                </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                     ID Card
                                 </th>
@@ -221,6 +224,9 @@
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 {{ $donation->user->last_name }}
                               </td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                {{ $donation->user->phone }}
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                     {{ $donation->user->ID_number }}
                                 </td>
@@ -250,12 +256,29 @@
                                 </span>
                                 @endif
                               </td>
+                              @foreach ($results as $result)
+                              @if ($result->donation_id == $donation->id || $result == null)
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                    <a href="{{ route('results.pdf', ['donation_id' => $donation->id]) }}"
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-pink-100 text-pink-700">
+                                        View test result
+                                      </a>
+                                  </td>
+                                  @break
+                              @endif
+                          @endforeach
+                          {{-- The isset() function is used to check if $result is defined before checking its properties, to avoid a 
+                          "Trying to get property 'donation_id' of non-object" error. --}}
+                          @if (!isset($result) || $result->donation_id != $donation->id)
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
                                 <a href="{{ route('donations.add_result_form', ['donation' => $donation->id]) }}"
-                                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-blue-100 text-blue-800">
-                                  Add test result
-                                </a>
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-blue-100 text-blue-800">
+                                    Add test result
+                                  </a>
                               </td>
+                          @endif
+                                
+
                               <td class="px-3 py-3 text-sm font-medium text-gray-900 bg-white">
                                 <button id="dropdownMenuIconHorizontalButton"
                                 data-dropdown-toggle="dropdownDots_{{ $donation->id }}"
