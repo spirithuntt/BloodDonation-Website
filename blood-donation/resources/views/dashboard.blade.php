@@ -31,54 +31,40 @@
             <div class="flex items-center p-8 bg-white shadow rounded-lg">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
-                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#CA8A05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
                 <div>
-                    <span class="block text-2xl font-bold">62</span>
-                    <span class="block text-gray-500">Students</span>
+                    {{-- 'donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'doneDonationsCount', 'centers' --}}
+                    <span class="block text-2xl font-bold">{{$donorsCount}}</span>
+                    <span class="block text-gray-500">Donors</span>
                 </div>
             </div>
             <div class="flex items-center p-8 bg-white shadow rounded-lg">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
-                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>                </div>
                 <div>
-                    <span class="block text-2xl font-bold">6.8</span>
-                    <span class="block text-gray-500">Average mark</span>
+                    <span class="block text-2xl font-bold">{{$doneDonationsCount}}</span>
+                    <span class="block text-gray-500">Done Donations</span>
                 </div>
             </div>
             <div class="flex items-center p-8 bg-white shadow rounded-lg">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
-                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                    </svg>
-                </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>                </div>
                 <div>
-                    <span class="inline-block text-2xl font-bold">9</span>
-                    <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
-                    <span class="block text-gray-500">Underperforming students</span>
+                    <span class="inline-block text-2xl font-bold">{{$pendingDonationsCount}}</span>
+                    <span class="block text-gray-500">Pending</span>
                 </div>
             </div>
             <div class="flex items-center p-8 bg-white shadow rounded-lg">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
-                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
                 </div>
                 <div>
-                    <span class="block text-2xl font-bold">83%</span>
-                    <span class="block text-gray-500">Finished homeworks</span>
+                    <span class="block text-2xl font-bold">{{$centersCount}}</span>
+                    <span class="block text-gray-500">All Our Centers</span>
                 </div>
             </div>
         </div>
