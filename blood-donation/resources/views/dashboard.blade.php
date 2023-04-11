@@ -85,7 +85,7 @@
                                 Add Test
                             </h3>
                             <div class="mt-2">
-                                <form action="{{ route('tests.store') }}" method="POST">
+                                <form action="{{ route('tests.store') }}" method="POST" data-parsley-validate>
                                     @csrf
                                     <div class="mb-4">
                                         <label class="block text-gray-700 text-sm font-bold mb-2" for="test">

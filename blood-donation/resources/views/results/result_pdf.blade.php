@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
     {{-- font awesome link--}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>hh</title>
+    <title>Results</title>
 </head>
 <body class="font-sans">
     <div class="container mx-auto mt-8">
       <div class="text-center">
-        <img class="mx-auto"src="{{ asset('assets/img/logo.png') }}" alt="logo" width="100" height="100">
+       <img class="mx-auto"src="{{ public_path('assets/img/logo.png') }}" alt="logo" width="100" height="100">
         <h1 class="text-2xl font-bold">Blood Test Results</h1>
         <p>Donation Time: {{ $donation_time }}</p>
         <p>Donor First Name: {{ $user->name }}</p>
@@ -50,6 +50,5 @@
                 </td>
               </tr>
             @endforeach
-          </tbody>
-          
+          </tbody> 
 </html>

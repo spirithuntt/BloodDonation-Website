@@ -17,6 +17,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "parsleyjs": "^2.9.2",
         "pickadate": "^5.0.0-alpha.3"
     }
 }

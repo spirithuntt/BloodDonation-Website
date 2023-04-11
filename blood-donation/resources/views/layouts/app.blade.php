@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('node_modules/parsleyjs/src/parsley.css') }}">
+<script src="{{ asset('node_modules/parsleyjs/dist/parsley.min.js') }}"></script>
+
     <link src="{{ asset('assets/css/app.css') }}">
     {{-- donation hours --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
