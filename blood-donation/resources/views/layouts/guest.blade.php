@@ -12,8 +12,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.12/tailwind-experimental.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
-        <link rel="stylesheet" href="{{ asset('node_modules/parsleyjs/src/parsley.css') }}">
-<script src="{{ asset('node_modules/parsleyjs/dist/parsley.min.js') }}"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.3/parsley.css" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.3/parsley.min.js" integrity="sha512-x70Q7VzGvR0F7tAdYZZtSQSfDMM50vBnPzQ9GMyKtn8f4Wbbwnv4DXH7KTjSoFKszrPdkrKspNMX5OJ9pG5Nhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
 
 
         <!-- Scripts -->

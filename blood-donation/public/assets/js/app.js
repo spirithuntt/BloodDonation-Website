@@ -58,7 +58,7 @@ dropdownToggleButtonsCenters.forEach(button => {
 //!dropdown for cities table
 const dropdownDotsCities = document.getElementById("dropdownDotsCities");
 const dropdownMenuIconHorizontalButtonCities = document.getElementById("dropdownMenuIconHorizontalButtonCities");
-
+console.log("dropdownDotsCities", dropdownDotsCities);
 document.addEventListener("click", function(event) {
   if (!dropdownDotsCities.contains(event.target)) {
     dropdownDotsCities.classList.add("hidden");

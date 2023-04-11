@@ -61,7 +61,6 @@
                           <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
                           <td class="text-left py-3 px-4">{{ $donation->date }}</td>
                           {{-- <td class="text-left py-3 px-4">{{ $donation->test_results }}</td> --}}
-                          
                       </tr>
                       @endforeach
                     @else

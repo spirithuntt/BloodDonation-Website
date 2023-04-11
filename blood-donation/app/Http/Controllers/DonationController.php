@@ -14,9 +14,6 @@ use App\Models\BusinessHour;
 
 class DonationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //get the donations from the database 
@@ -27,12 +24,9 @@ class DonationController extends Controller
     //just for admin
     public function showDonationDetails()
     {
-        //get the donations from the database for admin
         $donations = Donation::all();
-        //compact test and result
         $tests = Test::all();
         $results = Result::all();
-        //get statistics methods for the home page
         $doneDonationsCount = $this->getDoneDonationsCount();
         $pendingDonationsCount = $this->getPendingDonationsCount();
         $donorsCount = $this->getDonorsCount();
@@ -40,9 +34,6 @@ class DonationController extends Controller
         return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //get user's data so he can update it
@@ -58,55 +49,43 @@ class DonationController extends Controller
         return view('appointments.schedule-appointment', compact('user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'phone' => 'required',
-        //     'city_id' => 'required',
-        //     'center_id' => 'required',
-        //     'donation_type_id' => 'required',
-        //     'blood_type_id' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'ID_number' => 'required',
+            'phone' => 'required',
+            'city_id' => 'required',
+            'center_id' => 'required',
+            'donation_type_id' => 'required',
+            'blood_type_id' => 'required',
+        ]);
         $user = auth()->user();
         $user->update($request->all());
         $user->donations()->create($request->all());
         return redirect()->route('reserve')->with('success', 'Your appointment has been scheduled successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Donation $donation)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Donation $donation)
     {
-        // get donation's user data so the admin can update it
         $user = $donation->user;
-        //get the cities from the database
         $cities = $this->getCities();
-        //get the centers from the database
         $centers = $this->getCenters();
-        //get the donation types from the database
         $donationTypes = $this->getDonationTypes();
-        //get the blood types from the database
         $bloodTypes = $this->getBloodTypes();
         return view('donations.edit', compact('donation', 'user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, Donation $donation)
     {
         $donation->update($request->all());
@@ -114,9 +93,7 @@ class DonationController extends Controller
         return redirect()->route('dashboard')->with('success', 'The Donation has been updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Donation $donation)
     {
         $donation->delete();
@@ -219,14 +196,6 @@ class DonationController extends Controller
     {
         return Donation::where('is_donated', 0)->count();
     }
-
-
-
-
-
-
-
-
 
 
     public function getCities()

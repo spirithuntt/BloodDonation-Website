@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
-     <link rel="stylesheet" href="{{ asset('node_modules/parsleyjs/src/parsley.css') }}">
-<script src="{{ asset('node_modules/parsleyjs/dist/parsley.min.js') }}"></script>
 
     <link src="{{ asset('assets/css/app.css') }}">
     {{-- donation hours --}}
@@ -30,7 +28,9 @@
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     {{-- donation hours --}}
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.3/parsley.css" integrity="sha512-LQ6f5+6B/YQaZkRCEZ+9nUsHevoa/Bd3Bl3bFpJnupD+Y40YwUBVq3xvM0m9A9O9kXY7V8wdTtTJ7VxlFfJ1Yg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.3/parsley.min.js" integrity="sha512-x70Q7VzGvR0F7tAdYZZtSQSfDMM50vBnPzQ9GMyKtn8f4Wbbwnv4DXH7KTjSoFKszrPdkrKspNMX5OJ9pG5Nhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     
 
     <!-- Scripts -->
