@@ -21,12 +21,7 @@ class DonationController extends Controller
     {
         //get the donations from the database 
         $donations = Donation::all();
-        //get statistics methods for the home page
-        $doneDonationsCount = $this->getDoneDonationsCount();
-        $pendingDonationsCount = $this->getPendingDonationsCount();
-        $usersCount = $this->getUsersCount();
-        $centers = $this->getCenters();
-        return view('home', compact('donations', 'doneDonationsCount', 'pendingDonationsCount', 'usersCount', 'centers'));
+        return view('home', compact('donations'));
     }
 
     //just for admin
@@ -37,7 +32,12 @@ class DonationController extends Controller
         //compact test and result
         $tests = Test::all();
         $results = Result::all();
-        return view('dashboard', compact('donations', 'tests', 'results'));
+        //get statistics methods for the home page
+        $doneDonationsCount = $this->getDoneDonationsCount();
+        $pendingDonationsCount = $this->getPendingDonationsCount();
+        $donorsCount = $this->getDonorsCount();
+        $centersCount = $this->getCenters()->count();
+        return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount'));
     }
 
     /**
@@ -211,18 +211,13 @@ class DonationController extends Controller
     {
         return Donation::where('is_donated', 1)->count();
     }
-    // public function getDonorsCount()
-    // {
-    //     return User::where('role', 'donor')->count();
-    // }
+    public function getDonorsCount()
+    {
+        return Donation::where('is_donated', 1)->groupBy('user_id')->count();
+    }
     public function getPendingDonationsCount()
     {
         return Donation::where('is_donated', 0)->count();
-    }
-
-    public function getUsersCount()
-    {
-        return User::count();
     }
 
 
