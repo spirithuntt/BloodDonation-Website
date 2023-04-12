@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('test_id')->constrained();
-            $table->foreignId('donation_id')->constrained();
+            $table->foreignId('donation_id')->constrained()->onDelete('cascade');
             $table->boolean('passed')->nullable();
             $table->float('result_number')->nullable();
         });

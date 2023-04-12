@@ -47,28 +47,46 @@
                           <th class="text-left py-3 px-4 font-semibold">Center Name</th>
                           <th class="text-left py-3 px-4 font-semibold">City Name</th>
                           <th class="text-left py-3 px-4 font-semibold">Date</th>
-                          {{-- <th class="text-left py-3 px-4 font-semibold">Test Results</th> --}}
+                          <th class="text-left py-3 px-4 font-semibold">Test Results</th>
                       </tr>
                   </thead>
                   <tbody>
                     @if (count($donations) > 0)
-                      @foreach ($donations as $donation)
-                      <tr class="text-gray-700">
-                          <td class="text-left py-3 px-4">{{ $donation->id }}</td>
-                          <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
-                          <td class="text-left py-3 px-4">{{ $donation->donation_type->type }}</td>
-                          <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
-                          <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
-                          <td class="text-left py-3 px-4">{{ $donation->date }}</td>
-                          {{-- <td class="text-left py-3 px-4">{{ $donation->test_results }}</td> --}}
-                      </tr>
-                      @endforeach
+                        @foreach ($donations as $donation)
+                            <tr class="text-gray-700">
+                                <td class="text-left py-3 px-4">{{ $donation->id }}</td>
+                                <td class="text-left py-3 px-4">{{ $donation->blood_type->type }}</td>
+                                <td class="text-left py-3 px-4">{{ $donation->donation_type->type }}</td>
+                                <td class="text-left py-3 px-4">{{ $donation->center->center_name }}</td>
+                                <td class="text-left py-3 px-4">{{ $donation->center->city->city_name }}</td>
+                                <td class="text-left py-3 px-4">{{ $donation->date }}</td>
+                                @foreach ($results as $result)
+                                @if ($result->donation_id == $donation->id || $result == null)
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                                      <a href="{{ route('results.pdf', ['donation_id' => $donation->id]) }}"
+                                          class="px-2 inline-flex text-xs leading-5 font-semibold rounded bg-pink-100 text-pink-700">
+                                          View test result
+                                        </a>
+                                    </td>
+                                    @break
+                                @endif
+                            @endforeach
+                            {{-- The isset() function is used to check if $result is defined before checking its properties, to avoid a 
+                            "Trying to get property 'donation_id' of non-object" error. --}}
+                            @if (!isset($result) || $result->donation_id != $donation->id)
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 bg-white">
+                              not Available
+                            </td>
+                        @endif
+                            </tr>
+                        @endforeach
                     @else
-                      <tr class="text-gray-500">
-                        <td class="text-left py-3 px-4" colspan="7">You didnt Donate or Schedule a Donation appointment Before</td>
-                      </tr>
+                        <tr class="text-gray-500">
+                            <td class="text-left py-3 px-4" colspan="7">You didn't donate or schedule a donation appointment before</td>
+                        </tr>
                     @endif
-                  </tbody>
+                </tbody>
+                
               </table>
                 </div>
             </div>

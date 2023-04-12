@@ -18,7 +18,8 @@ class DonationController extends Controller
     {
         //get the donations from the database 
         $donations = Donation::all();
-        return view('home', compact('donations'));
+        $results = Result::all();
+        return view('home', compact('donations', 'results'));   
     }
 
     //just for admin

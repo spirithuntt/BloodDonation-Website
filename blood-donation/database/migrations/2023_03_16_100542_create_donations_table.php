@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
+            //if the user is deleted the donation is deleted
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('center_id')->constrained();
             $table->foreignId('blood_type_id')->constrained();
             $table->foreignId('donation_type_id')->constrained();
             $table->boolean('is_donated')->default(false);
             $table->date('date')->nullable();
             $table->time('time')->nullable();
+        
+
         });
     }
 
