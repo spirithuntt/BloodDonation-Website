@@ -34,6 +34,11 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'result_type' => 'required',
+            'result_number' => 'required',
+            'passed' => 'required',
+        ]);
         //get the donation id from the request
         $donation_id = $request->donation_id;
     
