@@ -9,6 +9,7 @@ use App\Http\Livewire\AppointmentForm;
 use App\Http\Controllers\BusinessHourController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,3 +91,8 @@ Route::get('/dashboard', [DonationController::class, 'showDonationDetails'])->na
 
 //get results pdf
 Route::get('/donations/{donation_id}/results/pdf', [ResultController::class, 'generatePDF'])->name('results.pdf');
+
+
+//contact us page
+Route::post('/', [ContactController::class, 'store'])->name('contact.store');
+

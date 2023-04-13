@@ -5,6 +5,19 @@
             <div class="py-4">
                 <h2 class="text-lg font-medium leading-6 text-red-700">Center Data</h2>
             </div>
+            <div class="flex justify-end mb-4">
+                <div class="relative">
+                    <input type="search"
+                           wire:model.debounce.500ms="search"
+                           class="border-gray-300 shadow-sm focus:ring-red-700 focus:border-red-700 block w-full pr-10 sm:text-sm rounded-md"
+                           placeholder="Search Centers...">
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <svg class="h-4 w-4 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M22 22l-6-6M13 10a7 7 0 1 1 0-4 7 7 0 0 1 0 4z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
             <div class="flex flex-col mt-2">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

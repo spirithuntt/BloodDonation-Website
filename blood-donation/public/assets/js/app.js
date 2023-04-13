@@ -30,15 +30,79 @@ $(document).ready(function() {
       });
     });
   });
+  //!parsley
+  $(form).parsley();
+   //!parsley
+// JavaScript code for the dashboard table search input
+function handleDashboardSearch() {
+  // Get the input field and the table rows
+  const searchInputDashboard = document.getElementById('dashboardSearchInput');
+  const tableRowsDashboard = document.querySelectorAll('#dashboardTable tbody tr');
+  
+  // Convert the search input value to lowercase
+  const searchTermDashboard = searchInputDashboard.value.toLowerCase();
+  
+  // Loop through all the table rows
+  tableRowsDashboard.forEach(row => {
+    // Get the row's text content and convert to lowercase
+    const rowTextDashboard = row.textContent.toLowerCase();
+    
+    // If the row text contains the search term, show the row
+    // Otherwise, hide the row
+    if (rowTextDashboard.includes(searchTermDashboard)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+// JavaScript code for the donations table search input
+function handleDonationSearch() {
+  // Get the input field and the table rows
+  const searchInputDonation = document.getElementById('donationSearchInput');
+  const tableRowsDonation = document.querySelectorAll('#donationTable tbody tr');
+  
+  // Convert the search input value to lowercase
+  const searchTermDonation = searchInputDonation.value.toLowerCase();
+  
+  // Loop through all the table rows
+  tableRowsDonation.forEach(row => {
+    // Get the row's text content and convert to lowercase
+    const rowTextDonation = row.textContent.toLowerCase();
+    
+    // If the row text contains the search term, show the row
+    // Otherwise, hide the row
+    if (rowTextDonation.includes(searchTermDonation)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+// Attach event listeners to the search inputs
+const searchInputDashboard = document.getElementById('dashboardSearchInput');
+searchInputDashboard.addEventListener('input', handleDashboardSearch);
+
+console.log("test");
+
+const searchInputDonation = document.getElementById('donationSearchInput');
+searchInputDonation.addEventListener('input', handleDonationSearch);
+
+
+
 
 //!dropdown for donation in dashboard
 const dropdownToggleButtons = document.querySelectorAll('[data-dropdown-toggle]');
 dropdownToggleButtons.forEach(button => {
-  const donationId = button.dataset.dropdownToggle.split('_')[1];
-  const dropdownId = `dropdownDots_${donationId}`;
+const donationId = button.dataset.dropdownToggle.split('_')[1];
+const dropdownId = `dropdownDots_${donationId}`;
 let dropdown = document.getElementById("dropdownId");
 dropdown.classList.toggle("hidden");
 });
+
+
 //!dropdown for centers  table
 const dropdownToggleButtonsCenters = document.querySelectorAll('[data-dropdown-toggle]');
         
@@ -54,6 +118,7 @@ dropdownToggleButtonsCenters.forEach(button => {
     dropdown.classList.toggle('hidden');
   });
 });
+  
 
 //!dropdown for cities table
 const dropdownDotsCities = document.getElementById("dropdownDotsCities");
@@ -69,32 +134,31 @@ dropdownMenuIconHorizontalButtonCities.addEventListener("click", function() {
   dropdownDotsCities.classList.toggle("hidden");
 });
 
-  
 
 
 
 //!modal
-$(document).ready(function() {
-    // Modal toggle
-    $('[data-modal-toggle]').on('click', function() {
-        var target = $(this).data('modal-target');
-        $(target).toggleClass('hidden');
-    });
+// $(document).ready(function() {
+//     // Modal toggle
+//     $('[data-modal-toggle]').on('click', function() {
+//         var target = $(this).data('modal-target');
+//         $(target).toggleClass('hidden');
+//     });
 
-    // Modal hide
-    $('[data-modal-hide]').on('click', function() {
-        var target = $(this).data('modal-hide');
-        $(target).addClass('hidden');
-    });
+//     // Modal hide
+//     $('[data-modal-hide]').on('click', function() {
+//         var target = $(this).data('modal-hide');
+//         $(target).addClass('hidden');
+//     });
 
-    // Modal backdrop
-    $('[data-modal-backdrop]').on('click', function(e) {
-        var target = $(this).data('modal-backdrop');
-        if (e.target.id == target) {
-            $(this).addClass('hidden');
-        }
-    });
-});
+//     // Modal backdrop
+//     $('[data-modal-backdrop]').on('click', function(e) {
+//         var target = $(this).data('modal-backdrop');
+//         if (e.target.id == target) {
+//             $(this).addClass('hidden');
+//         }
+//     });
+// });
 
 
 

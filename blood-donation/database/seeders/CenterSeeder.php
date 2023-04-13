@@ -24,6 +24,7 @@ class CenterSeeder extends Seeder
             ['center_name' => 'Croissant Rouge Mehdia', 'city_id' => 3, 'phone' => '+212 6'.mt_rand(10,99).mt_rand(10000000,99999999), 'address' => 'Mehdia, Kénitra'],
             ['center_name' => 'Croissant Rouge Sakniya', 'city_id' => 3, 'phone' => '+212 6'.mt_rand(10,99).mt_rand(10000000,99999999), 'address' => 'Sakniya, Kénitra'],
             ['center_name' => 'Croissant Rouge Fes Zouagha', 'city_id' => 4, 'phone' => '+212 6'.mt_rand(10,99).mt_rand(10000000,99999999), 'address' => 'Zouagha, Fès'],
+            ['center_name' => 'Croissant Rouge gueliz', 'city_id' => 4, 'phone' => '+212 6'.mt_rand(10,99).mt_rand(10000000,99999999), 'address' => 'marrakech, safi'],
         ];
         //create and save
         foreach($centers as $center)

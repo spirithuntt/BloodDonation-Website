@@ -9,6 +9,7 @@ use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\BusinessHour;
 
@@ -16,8 +17,8 @@ class DonationController extends Controller
 {
     public function index()
     {
-        //get the donations from the database 
-        $donations = Donation::all();
+        $userId = auth()->user()->id;
+        $donations = Donation::where('user_id', $userId)->get();
         $results = Result::all();
         return view('home', compact('donations', 'results'));   
     }
@@ -89,6 +90,16 @@ class DonationController extends Controller
 
     public function update(Request $request, Donation $donation)
     {
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'ID_number' => 'required | min:4',
+            'phone' => 'required | min:10',
+            'city_id' => 'required',
+            'center_id' => 'required',
+            'donation_type_id' => 'required',
+            'blood_type_id' => 'required',
+        ]);
         $donation->update($request->all());
         $donation->user->update($request->all());
         return redirect()->route('dashboard')->with('success', 'The Donation has been updated successfully');

@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>moroccan red crescent</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}">
         {{-- include fontawesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -22,13 +23,14 @@
     </head>
             <body class="bg-gray-100">
                 <!-- navbar with a logo in the left and two buttons int right -->
-                <nav class="flex items-center justify-between flex-wrap p-6 bg-gray-800 text-white">
+                
+                <nav class="flex items-center justify-between flex-wrap p-6 bg-gray-800 text-white" id="navbarNav">
                     <div class="flex items-center text-white mr-6">
                       <img src="{{asset('assets/img/logo.png')}}" alt="logo" class="fill-current h-8 w-8 mr-2">
                       <span class="font-serif text-2xl tracking-tight">Moroccan Red Crescent</span>
                     </div>
                     <div class="block lg:hidden">
-                      <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-red-700 hover:border-red-700" data-toggle="collapse" data-target="#navbarNav">
+                      <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-red-700 hover:border-red-700" data-toggle="collapse" data-target="#navbarNavContent">
                         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
                           <title>Menu</title>
                           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -52,8 +54,8 @@
                       </div>
                       <div class="buttons lg:flex lg:items-center">
                         @if (Route::has('login'))
-                        @auth
-                        <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
+                          @auth
+                            <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
                           @else
                             <a href="{{ route('login') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Login</a>
                             @if (Route::has('register'))
@@ -63,7 +65,11 @@
                         @endif
                       </div>
                     </div>
-                    </nav>
+                  </nav>
+                  <div id="navbarNavContent" class="collapse">
+                    <!-- Navigation links go here -->
+                  </div>
+                  
                 <!-- black hero section -->
                 <section class="bg-gray-800 text-white">
                     <img src="{{asset('assets/img/hero.png')}}" alt="hero" class="w-1/4 float-right m-0">
@@ -107,7 +113,6 @@
                     </div>
                 </section>
                 <!-- poäj -->
-            
                 <!-- donor testimonials section -->
                 <section class="bg-white py-10">
                     <div class="container mx-auto px-6">
@@ -153,7 +158,8 @@
                 <section class="py-16 px-6" id="contact">
                     <div class="max-w-4xl mx-auto">
                         <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-                        <form class="grid grid-cols-2 gap-6">
+                        <form class="grid grid-cols-2 gap-6" method="POST" action="{{ route('contact.store') }}">
+                            @csrf
                             <label for="name" class="sr-only">Full Name</label>
                             <input type="text" name="name" id="name" placeholder="Full Name"
                                 class="border border-gray-400 rounded-lg py-2 px-4">
@@ -170,9 +176,9 @@
                             <input name="message" id="message" cols="30" rows="10" placeholder="Message"
                                 class="border border-gray-400 rounded-lg py-2 px-4">
                             
-                            <button 
-                                class="text-white py-2 px-6 rounded-lg shadow-lg font-bold bg-red-700 hover:bg-red-900 transition duration-300 col-span-2">Send
-                                Message</button>
+                            <button type="submit"
+                                class="text-white py-2 px-6 rounded-lg shadow-lg font-bold bg-red-700 hover:bg-red-500 transition duration-300 col-span-2" style="background-color: #B91C1C;
+                                ">Send Message</button>
                         </form>
                     </div>
                 </section>
@@ -376,5 +382,14 @@
                     </div>
                 </footer>
             </div>
+            <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
             </body>
 </html>

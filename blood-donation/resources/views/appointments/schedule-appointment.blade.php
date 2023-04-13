@@ -25,14 +25,14 @@
                                 Name</label>
                             <input id="first_name" name="name" type="text"
                                 class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                                value={{ $user->name }} data-parsley-required="true">
+                                value={{ $user->name }} data-parsley-required data-parsley-trigger="keyup" >
                         </div>
                         <div>
                             <label for="last_name" class="block text-sm font-medium text-gray-600 mb-2">Last
                                 Name</label>
                             <input id="last_name" name="last_name" type="text"
                                 class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                                value={{ $user->last_name }} data-parsley-required="true">
+                                value={{ $user->last_name }} data-parsley-required data-parsley-trigger="keyup">
                         </div>
                     </div>
                     {{-- ID_number --}}
@@ -41,7 +41,7 @@
                             Number</label>
                         <input id="id_number" name="ID_number" type="text"
                             class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                            value={{ $user->ID_number }} data-parsley-required="true">
+                            value={{ $user->ID_number }} data-parsley-required data-parsley-trigger="keyup" minlength="4" 	>
                     </div>
 
                     {{-- phone --}}
@@ -49,14 +49,14 @@
                         <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">Phone</label>
                         <input id="phone" name="phone" type="text"
                             class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                            value={{ $user->phone }} data-parsley-required="true">
+                            value={{ $user->phone }} data-parsley-required data-parsley-trigger="keyup" minlength="10" 	>
                     </div>
                     {{-- blood type --}}
                     <div class="mt-6">
                         <label for="blood_type" class="block text-sm font-medium text-gray-600 mb-2">Blood Type</label>
                         <select id="blood_type" name="blood_type_id"
                             class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                            data-parsley-required="true">
+                            data-parsley-required data-parsley-trigger="keyup">
                             <option value="">Select a blood type</option>
                             @foreach ($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}">{{ $bloodType->type }}</option>
@@ -71,7 +71,7 @@
                             Type (not required)</label>
                         <select id="donation_type" name="donation_type_id"
                             class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                            data-parsley-required="true">
+                            data-parsley-required data-parsley-trigger="keyup">
                             <option value="">Select a donation type</option>
                             @foreach ($donationTypes as $donationType)
                                 <option value="{{ $donationType->id }}">{{ $donationType->type }}</option>
@@ -92,7 +92,7 @@
                             <select id="city_location" name="city_id"
                                 class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
                                 data-url="{{ url('api/fetch-donation-centers') }}" data-token="{{ csrf_token() }}"
-                                data-parsley-required="true">
+                                data-parsley-required data-parsley-trigger="keyup">
                                 <option value="">Select a city location</option>
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->id }}">{{ $city->city_name }}</option>
@@ -104,7 +104,7 @@
                                 Center</label>
                             <select id="donation_center" name="center_id"
                                 class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm"
-                                data-parsley-required="true">
+                                data-parsley-required data-parsley-trigger="keyup">
                                 <option value="">Select a donation center</option>
                             </select>
                         </div>

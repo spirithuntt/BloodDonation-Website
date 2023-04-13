@@ -6,12 +6,12 @@
             </div>
             
             <div class="flex flex-wrap items-start justify-end -mb-3">
-                <button data-modal-toggle data-modal-target="#modalTest"
+                <button data-modal-target="popup-modal-test" data-modal-toggle="popup-modal-test"
                     class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-500 focus:bg-red-700 rounded-md ml-6 mb-3">
                     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                     </svg>
                     Create new Test
                 </button>
@@ -34,7 +34,6 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#CA8A05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
                 <div>
-                    {{-- 'donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'doneDonationsCount', 'centers' --}}
                     <span class="block text-2xl font-bold">{{$donorsCount}}</span>
                     <span class="block text-gray-500">Donors</span>
                 </div>
@@ -69,92 +68,73 @@
             </div>
         </div>
     </div>
-    <!-- Test modal popoup-->
-    <div id="modalTest" class="hidden fixed inset-0 z-10 overflow-y-auto" data-modal-backdrop>
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="">
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-lg text-red-700 font-bold" id="modal-headline">
-                                Add Test
-                            </h3>
-                            <div class="mt-2">
-                                <form action="{{ route('tests.store') }}" method="POST" data-parsley-validate>
-                                    @csrf
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="test">
-                                            Test
-                                        </label>
-                                        <input type="text" name="test_name" id="test"
-                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
-                                            placeholder="Test">
-                                    </div>
-                                    {{-- criteria --}}
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="criteria">
-                                            Criteria
-                                        </label>
-                                        <input type="text" name="criteria" id="criteria"
-                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500"
-                                            placeholder="criteria">
-                                    </div>
-                                    {{-- donation_type_id --}}
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2"
-                                            for="donation_type_id">
-                                            Donation Type
-                                        </label>
-                                        @php
-                                            $donation_types = App\Models\DonationType::all();
-                                        @endphp
-                                        <select name="donation_type_id" id="donation_type_id"
-                                            class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                                            @foreach ($donation_types as $donation_type)
-                                                <option value="{{ $donation_type->id }}">{{ $donation_type->type }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
-                                    {{-- result_type_id --}}
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2"
-                                            for="result_type_id">
-                                            Result Type
-                                        </label>
-                                        <select name="result_type" id="result_type_id"
-                                            class="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
-                                            <option value="number">Number</option>
-                                            <option value="boolean">Negative or Positive</option>
-                                        </select>
-                                    </div>
 
-                                    {{-- buttons --}}
-                                    <div class="buttons">
-                                        <button type="submit"
-                                            class="shadow bg-red-700 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                                            Save
-                                        </button>
-                                        <button type="button"
-                                            class="shadow bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                            data-modal-close>
-                                            Cancel
-                                        </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+
+
+  {{-- tet popup modal --}}
+  <div id="popup-modal-test" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-md max-h-full">
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <form action="{{ route('tests.store') }}" method="POST" data-parsley-validate id="form">
+                @csrf
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="test">Test Name</label>
+                    <input type="text" name="test_name" id="test" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Enter test name" required data-parsley-required data-parsley-trigger="keyup">
                 </div>
-            </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="criteria">Criteria</label>
+                    <input type="text" name="criteria" id="criteria" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Enter criteria" required data-parsley-required data-parsley-trigger="keyup">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2"
+                        for="donation_type_id">
+                        Donation Type
+                    </label>
+                    @php
+                        $donation_types = App\Models\DonationType::all();
+                    @endphp
+                    <select name="donation_type_id" id="donation_type_id"
+                        class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" required>
+                        @foreach ($donation_types as $donation_type)
+                            <option value="{{ $donation_type->id }}">{{ $donation_type->type }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                {{-- result_type_id --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2"
+                        for="result_type_id">
+                        Result Type
+                    </label>
+                    <select name="result_type" id="result_type_id"
+                        class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500">
+                        <option value="1">Positive</option>
+                        <option value="0">Negative</option>
+                    </select>
+                </div>
+                {{-- buttons --}}
+                <div class="flex justify-end">
+                    <button type="button"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        data-modal-close="popup-modal">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Save
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     </div>
+    </div>
+
+
+
 
 {{-- Donation data table --}}
 <div class="flex-grow">
@@ -162,11 +142,24 @@
     <div class="py-4">
         <h2 class="text-lg font-medium leading-6 text-red-700">Donation Data</h2>
     </div>
+    <div class="flex justify-end mb-4">
+        <div class="relative">
+            <input type="search" id="dashboardSearchInput"
+                   wire:model.debounce.500ms="search"
+                   class="border-gray-300 shadow-sm focus:ring-red-700 focus:border-red-700 block w-full pr-10 sm:text-sm rounded-md"
+                   placeholder="Search Donations...">
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <svg class="h-4 w-4 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M22 22l-6-6M13 10a7 7 0 1 1 0-4 7 7 0 0 1 0 4z" />
+                </svg>
+            </div>
+        </div>
+    </div>
     <div class="flex flex-col mt-2">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200" id="dashboardTable">
                           <thead class="bg-gray-800">
                             <tr>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
@@ -319,5 +312,5 @@
     </div>
 </div>
 </div>
-                          
+
 </x-app-layout>

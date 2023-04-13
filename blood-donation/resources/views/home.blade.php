@@ -23,22 +23,17 @@
                   <h2 class="text-white font-semibold text-lg">My Donations History</h2>
                   <div class="flex items-center">
                     <div class="relative mr-4">
-                      <input type="text" class="w-48 px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-gray-500" placeholder="Search...">
+                      <input type="text" class="w-48 px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-gray-500" placeholder="Search..." id="donationSearchInput">
                       <button class="absolute top-0 right-0 mt-3 mr-3">
                         <svg class="h-4 w-4 text-gray-500 hover:text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                       </button>
                     </div>
-                    <div>
-                      <select class="px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-gray-500">
-                        <option selected>Filter by Donation type</option>
-                        <option value="O+">plasma</option>
-                      </select>
-                    </div>
                   </div>
                 </div>
-                <table class="w-full">
+                  <div class="overflow-x-auto">
+                <table class="w-full" id="donationTable">
                   <thead>
                       <tr class="bg-gray-100 text-gray-500 uppercase tracking-wide text-xs">
                           <th class="text-left py-3 px-4 font-semibold">Donation Id</th>
@@ -88,6 +83,7 @@
                 </tbody>
                 
               </table>
+            </div>
                 </div>
             </div>
 </x-app-layout>

@@ -13,20 +13,20 @@
                     Add Center
                   </h3>
                   <div class="mt-2">
-                    <form action="{{ route('cities.update', $city->id) }}" method="POST">
+                    <form action="{{ route('cities.update', $city->id) }}" method="POST" data-parsley-validate>
                             @csrf
                             @method('PUT')
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                                 City
                               </label>
-                              <input type="text" name="city_name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="City" value="{{ $city->city_name }}">
+                              <input type="text" name="city_name" id="city" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="City" value="{{ $city->city_name }}" data-parsley-required data-parsley-trigger="keyup" type="number">
                             </div>
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="region">
                                 Region
                               </label>
-                              <input type="text" name="region" id="region" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="region" value="{{ $city->region }}">
+                              <input type="text" name="region" id="region" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="region" value="{{ $city->region }}" data-parsley-required data-parsley-trigger="keyup" type="number">
                             </div>
                           {{-- buttons --}}
                           <div class="buttons">

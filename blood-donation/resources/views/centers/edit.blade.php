@@ -13,26 +13,26 @@
                           Add Center
                         </h3>
                         <div class="mt-2">
-                          <form action="{{ route('centers.update', $center->id) }}" method="POST">
+                          <form action="{{ route('centers.update', $center->id) }}" method="POST" data-parsley-validate>
                             @csrf
                             @method('PUT')
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="center">
                                 Center
                               </label>
-                              <input type="text" name="center_name" id="center" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Center" value="{{$center->center_name}}">
+                              <input type="text" name="center_name" id="center" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Center" value="{{$center->center_name}}" data-parsley-required data-parsley-trigger="keyup">
                             </div>
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
                                 Address
                               </label>
-                              <input type="text" name="address" id="address" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="address" value="{{$center->address}}">
+                              <input type="text" name="address" id="address" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="address" value="{{$center->address}}" data-parsley-required data-parsley-trigger="keyup">
                             </div>
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                                 Phone
                               </label>
-                              <input type="text" name="phone" id="phone" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="phone" value="{{$center->phone}}">
+                              <input type="text" name="phone" id="phone" class="bg-gray-200  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" placeholder="phone" value="{{$center->phone}}" data-parsley-required data-parsley-trigger="keyup" type="number"	>
                             </div>
                             <div class="mb-4">
                               <label class="block text-gray-700 text-sm font-bold mb-2" for="city">

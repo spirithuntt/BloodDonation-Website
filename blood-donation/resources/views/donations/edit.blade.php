@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-3xl font-bold mb-8 text-gray-800 ">Update Donor's Personal Information</h1>
         
-                    <form action="{{ route('donation.update', $donation->id) }}" method="POST">
+                    <form action="{{ route('donation.update', $donation->id) }}" method="POST" data-parsley-validate>
                         @csrf
                         @method('PUT')
                         {{-- donation status --}}
@@ -29,23 +29,23 @@
                         <div class="grid grid-cols-2 gap-6 mt-6">
                             <div>
                                 <label for="first_name" class="block text-sm font-medium text-gray-600 mb-2">First Name</label>
-                                <input id="first_name" name="name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->name}}>
+                                <input id="first_name" name="name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->name}} data-parsley-required data-parsley-trigger="keyup">
                             </div>
                             <div>
                                 <label for="last_name" class="block text-sm font-medium text-gray-600 mb-2">Last Name</label>
-                                <input id="last_name" name="last_name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->last_name}}>
+                                <input id="last_name" name="last_name" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->last_name}} data-parsley-required data-parsley-trigger="keyup">
                             </div>
                         </div>
                         {{-- ID_number --}}
                         <div class="mt-6">
                             <label for="id_number" class="block text-sm font-medium text-gray-600 mb-2">ID Card's Number</label>
-                            <input id="id_number" name="ID_number" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->ID_number}}>
+                            <input id="id_number" name="ID_number" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->ID_number}} data-parsley-required data-parsley-trigger="keyup" minlength="4">
                         </div>
                         
                         {{-- phone --}}
                         <div class="mt-6">
                             <label for="phone" class="block text-sm font-medium text-gray-600 mb-2">Phone</label>
-                            <input id="phone" name="phone" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->phone}}>
+                            <input id="phone" name="phone" type="text" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" value={{$user->phone}} data-parsley-required data-parsley-trigger="keyup" type="number" minlength="10">
                         </div>
                         {{-- blood type --}}
                         <div class="mt-6">
@@ -76,7 +76,7 @@
         
                         <div>
                             <label for="city_location" class="block text-sm font-medium text-gray-600 mb-2">City Location</label>
-                            <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" data-url="{{ url('api/fetch-donation-centers') }}" data-token="{{ csrf_token() }}">
+                            <select id="city_location" name="city_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" data-url="{{ url('api/fetch-donation-centers') }}" data-token="{{ csrf_token() }}" data-parsley-required data-parsley-trigger="keyup">
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->id }}">{{ $city->city_name}}</option>
                                 @endforeach
@@ -84,7 +84,7 @@
                         </div>
                         <div class="">
                             <label for="donation_center" class="block text-sm font-medium text-gray-600 mb-2">Donation Center</label>
-                            <select id="donation_center" name="center_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm">
+                            <select id="donation_center" name="center_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-00 focus:border-red-500 sm:text-sm" data-parsley-required data-parsley-trigger="keyup">
                                 @foreach ($centers as $center)
                                     <option value="{{ $center->id }}">{{ $center->center_name}}</option>
                                 @endforeach

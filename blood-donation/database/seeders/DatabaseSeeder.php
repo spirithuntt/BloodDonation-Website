@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             AppointmentSeeder::class,
             UserSeeder::class,
             TestSeeder::class,
+            DonationSeeder::class,
         ]);
     }
 }
