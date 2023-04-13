@@ -58,7 +58,7 @@ class ResultController extends Controller
             $result->save();
         }
     
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Results created successfully.');
     }
 
     public function generatePDF($donation_id)

@@ -46,7 +46,7 @@ class TestController extends Controller
         $test->donation_type_id = $request->donation_type_id;
         $test->result_type = $selectedOptionValue;
         $test->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Test created successfully.');
     }
     
     

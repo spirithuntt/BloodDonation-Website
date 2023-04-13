@@ -56,7 +56,7 @@ class CenterController extends Controller
     {
         //return view with center data and cities data
         $cities = $this->getCities();
-        return view('centers.edit', compact('center', 'cities'));
+        return view('centers.edit', compact('center', 'cities'))->with('success', 'Center updated successfully');
 
     }
 
@@ -72,7 +72,7 @@ class CenterController extends Controller
             'city_id' => 'required',
         ]);
         $center->update($request->all());
-        return redirect()->route('centers.index');
+        return redirect()->route('centers.index')->with('success', 'Center updated successfully');
     }
 
     /**

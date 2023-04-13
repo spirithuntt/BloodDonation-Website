@@ -34,7 +34,7 @@ class CityController extends Controller
             'region' => 'required',
         ]);
         City::create($request->all());
-        return redirect()->route('cities.index');
+        return redirect()->route('cities.index')->with('success', 'City created successfully.');
 
     }
 
@@ -65,7 +65,7 @@ class CityController extends Controller
             'region' => 'required',
         ]);
         $city->update($request->all());
-        return redirect()->route('cities.index');
+        return redirect()->route('cities.index')->with('success', 'City updated successfully.');
     }
 
     /**

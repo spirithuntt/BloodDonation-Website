@@ -19,6 +19,7 @@ class BusinessHourController extends Controller
 
        BusinessHour::query()->upsert($request->validated()['data'],['day']);
 
-       return back();
+        return back()->with('success', 'Business hours updated successfully');
+
     }
 }
