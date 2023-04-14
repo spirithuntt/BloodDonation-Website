@@ -96,3 +96,6 @@ Route::get('/donations/{donation_id}/results/pdf', [ResultController::class, 'ge
 //contact us page
 Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
+//genrate QR code
+Route::get('/donations/{donation_id}/qr-code', [DonationController::class, 'generateQRCode'])->name('donations.qr_code');
+

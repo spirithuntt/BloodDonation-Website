@@ -2,7 +2,7 @@
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <div class= "overflow-hidden">
                     <div class="mr-6 p-4">
-                        <h1 class="text-4xl font-semibold mb-2 text-red-700 ">Enter a Result</h1>
+                        <h1 class="text-4xl font-semibold mb-2 text-red-700 ">Add Tests Results</h1>
                     </div>
                 </div>
             </div>

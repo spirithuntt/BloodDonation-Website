@@ -7,11 +7,14 @@ use App\Models\Donation;
 use App\Models\Result;
 use App\Models\Test;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\BusinessHour;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class DonationController extends Controller
 {
@@ -193,6 +196,28 @@ class DonationController extends Controller
         $tests = Test::all();
         return view('results.add_result_form', compact('donation', 'tests'));
     }
+
+    //QR code generator for the appointment with user data
+    public function generateQRCode($donation_id)
+    {
+        $donation = Donation::findOrFail($donation_id);
+        $user = $donation->user;
+        $data = [
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+            'ID_number' => $user->ID_number,
+            'phone' => $user->phone,
+            'date' => $donation->date,
+            'time' => $donation->time,
+        ];
+
+        $qrCode = QrCode::color(185, 28, 28)->format('svg')->size(400)->generate(json_encode($data));
+        return view('appointments.qr_code', compact('qrCode'));
+    }
+    
+
+
+
 
 
     //!statistics methods
