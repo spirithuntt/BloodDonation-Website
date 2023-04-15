@@ -7,12 +7,12 @@
             </div>
             <div class="flex justify-end mb-4">
                 <div class="relative">
-                    <input type="search"
-                           wire:model.debounce.500ms="search"
-                           class="border-gray-300 shadow-sm focus:ring-red-700 focus:border-red-700 block w-full pr-10 sm:text-sm rounded-md"
-                           placeholder="Search Centers...">
+                    <input type="search" wire:model.debounce.500ms="search"
+                        class="border-gray-300 shadow-sm focus:ring-red-700 focus:border-red-700 block w-full pr-10 sm:text-sm rounded-md"
+                        placeholder="Search Centers...">
                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg class="h-4 w-4 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-4 w-4 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M22 22l-6-6M13 10a7 7 0 1 1 0-4 7 7 0 0 1 0 4z" />
                         </svg>
                     </div>
@@ -69,23 +69,25 @@
                                                     data-dropdown-toggle="dropdownDots_{{ $center->id }}"
                                                     class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
                                                     type="button">
-                                                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
-                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                                    </path>
-                                                </svg>
-                                            </button>
+                                                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor"
+                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
                                                 <!-- Dropdown menu -->
                                                 <div id="dropdownDots_{{ $center->id }}"
                                                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                                                     <ul class="py-2 text-sm text-gray-700 "
                                                         aria-labelledby="dropdownMenuIconHorizontalButton">
                                                         <li>
-                                                            <a href="{{ route('centers.edit', $center->id) }}"
+                                                            <button data-modal-toggle="modalCenter"
+                                                                data-modal-target="modalCenter"
+                                                                onclick="edit({{ $center->id }})"
                                                                 class="flex items-center px-4 py-2 hover:bg-gray-100">
                                                                 <span>Edit</span>
-                                                            </a>
+                                                            </button>
                                                         </li>
                                                         <li>
                                                             <form action="{{ route('centers.destroy', $center->id) }}"

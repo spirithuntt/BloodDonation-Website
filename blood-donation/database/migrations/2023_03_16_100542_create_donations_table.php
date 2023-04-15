@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             //if the user is deleted the donation is deleted
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('center_id')->constrained();
+            $table->foreignId('center_id')->constrained()->onDelete('cascade');
             $table->foreignId('blood_type_id')->constrained();
             $table->foreignId('donation_type_id')->constrained();
             $table->boolean('is_donated')->default(false);

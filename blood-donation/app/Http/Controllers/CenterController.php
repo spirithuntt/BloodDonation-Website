@@ -52,12 +52,11 @@ class CenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Center $center)
+    public function edit(string $id)
     {
-        //return view with center data and cities data
-        $cities = $this->getCities();
-        return view('centers.edit', compact('center', 'cities'))->with('success', 'Center updated successfully');
-
+        $center = Center::find($id);
+        // return json response
+        return response()->json($center);
     }
 
     /**

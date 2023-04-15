@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DonationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\BusinessHourController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,10 +32,19 @@ Route::middleware([
 ])->group(function () {
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 
+
+
+//route users
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+//user resource
+// Route::resource('users', UserController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 //city
 Route::resource('cities', CityController::class);
 //center
@@ -65,7 +74,6 @@ Route::post('reserve', [DonationController::class, 'reserve'])->name('reserve');
 Route::put('confirm', [DonationController::class, 'confirm'])->name('confirm');
 
 
-Route::post('/appointments/reserve', [AppointmentController::class, 'reserve'])->name('appointments.reserve');
 
 
 // resource route for the tests
@@ -98,4 +106,6 @@ Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
 //genrate QR code
 Route::get('/donations/{donation_id}/qr-code', [DonationController::class, 'generateQRCode'])->name('donations.qr_code');
+    Route::resource('users', UserController::class);
+});
 

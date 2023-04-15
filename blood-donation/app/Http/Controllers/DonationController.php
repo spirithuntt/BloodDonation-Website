@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Center;
-use App\Models\Donation;
-use App\Models\Result;
 use App\Models\Test;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Center;
+use App\Models\Result;
+use App\Models\Donation;
+use App\Models\BusinessHour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\BusinessHour;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class DonationController extends Controller
@@ -29,6 +30,7 @@ class DonationController extends Controller
     //just for admin
     public function showDonationDetails()
     {
+        $roles=Role::all();
         $donations = Donation::all();
         $tests = Test::all();
         $results = Result::all();
@@ -36,7 +38,7 @@ class DonationController extends Controller
         $pendingDonationsCount = $this->getPendingDonationsCount();
         $donorsCount = $this->getDonorsCount();
         $centersCount = $this->getCenters()->count();
-        return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount'));
+        return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount', 'roles'));
     }
 
     public function create()

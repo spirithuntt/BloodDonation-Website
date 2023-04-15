@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         //run city seeder and donation type seeder and blood type seeder center seeder
         $this->call([
+            RoleSeeder::class,
             CitySeeder::class,
             CenterSeeder::class,
             DonationTypeSeeder::class,

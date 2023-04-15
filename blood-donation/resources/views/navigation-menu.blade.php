@@ -20,6 +20,9 @@
                     <x-nav-link href="{{ route('cities.index') }}" :active="request()->routeIs('cities.index')">
                         {{ __('Cities') }}
                     </x-nav-link> 
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        {{ __('Users') }}
+                    </x-nav-link>
                 </div>
                 {{-- add center and cities index  --}}
             </div>
@@ -149,6 +152,10 @@
             <x-responsive-nav-link href="{{ route('centers.index') }}" :active="request()->routeIs('centers.index')">
                 {{ __('Centers') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('Users') }}
+            </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
@@ -189,7 +196,7 @@
                 </form>
 
                 <!-- Team Management -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                {{-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="border-t border-gray-200"></div>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
@@ -217,7 +224,7 @@
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-switchable-team :team="$team" component="responsive-nav-link" />
                     @endforeach
-                @endif
+                @endif --}}
             </div>
         </div>
     </div>
