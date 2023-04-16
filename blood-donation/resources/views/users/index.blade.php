@@ -23,35 +23,35 @@
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                             <table id="UserTable" class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-800">
+                                <thead class="bg-gray-800 text-white">
                                     <tr>
                                         <th scope="col" width="%1"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase ">
                                             First Name
                                         </th>
                                         <th scope="col" width="%1"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase">
                                             Last Name
                                         </th>
                                         <th scope="col" width="%1"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase">
                                             Email
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase">
                                             Phone
                                         </th>
 
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-center text-white uppercase">
                                             Joined At
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase">
                                             Action
                                         </th>
                                         <th scope="col"
-                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            class="p-4 text-xs font-medium tracking-wider text-left text-white uppercase">
                                             Role
                                         </th>
 

@@ -4,7 +4,7 @@
             <div class="mr-6">
                 <h1 class="text-4xl font-semibold mb-2 text-red-700">Dashboard</h1>
             </div>
-            
+            @if ($userRole == 'admin')
             <div class="flex flex-wrap items-start justify-end -mb-3">
                 <button data-modal-target="popup-modal-test" data-modal-toggle="popup-modal-test"
                     class="inline-flex px-5 py-3 text-white bg-red-700 hover:bg-red-500 focus:bg-red-700 rounded-md ml-6 mb-3">
@@ -25,6 +25,7 @@
                     modify working Hours
                 </a>
             </div>
+            @endif
         </div>
         <div class="flex-grow">
         <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">

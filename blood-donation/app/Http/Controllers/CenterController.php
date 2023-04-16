@@ -10,19 +10,29 @@ class CenterController extends Controller
 {
     public function index()
     {
+        if(!auth()->user()->hasRole('admin')){
+            return redirect()->back()->with('error', 'You are not authorized to access this page');
+        }
+        else{
         $centers = Center::paginate(5);
         return view('centers.index', compact('centers'));
+        }
     }
     public function store(Request $request)
     {
+        if(!auth()->user()->hasRole('admin')){
+            return redirect()->back()->with('error', 'You are not authorized to do this');
+        }
+        else{
         $request->validate([
             'center_name' => 'required',
             'address' => 'required',
-            'phone' => 'required',
+            'phone' => 'required | unique:centers',
             'city_id' => 'required',
         ]);
         Center::create($request->all());
         return redirect()->route('centers.index');
+    }
     }
 
     public function show(Center $center)
@@ -38,6 +48,10 @@ class CenterController extends Controller
 
     public function update(Request $request, Center $center)
     {
+        if(!auth()->user()->hasRole('admin')){
+            return redirect()->back()->with('error', 'You are not authorized to do this');
+        }
+        else{
         $request->validate([
             'center_name' => 'required',
             'address' => 'required',
@@ -47,11 +61,17 @@ class CenterController extends Controller
         $center->update($request->all());
         return redirect()->route('centers.index')->with('success', 'Center updated successfully');
     }
+    }
 
     public function destroy(Center $center)
     {
+        if(!auth()->user()->hasRole('admin')){
+            return redirect()->back()->with('error', 'You are not authorized to do this');
+        }
+        else{
         $center->delete();
         return redirect()->route('centers.index');
+        }
     }
 
     public function getCities()

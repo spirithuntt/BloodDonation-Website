@@ -23,10 +23,16 @@ class DonationController extends Controller
         return view('home', compact('donations', 'results'));   
     }
 
-    //just for admin
+    //just for nurse and admin
     public function showDonationDetails()
     {
+        if(!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('nurse')){
+            return redirect()->back()->with('error', 'You are not authorized to access this page');
+        }
+        else{
         $roles=Role::all();
+        //get just user's auth role name
+        $userRole = auth()->user()->roles->first()->name;
         $donations = Donation::all();
         $tests = Test::all();
         $results = Result::all();
@@ -34,7 +40,8 @@ class DonationController extends Controller
         $pendingDonationsCount = $this->getPendingDonationsCount();
         $donorsCount = $this->getDonorsCount();
         $centersCount = $this->getCenters()->count();
-        return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount', 'roles'));
+        return view('dashboard', compact('donations', 'tests', 'results', 'doneDonationsCount', 'pendingDonationsCount', 'donorsCount', 'centersCount', 'roles', 'userRole'));
+        }
     }
 
     public function create()
@@ -82,7 +89,7 @@ class DonationController extends Controller
             'name' => 'required',
             'last_name' => 'required',
             'ID_number' => 'required',
-            'phone' => 'required',
+            'phone' => 'required | unique:users',
             'city_id' => 'required',
             'center_id' => 'required',
             'donation_type_id' => 'required',
@@ -99,17 +106,28 @@ class DonationController extends Controller
 
     public function edit(Donation $donation)
     {
+        if(!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('nurse')){
+            return redirect()->back()->with('error', 'You are not authorized to access this page');
+        }
+        else
+        {
         $user = $donation->user;
         $cities = $this->getCities();
         $centers = $this->getCenters();
         $donationTypes = $this->getDonationTypes();
         $bloodTypes = $this->getBloodTypes();
         return view('donations.edit', compact('donation', 'user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
+        }
     }
 
 
     public function update(Request $request, Donation $donation)
     {
+        if(!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('nurse')){
+            return redirect()->back()->with('error', 'You are not authorized to do this action');
+        }
+        else
+        {
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
@@ -124,12 +142,19 @@ class DonationController extends Controller
         $donation->user->update($request->all());
         return redirect()->route('dashboard')->with('success', 'The Donation has been updated successfully');
     }
+    }
 
 
     public function destroy(Donation $donation)
     {
+        if(!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('nurse')){
+            return redirect()->back()->with('error', 'You are not authorized to do this action');
+        }
+        else
+        {
         $donation->delete();
         return redirect()->route('dashboard')->with('success', 'The Donation has been deleted successfully');
+        }
     }
     public function showReserve()
     {
