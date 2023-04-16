@@ -8,7 +8,6 @@ Welcome to the Moroccan Red Crescent Blood Donation Website! Our platform aims t
 
 - [About the Project](#about-the-project)
 - [Features](#features)
-- [Getting Started](#getting-started)
 
 ## About the Project
 
@@ -23,23 +22,28 @@ Our blood donation website offers the following features:
 - find donation history and
 - find all your tests results
 
-## Getting Started
+## Screenshots
+Here are some screenshots of the website:
 
-To use our blood donation website, simply follow these steps:
 
-1. Clone the repository.
+Welcome page of Moroccan Red Crescent Blood Donation website
 
-    `git clone https://github.com/spirithuntt/BloodDonation-Website.git`
+![Landing Page](https://user-images.githubusercontent.com/112879456/232332002-114c1701-bd34-4853-86c8-8c1e87b0ca89.png)
 
-2. Install the necessary dependencies.
 
-    `npm install`
 
-3. Start the development server.
+Register page of Moroccan Red Crescent Blood Donation website
 
-    `npm start`
+![Register Page](https://user-images.githubusercontent.com/112879456/232332098-8953c797-2c6c-4a4d-a1dd-b2d4fc2f8229.png)
 
-4. Open your web browser and go to 
 
-    `http://127.0.0.1:8000`.
+homepage of Moroccan Red Crescent Blood Donation website
+
+![Donor home Page](https://user-images.githubusercontent.com/112879456/232332113-128572ae-7640-4d02-87e9-79415b1399ac.png)
+
+
+The Admin side of Moroccan Red Crescent Blood Donation website
+
+![Dashboard](https://user-images.githubusercontent.com/112879456/232332374-e4fb51fb-efcc-4c40-9a1f-a971cd3d197b.png)
+
 
