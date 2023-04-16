@@ -68,10 +68,12 @@
                                                 <ul class="py-2 text-sm text-gray-700 "
                                                     aria-labelledby="dropdownMenuIconHorizontalButton{{ $city->id }}">
                                                     <li>
-                                                        <a href="{{ route('cities.edit', $city->id) }}"
+                                                        <button data-modal-toggle="modalCity"
+                                                            data-modal-target="modalCity"
+                                                            onclick="edit({{ $city->id }})"
                                                             class="flex items-center px-4 py-2 hover:bg-gray-100">
                                                             <span>Edit</span>
-                                                        </a>
+                                                        </button>
                                                     </li>
                                                     <li>
                                                         <form action="{{ route('cities.destroy', $city->id) }}"

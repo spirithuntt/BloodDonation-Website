@@ -10,6 +10,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,67 +46,66 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
-//city
-Route::resource('cities', CityController::class);
-//center
-Route::resource('centers', CenterController::class);
-//home
-Route::get('/home', [DonationController::class, 'index'])->name('home');
+    //city
+    Route::resource('cities', CityController::class);
+    //center
+    Route::resource('centers', CenterController::class);
+    //home
+    Route::get('/home', [DonationController::class, 'index'])->name('home');
 
 
 
-// scheduleAppointment resource
-Route::resource('donation', DonationController::class);
+    // scheduleAppointment resource
+    Route::resource('donation', DonationController::class);
 
 
-// scheduleAppointment livewire
+    // scheduleAppointment livewire
 // Route::get('/appointment', AppointmentForm::class)->name('appointment');
 
 
 
-Route::get('Working-Hours', [BusinessHourController::class, 'index'])->name('business_hours.index');
-//update
-Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('business_hours.update');
+    Route::get('Working-Hours', [BusinessHourController::class, 'index'])->name('business_hours.index');
+    //update
+    Route::post('Working-Hours', [BusinessHourController::class, 'update'])->name('business_hours.update');
 
-//reserve
-Route::get('reserve', [DonationController::class, 'showReserve'])->name('reserve');
-Route::post('reserve', [DonationController::class, 'reserve'])->name('reserve');
-//confirm update reservation putN
-Route::put('confirm', [DonationController::class, 'confirm'])->name('confirm');
-
-
-
-
-// resource route for the tests
-Route::resource('tests', TestController::class);
-
-// create route for createresult(only way that worked)
-Route::get('/donations/{donation}/add-result', [
-    'uses' => 'App\Http\Controllers\DonationController@addResultForm',
-    'as' => 'donations.add_result_form'
-]);
-
-
-// resource route for the results
-Route::resource('results', ResultController::class);
+    //reserve
+    Route::get('reserve', [DonationController::class, 'showReserve'])->name('reserve');
+    Route::post('reserve', [DonationController::class, 'reserve'])->name('reserve');
+    //confirm update reservation putN
+    Route::put('confirm', [DonationController::class, 'confirm'])->name('confirm');
 
 
 
-//post route to fetch the donation centers
-Route::post('/api/fetch-donation-centers', [CenterController::class, 'fetchDonationCenters']);
 
-//for admin show all donations showDonationDetails function
-Route::get('/dashboard', [DonationController::class, 'showDonationDetails'])->name('dashboard'); 
+    // resource route for the tests
+    Route::resource('tests', TestController::class);
 
-//get results pdf
-Route::get('/donations/{donation_id}/results/pdf', [ResultController::class, 'generatePDF'])->name('results.pdf');
+    // create route for createresult(only way that worked)
+    Route::get('/donations/{donation}/add-result', [
+        'uses' => 'App\Http\Controllers\DonationController@addResultForm',
+        'as' => 'donations.add_result_form'
+    ]);
 
 
-//contact us page
-Route::post('/', [ContactController::class, 'store'])->name('contact.store');
+    // resource route for the results
+    Route::resource('results', ResultController::class);
 
-//genrate QR code
-Route::get('/donations/{donation_id}/qr-code', [DonationController::class, 'generateQRCode'])->name('donations.qr_code');
+
+
+    //post route to fetch the donation centers
+    Route::post('/api/fetch-donation-centers', [CenterController::class, 'fetchDonationCenters']);
+
+    //for admin show all donations showDonationDetails function
+    Route::get('/dashboard', [DonationController::class, 'showDonationDetails'])->name('dashboard');
+
+    //get results pdf
+    Route::get('/donations/{donation_id}/results/pdf', [ResultController::class, 'generatePDF'])->name('results.pdf');
+
+
+    //contact us page
+    Route::post('/', [ContactController::class, 'store'])->name('contact.store');
+
+    //genrate QR code
+    Route::get('/donations/{donation_id}/qr-code', [DonationController::class, 'generateQRCode'])->name('donations.qr_code');
     Route::resource('users', UserController::class);
 });
-

@@ -16,19 +16,17 @@
         <div>
             @livewire('show-centers')
         </div>
-        {{-- efuzwuvb --}}
     </div>
 
 
-    <!-- center modal popoup and a select dropdown that has cities fetched from db with getCities method-->
     <div id="modalCenter"
         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-md max-h-full">
             <div
                 class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <h1 id="title_add">Add Center</h1>
-                    <h1 id="title_edit">Edit Center</h1>
+                    <h1 id="title_add" class="text-red-700">Add Center</h1>
+                    <h1 id="title_edit" class="text-red-700">Edit Center</h1>
                     <form id="center_form" action="{{ route('centers.store') }}" method="POST" data-parsley-validate>
                         @csrf
                         @method('PUT')
@@ -116,10 +114,6 @@
                     $('#address').val(data.address);
                     $('#phone').val(data.phone);
                     $('#city').val(data.city_id);
-
-
-                
-
                 }
             });
         }
@@ -138,7 +132,6 @@
 
 
         }
-
     </script>
 
 

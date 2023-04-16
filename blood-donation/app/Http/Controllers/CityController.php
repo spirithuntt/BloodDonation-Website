@@ -49,9 +49,11 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(City $city)
+    public function edit(string $id)
     {
-        return view('cities.edit', compact('city'));
+        $city = City::find($id);
+        return response()->json($city);
+
 
     }
 

@@ -39,7 +39,6 @@
                                             data-priority="6"></th>
                                     </tr>
                                 </thead>
-                                {{-- dropdown button with "Edit" and "Delete" options --}}
                                 <tbody>
                                     @foreach ($centers as $center)
                                         <tr>
