@@ -60,4 +60,19 @@ class CenterController extends Controller
         return response()->json($cities);
     }
 
+
+//fetch donation centers in the selected city for the donation request form
+    public function fetchDonationCenters(Request $request)
+{
+    $city_id = $request->input('city_id');
+
+    $centers = Center::where('city_id', $city_id)->get();
+
+    $response = [
+        'donation_centers' => $centers
+    ];
+
+    return response()->json($response);
+}
+
 }

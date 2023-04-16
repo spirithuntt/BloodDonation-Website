@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Test;
-use App\Models\User;
-use App\Models\Center;
 use App\Models\Result;
 use App\Models\Donation;
 use App\Models\BusinessHour;
@@ -12,9 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class DonationController extends Controller
@@ -43,17 +39,40 @@ class DonationController extends Controller
 
     public function create()
     {
-        //get user's data so he can update it
-        $user = auth()->user();
-        //get the cities from the database
-        $cities = $this->getCities();
-        //get the centers from the database
-        $centers = $this->getCenters();
-        //get the donation types from the database
-        $donationTypes = $this->getDonationTypes();
-        //get the blood types from the database
-        $bloodTypes = $this->getBloodTypes();
-        return view('appointments.schedule-appointment', compact('user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
+        //check if the user has already donated in the last 3 months or not from it_donated column in donations table
+        $userId = auth()->user()->id;
+        $donations = Donation::where('user_id', $userId)->get();
+        //check the last donation that has is_donated=1
+        $lastDonation = $donations->where('is_donated', 1)->last();
+        //check if the last donation passed 3 months or not
+        if ($lastDonation) {
+            $lastDonationDate = Carbon::parse($lastDonation->date);
+            $now = Carbon::now();
+            $diff = $lastDonationDate->diffInMonths($now);
+            if ($diff < 3) {
+                return redirect()->route('home')->with('error', 'You can\'t donate blood now, you have to wait ' . (3 - $diff) . ' months');
+            }
+        }
+        //check if the user has already reserved an appointment or not
+        elseif($lastDonation = $donations->where('is_donated', 0)->last())
+        {
+            $lastDonationDate = Carbon::parse($lastDonation->date);
+            $now = Carbon::now();
+            $diff = $lastDonationDate->diffInDays($now);
+            if($diff < 7)
+            {
+                return redirect()->route('home')->with('error', 'You already have an appointment on ' . $lastDonation->date);
+            }
+        }
+        else 
+        {
+            $user = auth()->user();
+            $cities = $this->getCities();
+            $centers = $this->getCenters();
+            $donationTypes = $this->getDonationTypes();
+            $bloodTypes = $this->getBloodTypes();
+            return view('appointments.schedule-appointment', compact('user', 'cities', 'centers', 'donationTypes', 'bloodTypes'));
+        }
     }
 
 
@@ -76,10 +95,6 @@ class DonationController extends Controller
     }
 
 
-    public function show(Donation $donation)
-    {
-        //
-    }
 
 
     public function edit(Donation $donation)
@@ -178,16 +193,11 @@ class DonationController extends Controller
             return $appointment->time->format('H:i') == $time;
         });
         //update the donation with the appointment data if the time is not reserved else return confirm view
-        // if ($reserved) {
         $donation = Donation::find($id);
         $donation->date = $date;
         $donation->time = $time;
         $donation->save();
         return redirect()->route('home')->with('success', 'Your appointment has been scheduled successfully');
-        // }
-        // else {
-        //     return view('appointments.confirm', compact('date', 'time'));
-        // }
     }
 
 
@@ -237,6 +247,7 @@ class DonationController extends Controller
     }
 
 
+//! getters
     public function getCities()
     {
         return DB::table('cities')->get();

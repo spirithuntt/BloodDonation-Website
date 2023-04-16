@@ -18,7 +18,7 @@
                 <h1 class="text-3xl font-bold mb-8 text-gray-800 ">Enter Your Personal Information</h1>
                 <form action="{{ route('donation.store') }}" method="POST" data-parsley-validate>
                     @csrf
-                    <input type="" name="is_donated" value="0">
+                    <input type="hidden" name="is_donated" value="0">
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label for="first_name" class="block text-sm font-medium text-gray-600 mb-2">First

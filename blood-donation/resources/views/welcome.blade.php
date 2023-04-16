@@ -24,51 +24,50 @@
             <body class="bg-gray-100">
                 <!-- navbar with a logo in the left and two buttons int right -->
                 
-                <nav class="flex items-center justify-between flex-wrap p-6 bg-gray-800 text-white" id="navbarNav">
+                <nav class="flex items-center justify-between flex-wrap p-6 bg-gray-800 text-white">
                     <div class="flex items-center text-white mr-6">
-                      <img src="{{asset('assets/img/logo.png')}}" alt="logo" class="fill-current h-8 w-8 mr-2">
-                      <span class="font-serif text-2xl tracking-tight">Moroccan Red Crescent</span>
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="fill-current h-8 w-8 mr-2">
+                        <span class="font-serif text-2xl tracking-tight">Moroccan Red Crescent</span>
                     </div>
-                    <div class="block lg:hidden">
-                      <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-red-700 hover:border-red-700" data-toggle="collapse" data-target="#navbarNavContent">
-                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
-                          <title>Menu</title>
-                          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                        </svg>
-                      </button>
+                    <div class="block lg:hidden md:hidden">
+                        <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-red-700 hover:border-red-700" id="navbar-toggle">
+                            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
+                                <title>Menu</title>
+                                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                            </svg>
+                        </button>
                     </div>
-                    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
-                      <div class="text-sm lg:flex-grow">
-                        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 text-xs">
-                          Why donate blood
-                        </a>
-                        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 text-xs">
-                          Types of Blood Donations
-                        </a>
-                        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 text-xs">
-                          The Donation Process
-                        </a>
-                        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 text-xs">
-                          Compatible blood types
-                        </a>
-                      </div>
-                      <div class="buttons lg:flex lg:items-center">
-                        @if (Route::has('login'))
-                          @auth
+                    <div class="hidden lg:flex lg:items-center lg:w-auto" id="navbar-collapse" class="hidden">
+                        <div class="lg:flex-grow ">
+                            <a href="#responsive-header" class="font-sans block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 ">
+                                Why donate blood
+                            </a>
+                            <a href="#responsive-header" class="font-sans block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 ">
+                                Types of Blood Donations
+                            </a>
+                            <a href="#responsive-header" class="font-sans block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 ">
+                                The Donation Process
+                            </a>
+                            <a href="#responsive-header" class="font-sans block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 ">
+                                Compatible blood types
+                            </a>
+                        </div>
+                        <div class="buttons lg:flex lg:items-center">
+                            @if (Route::has('login'))
+                            @auth
                             <a href="{{ url('/dashboard') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Dashboard</a>
-                          @else
+                            @else
                             <a href="{{ route('login') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Login</a>
                             @if (Route::has('register'))
-                              <a href="{{ route('register') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Register</a>
+                            <a href="{{ route('register') }}" class="bg-red-700 inline-block text-sm px-4 py-2 leading-none text-white hover:bg-red-900 mt-4 lg:mt-0 rounded-full py-3 px-6 mr-4 shadow-2xl">Register</a>
                             @endif
-                          @endauth
-                        @endif
-                      </div>
+                            @endauth
+                            @endif
+                        </div>
                     </div>
-                  </nav>
-                  <div id="navbarNavContent" class="collapse">
-                    <!-- Navigation links go here -->
-                  </div>
+                </nav>
+                  
+                  
                   
                 <!-- black hero section -->
                 <section class="bg-gray-800 text-white">
@@ -391,5 +390,22 @@
 <!-- Bootstrap JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+<script>
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbarCollapse = document.getElementById('navbar-collapse');
+
+if (navbarToggle && navbarCollapse) {
+  navbarToggle.addEventListener('click', function() {
+    navbarCollapse.classList.toggle('hidden');
+    navbarCollapse.classList.toggle('block');
+  });
+  
+  // hide the collapsible menu by default
+  navbarCollapse.classList.add('hidden');
+}
+
+</script>
+
+  
             </body>
 </html>
