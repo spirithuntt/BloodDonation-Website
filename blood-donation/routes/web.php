@@ -43,9 +43,14 @@ Route::middleware([
 // Route::resource('users', UserController::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     if(auth()->user()->hasRole('user')){
+    //         return view('home');
+    //     }
+    //     else{
+    //         return view('dashboard');
+    //     }
+    // })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
     //city
     Route::resource('cities', CityController::class);
     //center

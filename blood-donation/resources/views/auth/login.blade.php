@@ -20,7 +20,7 @@
                             @csrf
                             <div>
                                 <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md  focus:border-red-500" type="email" name="email" :value="old('email')" required autofocus placeholder="mike@gmail.com">
+                                <input class="w-full text-lg py-2 border-b border-gray-300 rounded-md  focus:border-red-500" type="email" name="email" :value="old('email')" required autofocus placeholder="hamid@gmail.com">
                             </div>
                             <div class="mt-8">
                                 <div class="flex justify-between items-center">

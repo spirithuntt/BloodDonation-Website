@@ -24,7 +24,7 @@
             <body class="bg-gray-100">
                 <!-- navbar with a logo in the left and two buttons int right -->
                 
-                <nav class="flex items-center justify-between flex-wrap p-6 bg-gray-800 text-white">
+                <nav class="flex items-center justify-between flex-wrap pt-6 bg-gray-800 text-white">
                     <div class="flex items-center text-white mr-6">
                         <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="fill-current h-8 w-8 mr-2">
                         <span class="font-serif text-2xl tracking-tight">Moroccan Red Crescent</span>
@@ -38,7 +38,7 @@
                         </button>
                     </div>
                     <div class="hidden lg:flex lg:items-center lg:w-auto" id="navbar-collapse" class="hidden">
-                        <div class="lg:flex-grow ">
+                        <div class="lg:flex-grow">
                             <a href="#responsive-header" class="font-sans block mt-4 lg:inline-block lg:mt-0 text-white hover:text-red-700 mr-4 ">
                                 Why donate blood
                             </a>
